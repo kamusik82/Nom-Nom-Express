@@ -9,7 +9,7 @@
         $creds = "";
 
         if($username == "Manny" && $password == "12345"){
-            header("Location: ../../admin.php");  // go to admin page if credentials are correct
+            header("Location: ./admin.php");  // go to admin page if credentials are correct
             exit;
         } else {
             $creds = 'Invalid Credentials';

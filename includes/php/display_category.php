@@ -36,7 +36,7 @@ if (isset($_GET['beverage'])){
 
 // Communicate with database below : 
 
-require('mysqli_connect.php'); // Connect to the db.
+require('./includes/php/connection.php'); // Connect to the db.
 
 // Make the query:
 if ($selected == 'All') // no filter
@@ -51,6 +51,8 @@ if ($selected == 'All') // no filter
 $r = @mysqli_query($dbc, $q); // Run the query.
 $num = mysqli_num_rows($r); // Count the number of row.
 
+$id_array = array();
+
 if ($num > 0) { // If it ran OK, display the records.
 
 	// Fetch and print all the records:
@@ -61,7 +63,9 @@ if ($num > 0) { // If it ran OK, display the records.
         $desc = $row['item_desc'];
         $pic = $row['item_picture'];
         $price = $row['item_price'];
+        array_push($id_array, $id);
 
+        // use a form for the add to cart functionality but make sure its what the brd says
 		echo "<div class='col'>
                 <div class='card product h-100'>
                     <img src='$pic' class='card-img-top product-image' alt='$name'>
@@ -69,7 +73,9 @@ if ($num > 0) { // If it ran OK, display the records.
                         <h5 class='card-title product-title'>$name</h5>
                         <p class='card-text product-description'>$desc</p>
                         <p class='card-text product-price'>$$price</p>
-                        <button class='btn btn-secondary add-to-cart-btn' data-id='$id'>Add to Cart</button>
+                        <form action='index.php' method='POST'>
+                            <button type='submit' class='btn btn-secondary add-to-cart-btn' value='$id'>Add to Cart</button>
+                        </form>
                     </div>
                 </div>
             </div>";
