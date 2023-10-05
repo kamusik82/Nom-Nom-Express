@@ -8,9 +8,9 @@
 
 <body>
 	
-	<?php include "./includes/php/connection.php" ?> <!-- include for connection php to connect to the database -->
+	<?php include ("./includes/php/connection.php"); ?> <!-- include for connection php to connect to the database -->
 
-	<?php include "./includes/php/store_info.php"?> <!-- include for the store_info -->
+	<?php include ("./includes/php/store_info.php"); ?> <!-- include for the store_info -->
 
 	<h1> Store info</h1>
 	<!-- information that comes from store_info php -->
@@ -57,7 +57,7 @@
 
 	<h1>Add Menu Items Form</h1>
 
-	<?php include "./includes/php/add.php" ?> <!-- include add that validates given form data and updates the database -->
+	<?php include ("./includes/php/add.php"); ?> <!-- include add that validates given form data and updates the database -->
 
 	<form id="addItem" enctype="multipart/form-data" action="admin.php" method="POST">
 		<!-- form action is the admin page to stay on the same page -->
@@ -113,9 +113,9 @@
 
 	<h1>Current Menu Items</h1>
 
-	 <?php include "./includes/php/items.php" ?> <!-- display current items with php include --> 
+	 <?php include ("./includes/php/items.php"); ?> <!-- display current items with php include --> 
 
-	<form action='logout.php' method='post'>	<!-- logout button form action takes you to the logout page (will probably update to just take them back to the landing page) -->
+	<form action='./includes/php/logout.php' method='post'>	<!-- logout button form action takes you to the logout page (will probably update to just take them back to the landing page) -->
 		<input type='hidden' name='logout' value='true' />
 		<input type='submit' value='Logout' /> <!-- logout submit button -->
 	</form>
