@@ -5,6 +5,7 @@
 <body>
 <?php
   session_start();
+  $_SESSION = [];
   session_destroy();
   echo "<h3>You have logged out!</h3>";
   echo "To log back in go to: <a href='./login.php'>LOGIN</a>";
