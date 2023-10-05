@@ -34,9 +34,6 @@ if (isset($_GET['beverage'])){
     $selected = 'Beverages';  
 }
 
-// Communicate with database below : 
-
-require('./includes/php/connection.php'); // Connect to the db.
 
 // Make the query:
 if ($selected == 'All') // no filter
@@ -65,20 +62,36 @@ if ($num > 0) { // If it ran OK, display the records.
         $price = $row['item_price'];
         array_push($id_array, $id);
 
-        // use a form for the add to cart functionality but make sure its what the brd says
-		echo "<div class='col'>
-                <div class='card product h-100'>
-                    <img src='$pic' class='card-img-top product-image' alt='$name'>
-                    <div class='card-body'>
-                        <h5 class='card-title product-title'>$name</h5>
-                        <p class='card-text product-description'>$desc</p>
-                        <p class='card-text product-price'>$$price</p>
-                        <form action='index.php' method='POST'>
-                            <button type='submit' class='btn btn-secondary add-to-cart-btn' value='$id'>Add to Cart</button>
-                        </form>
+        // the button is disabled if the user is not logged in
+        if(isset($_SESSION['user_name'])){
+            echo "<div class='col'>
+                    <div class='card product h-100'>
+                        <img src='$pic' class='card-img-top product-image' alt='$name'>
+                        <div class='card-body'>
+                            <h5 class='card-title product-title'>$name</h5>
+                            <p class='card-text product-description'>$desc</p>
+                            <p class='card-text product-price'>$$price</p>
+                            <form action='index.php' method='POST'>
+                                <button type='submit' class='btn btn-secondary add-to-cart-btn' name='$id'>Add to Cart</button>
+                            </form>
+                        </div>
                     </div>
-                </div>
-            </div>";
+                </div>";
+        } else {
+            echo "<div class='col'>
+                    <div class='card product h-100'>
+                        <img src='$pic' class='card-img-top product-image' alt='$name'>
+                        <div class='card-body'>
+                            <h5 class='card-title product-title'>$name</h5>
+                            <p class='card-text product-description'>$desc</p>
+                            <p class='card-text product-price'>$$price</p>
+                            <form action='index.php' method='POST'>
+                                <button type='submit' class='btn btn-secondary add-to-cart-btn disabled' name='$id'>Add to Cart</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>";
+        }
 	}
 
 	mysqli_free_result ($r); // Free up the resources.
@@ -88,7 +101,5 @@ if ($num > 0) { // If it ran OK, display the records.
 	echo '<p class="error">There are currently no available items.</p>';
 
 }
-
-mysqli_close($dbc); // Close the database connection.
 
 ?>

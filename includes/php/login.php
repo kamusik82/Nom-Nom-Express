@@ -10,7 +10,7 @@
          Implement using credentials include that checks for user type. When possible easy to convert into
          offcanvas or modal -->
 
-    <?php include "./includes/php/validation.php" ?> <!-- validation include to validate forms filled -->
+<?php (include "./includes/php/validation.php"); ?> <!-- validation include to validate forms filled -->
 <?php 
     //<H2> Please enter your user name and password to login: </H2>
 
@@ -46,9 +46,9 @@ print
 
     </form>';
 
-    include "./includes/php/credentials.php";  // credentials include to make sure fields are correct before moving to different page
+    include ("./includes/php/credentials.php");  // credentials include to make sure fields are correct before moving to different page
 
-    print '<p><a href="redirect to registration form">Create an account</a></p> <!-- doesnt actually go anywhere yet but will redirect to registration page when implemented -->';
+    print '<p><a href="./includes/php/registration.php">Create an account</a></p> <!-- doesnt actually go anywhere yet but will redirect to registration page when implemented -->';
 
 ?>
 

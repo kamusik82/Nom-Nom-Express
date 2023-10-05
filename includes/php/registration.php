@@ -67,7 +67,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	// Check for BC (only accept order in BC):
 	if (empty($_POST['province'])) {
 		$errors[] = 'Please enter your province.';
-	} else if (UPPER($_POST['province']) != 'BC') {
+	} else if (strtoupper($_POST['province']) != 'BC') {
         $errors[] = 'We currently only deliver in BC.';
     } else {
 		$r_prov = mysqli_real_escape_string($dbc, trim($_POST['province']));
@@ -121,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if (empty($errors)) { // If everything's OK.
 		// Register the user in the database...
 		
-		$sql_insert = "INSERT INTO users (first_name, last_name, street_1, street_2, city, province, postal, email, phone, username, password, role, reg_date) VALUES (CONCAT(UPPER(SUBSTRING('$r_fname',1,1)),LOWER(SUBSTRING('$r_fname',2))), CONCAT(UPPER(SUBSTRING('$r_lname',1,1)),LOWER(SUBSTRING('$r_lname',2))), '$r_street1', '$r_street2', CONCAT(UPPER(SUBSTRING('$r_city',1,1)),LOWER(SUBSTRING('$r_city',2))), UPPER('$r_prov'), UPPER('$r_postal'), '$r_email', '$r_phone', '$r_username', SHA1('$r_password'), 'U', now());";
+		$sql_insert = @"INSERT INTO users (first_name, last_name, street_1, street_2, city, province, postal, email, phone, username, password, role, reg_date) VALUES (CONCAT(UPPER(SUBSTRING('$r_fname',1,1)),LOWER(SUBSTRING('$r_fname',2))), CONCAT(UPPER(SUBSTRING('$r_lname',1,1)),LOWER(SUBSTRING('$r_lname',2))), '$r_street1', '$r_street2', CONCAT(UPPER(SUBSTRING('$r_city',1,1)),LOWER(SUBSTRING('$r_city',2))), UPPER('$r_prov'), UPPER('$r_postal'), '$r_email', '$r_phone', '$r_username', SHA1('$r_password'), 'U', now());";
         $result = @mysqli_query($dbc, $sql_insert); // Run the query.
 
         if ($result) { // If it ran OK.
@@ -129,6 +129,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			// Print a message:
 			echo '<h1>Thank you!</h1>
 		<p>You are now registered. </p><p><br></p>';
+
+        $sql = "SELECT user_id, username from users where username='$r_username';";
+        $result = @mysqli_query($dbc, $sql);
+        $row = mysqli_fetch_array($result);
+        $_SESSION['user_id'] = $row["user_id"]; // store user_id to the session
+        $_SESSION['user_name'] = $row["username"]; // store username to the session
+
+        header("Location: ../../index.php");  // go to main page
+        exit();
 
 		} else { // If it did not run OK.
 
@@ -143,7 +152,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 		mysqli_close($dbc); // Close the database connection.
 
-		exit();
 
 	} else { // Report the errors.
 
@@ -158,7 +166,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 	// mysqli_close($dbc); // Close the database connection.
 
-    header("Location: ./index.php");  // go to main page
 } // End of the main Submit conditional.
 ?>
 

@@ -9,8 +9,8 @@
 </head>
 
 <body>
-
-    <?php include "./includes/php/category_header.php" ?>
+    <?php require('./includes/php/connection.php'); ?>
+    <?php include ("./includes/php/category_header.php"); ?>
 
     <!-- Display Items Here -->
     <div class="container text-center my-5">
