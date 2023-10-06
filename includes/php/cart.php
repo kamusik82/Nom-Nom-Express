@@ -74,7 +74,7 @@
 
             echo '<tr>
                 <td align="center">' . $row['item_name'] . '</td>
-                <td align="center"><img src="' . $row['item_picture'] . '" alt="Food description"></td>
+                <td align="center"><img width="100px" src="' . $row['item_picture'] . '" alt="Food description"></td>
                 <td align="center">' . $row['quantity'] . '</td>
                 <td align="center">' . $row['item_price'] . '</td>
                 <td align="center">' . $grandTotal . '</td>
