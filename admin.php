@@ -113,7 +113,51 @@
 
 	<h1>Current Menu Items</h1>
 
-	 <?php include ("./includes/php/items.php"); ?> <!-- display current items with php include --> 
+	<?php include ("./includes/php/items.php"); ?> <!-- display current items with php include --> 
+
+	<!-- Delete Confirmation Modal -->
+	<div class="modal fade" id="deleteConfirmationModal" tabindex="-1" aria-labelledby="deleteLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="deleteLabel">Delete Confirmation</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<h6>Are you sure you want to delete:</h6>
+					<h6 class="fs-4 delete-item text-center text-decoration-underline"></h6>
+					<h6 class="text-end">from menu items?</h6>
+				</div>
+				<div class="modal-footer">
+					<a class="btn btn-secondary" href="#" role="button" data-bs-dismiss="modal">No</a> <!-- Just close modal -->
+				    <a class="btn btn-danger" href="admin.php" role="button">Yes</a> <!-- the url of this confirmation button will change depending on the button clicked -->
+				</div>
+			</div>
+		</div>
+	</div>
+
+		<!-- Disable Confirmation Modal -->
+		<div class="modal fade" id="disableConfirmationModal" tabindex="-1" aria-labelledby="disableLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h1 class="modal-title fs-5" id="disableLabel">Disable Confirmation</h1>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<h6>Are you sure you want to disable:</h6>
+					<h6 class="fs-4 disable-item text-center text-decoration-underline"></h6>
+					<h6 class="text-end">from menu items?</h6>
+				</div>
+				<div class="modal-footer">
+					<a class="btn btn-secondary" href="#" role="button" data-bs-dismiss="modal">No</a> <!-- Just close modal -->
+				    <a class="btn btn-danger" href="admin.php" role="button">Yes</a> <!-- the url of this confirmation button will change depending on the button clicked -->
+				</div>
+			</div>
+		</div>
+	</div>
+	
+
 
 	<form action='./includes/php/logout.php' method='post'>	<!-- logout button form action takes you to the logout page (will probably update to just take them back to the landing page) -->
 		<input type='hidden' name='logout' value='true' />
@@ -135,6 +179,11 @@
 			$("#deleteConfirmationModal .modal-footer .btn-danger").attr('href', `./admin.php?action=delete&itemID=${item_id}`);
 			$('#deleteConfirmationModal').modal('show');
 
+		})
+
+		// When clicked disable button
+		$(document).on('click', '.disable', function () {
+			// get the item_id from a data attribute of the button
 		})
 	</script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

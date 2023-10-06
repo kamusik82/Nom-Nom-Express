@@ -5,17 +5,18 @@
 	//
 	if (isset($_GET['action']) && $_GET['action'] == 'delete')	{
 
-		$id = mysqli_real_escape_string($dbc, trim(strip_tags($_GET['itemID'])));
+		$id = trim($_GET['itemID']);
+		
 		// build query
-		$query = "DELETE from menu_item WHERE item_id='$id'";
-		$result = mysqli_query($dbc, $query);	
-        
-		if($result == TRUE) {
-			?> <script> alert("Record has been deleted"); </script><?php			
+		$query = "DELETE FROM menu_items WHERE item_id=$id;";
+		// run the query
+		$result = @mysqli_query($dbc, $query);
+
+		if($result) {
+			echo '<script> alert("Record has been deleted"); </script>';
 		}else {
-			?> <script> alert("Record could not be deleted"); </script><?php
+			echo '<script> alert("Record could not be deleted"); </script>';
 		}
-		header('Location:../../admin.php');
 	}
 
 
