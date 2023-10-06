@@ -10,6 +10,13 @@
 	
 	<?php include ("./includes/php/connection.php"); ?> <!-- include for connection php to connect to the database -->
 
+	<form action='./includes/php/logout.php' method='post'>	<!-- logout button form action takes you to the logout page (will probably update to just take them back to the landing page) -->
+		<input type='hidden' name='logout' value='true' />
+		<input type='submit' value='Logout' /> <!-- logout submit button -->
+	</form>
+
+	<a href="./index.php"><button>Index</button></a>
+
 	<?php include ("./includes/php/store_info.php"); ?> <!-- include for the store_info -->
 
 	<h1> Store info</h1>
@@ -156,13 +163,6 @@
 			</div>
 		</div>
 	</div>
-	
-
-
-	<form action='./includes/php/logout.php' method='post'>	<!-- logout button form action takes you to the logout page (will probably update to just take them back to the landing page) -->
-		<input type='hidden' name='logout' value='true' />
-		<input type='submit' value='Logout' /> <!-- logout submit button -->
-	</form>
 
 
 	<script src="https://code.jquery.com/jquery-3.7.0.min.js"
