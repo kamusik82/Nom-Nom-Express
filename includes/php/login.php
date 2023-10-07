@@ -48,7 +48,7 @@ print
 
     include ("./includes/php/credentials.php");  // credentials include to make sure fields are correct before moving to different page
 
-    print '<p><a href="./includes/php/registration.php">Create an account</a></p>';
+    // print '<p><a href="./includes/php/registration.php">Create an account</a></p>';
 
 ?>
 

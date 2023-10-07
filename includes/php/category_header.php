@@ -101,18 +101,74 @@
     }
 
     print   '<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title" id="loginModalLabel">Login</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">';
-                            
-                            include('./includes/php/login.php');
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="loginModalLabel">Login</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">';
+                
+                include('./includes/php/login.php');
 
-    print               '</div>
-                    </div>
-                </div>
-            </div>';
+print               '</div>
+            <div class="modal-footer">
+                <a class="pointer" data-bs-target="#privacy" data-bs-toggle="modal">Create a New Account</a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="privacy" aria-hidden="true" aria-labelledby="privacyModalLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="privacyModalLabel">General Data Protection Regulation</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            
+            <p>
+            The Canadian federal government introduced a new privacy protection law called
+            the <b>General Data Protection Regulation</b>. This law requires that individuals must give explicit permission
+            for their data to be used and give individuals the right to know who is accessing their information and what it
+            will be used for. All companies collecting and/or using personal information on Canadian citizens must comply
+            with this new law.
+            <p>
+            </p>
+            Nom Nom Express collects the following information for purposes of Account Registration, Order Tracking and Order Delivery:
+                <ul>
+                    <li>Name</li> 
+                    <li>Email</li> 
+                    <li>Phone Number</li>
+                    <li>Street Address including city, province, and postal code</li>
+                </ul>
+            </p>
+            <p>
+            To create an account you must agree to Nom Nom Express collecting this information by clicking the \'Accept\' button below.
+            You can change your selection to opt out at any time in User Account settings.
+            </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Decline</button>
+                <button class="btn btn-primary" data-bs-target="#reg_modal" data-bs-toggle="modal">Accept</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="reg_modal" aria-hidden="true" aria-labelledby="reg_modalLabel" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="reg_modalLabel">User Registration</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">';
+            
+            include('./includes/php/registration.php');
+
+print
+            '</div>
+        </div>
+    </div>
+</div>';
 ?>

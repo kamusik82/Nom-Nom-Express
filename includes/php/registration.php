@@ -27,7 +27,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$r_lname = mysqli_real_escape_string($dbc, trim($_POST['last_name']));
 	}
 
-    // ADD VALIDATION!!
 	// Check for an email address:
 	if (empty($_POST['email'])) {
 		$errors[] = 'Please enter your email address.';
@@ -35,7 +34,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$r_email = mysqli_real_escape_string($dbc, trim($_POST['email']));
 	}
 
-    // ADD VALIDATION!!
     // grab phone:
     if (!empty($_POST['phone'])) {
         $r_phone = mysqli_real_escape_string($dbc, trim($_POST['phone']));
@@ -73,10 +71,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		$r_prov = mysqli_real_escape_string($dbc, trim($_POST['province']));
 	}
 
-    // ADD VALIDATION!!
     // Check for a valid postal code:
 	if (empty($_POST['postal'])) {
 		$errors[] = 'Please enter your postal code.';
+    // } else if (preg_match("/[a-z][0-9][a-z][0-9][a-z][0-9]/i", $_POST['postal']) == 0) {
+    //     $errors[] = 'Please enter a valid postal code.';
 	} else {
 		$r_postal = mysqli_real_escape_string($dbc, trim($_POST['postal']));
 	}
@@ -93,7 +92,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $num = mysqli_num_rows($return);
         $match = 0;
         while ($row = mysqli_fetch_array($return, MYSQLI_ASSOC)) {
-            //echo '<p>'.$row['username'].'</p>';
             if ($_POST['username'] == $row['username']) {
                 $match += 1;
             }
@@ -121,14 +119,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if (empty($errors)) { // If everything's OK.
 		// Register the user in the database...
 		
-		$sql_insert = @"INSERT INTO users (first_name, last_name, street_1, street_2, city, province, postal, email, phone, username, password, role, reg_date) VALUES (CONCAT(UPPER(SUBSTRING('$r_fname',1,1)),LOWER(SUBSTRING('$r_fname',2))), CONCAT(UPPER(SUBSTRING('$r_lname',1,1)),LOWER(SUBSTRING('$r_lname',2))), '$r_street1', '$r_street2', CONCAT(UPPER(SUBSTRING('$r_city',1,1)),LOWER(SUBSTRING('$r_city',2))), UPPER('$r_prov'), UPPER('$r_postal'), '$r_email', '$r_phone', '$r_username', SHA1('$r_password'), 'U', now());";
+		$sql_insert = @"INSERT INTO users (first_name, last_name, street_1, street_2, city, province, postal, email, phone, username, password, role, privacy, reg_date) VALUES (CONCAT(UPPER(SUBSTRING('$r_fname',1,1)),LOWER(SUBSTRING('$r_fname',2))), CONCAT(UPPER(SUBSTRING('$r_lname',1,1)),LOWER(SUBSTRING('$r_lname',2))), '$r_street1', '$r_street2', CONCAT(UPPER(SUBSTRING('$r_city',1,1)),LOWER(SUBSTRING('$r_city',2))), UPPER('$r_prov'), UPPER('$r_postal'), '$r_email', '$r_phone', '$r_username', SHA1('$r_password'), 'U', 'Y', now());";
         $result = @mysqli_query($dbc, $sql_insert); // Run the query.
 
         if ($result) { // If it ran OK.
 
 			// Print a message:
-			echo '<h1>Thank you!</h1>
-		<p>You are now registered. </p><p><br></p>';
+		// 	echo '<h1>Thank you!</h1>
+		// <p>You are now registered. </p><p><br></p>';
 
         $sql = "SELECT user_id, username from users where username='$r_username';";
         $result = @mysqli_query($dbc, $sql);
@@ -150,7 +148,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 		} // End of if ($r) IF.
 
-		mysqli_close($dbc); // Close the database connection.
+		// mysqli_close($dbc); // Close the database connection.
 
 
 	} else { // Report the errors.
@@ -169,72 +167,108 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } // End of the main Submit conditional.
 ?>
 
-
-
 <form action="registration.php" method="POST">
 
-    <h1>User Registration</h1>
+<div class="container text-center">
+	<div class="row text-start">
+		<h5>User Details:</h5>
+	</div>
+	<div class="row">
+		<div class="col">
+			<div class="form-floating mb-3">
+				<input type="text" class="form-control" id="reg_fname" placeholder="First Name" name="first_name" value="<?php if (isset($_POST['first_name'])) echo $_POST['first_name']; ?>">
+				<label for="reg_fname">First Name *</label>
+			</div>
+		</div>
+		<div class="col">
+			<div class="form-floating mb-3">
+				<input type="text" class="form-control" id="reg_lname" placeholder="Last Name" name="last_name" value="<?php if (isset($_POST['last_name'])) echo $_POST['last_name']; ?>">
+				<label for="reg_lname">Last Name *</label>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<div class="form-floating mb-3">
+				<input type="email" class="form-control" id="reg_email" placeholder="name@example.com" name="email" value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>">
+				<label for="reg_email">Email address *</label>
+			</div>
+		</div>
+		<div class="col">
+			<div class="form-floating mb-3">
+				<input type="text" class="form-control" id="reg_phone" placeholder="5551239876" name="phone" value="<?php if (isset($_POST['phone'])) echo  $_POST['phone']; ?>">
+				<label for="reg_phone">Phone Number</label>
+			</div>
+		</div>
+	</div>
+</div>
 
-    <h3>User Details:</h3>
-    <table>
-        <tr>
-            <td style="width:50%">First Name</td>
-            <td style="width:50%"><input type="text" name="first_name" value="<?php if (isset($_POST['first_name'])) echo $_POST['first_name']; ?>"></td>
-        </tr>
-        <tr>
-            <td>Last Name</td>
-            <td><input type="text" name="last_name" value="<?php if (isset($_POST['last_name'])) echo $_POST['last_name']; ?>"></td>
-        </tr>
-        <tr>
-            <td>E-mail</td>
-            <td><input type="text" name="email" value="<?php if (isset($_POST['email'])) echo $_POST['email']; ?>"></td>
-        </tr>
-        <tr>
-            <td>Phone</td>
-            <td><input type="text" name="phone" value="<?php if (isset($_POST['phone'])) echo $_POST['phone']; ?>"></td>
-        </tr>
-    </table>
+<div class="container text-center">
+	<div class="row text-start">
+		<h5>Delivery Address:</h5>
+	</div>
+	<div class="row">
+		<div class="col">
+			<div class="form-floating mb-3">
+				<input type="text" class="form-control" id="reg_street1" placeholder="Street Address" name="address_1" value="<?php if (isset($_POST['address_1'])) echo $_POST['address_1']; ?>">
+				<label for="reg_street1">Street Address 1 *</label>
+			</div>
+			<div class="form-floating mb-3">
+				<input type="text" class="form-control" id="reg_street2" placeholder="Street Address" name="address_2" value="<?php if (isset($_POST['address_2'])) echo $_POST['address_2']; ?>">
+				<label for="reg_street2">Street Address 2 *</label>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<div class="form-floating mb-3">
+				<input type="text" class="form-control" id="reg_city" placeholder="City" name="city" value="<?php if (isset($_POST['city'])) echo $_POST['city']; ?>">
+				<label for="reg_city">City *</label>
+			</div>
+		</div>
+		<div class="col">
+			<div class="form-floating mb-3">
+				<input type="text" class="form-control" id="reg_prov" placeholder="Province" name="province" value="<?php if (isset($_POST['province'])) echo $_POST['province']; ?>">
+				<label for="reg_prov">Province *</label>
+			</div>
+		</div>
+		<div class="col">
+			<div class="form-floating mb-3">
+				<input type="text" class="form-control" id="reg_postal" placeholder="Postal Code" name="postal" value="<?php if (isset($_POST['postal'])) echo $_POST['postal']; ?>">
+				<label for="reg_postal">Postal Code *</label>
+			</div>
+		</div>
+	</div>
+</div>
 
-    <h3>Delivery Address:</h3>
-    <table>
-        <tr>
-            <td style="width:50%">Address Line 1</td>
-            <td style="width:50%"><input type="text" name="address_1" value="<?php if (isset($_POST['address_1'])) echo $_POST['address_1']; ?>"></td>
-        </tr>
-        <tr>
-            <td>Address Line 2</td>
-            <td><input type="text" name="address_2" value="<?php if (isset($_POST['address_2'])) echo $_POST['address_2']; ?>"></td>
-        </tr>
-        <tr>
-            <td>City</td>
-            <td><input type="text" name="city" value="<?php if (isset($_POST['city'])) echo $_POST['city']; ?>"></td>
-        </tr>
-        <tr>
-            <td>Province</td>
-            <td><input type="text" name="province" mexlength="2" value="<?php if (isset($_POST['province'])) echo $_POST['province']; ?>"></td>
-        </tr>
-        <tr>
-            <td>Postal Code</td>
-            <td><input type="text" name="postal" value="<?php if (isset($_POST['postal'])) echo $_POST['postal']; ?>"></td>
-        </tr>
-    </table>
-    
-    <h3>Login Credentials:</h3>
-    <table>
-        <tr>
-            <td style="width:50%">Username</td>
-            <td style="width:50%"><input type="text" name="username" value="<?php if (isset($_POST['username'])) echo $_POST['username']; ?>"></td>
-        </tr>
-        <tr>
-            <td>Password</td>
-            <td><input type="password" name="pass1" value="<?php if (isset($_POST['pass1'])) echo $_POST['pass1']; ?>"></td>
-        </tr>
-        <tr>
-            <td>Confirm Password</td>
-            <td><input type="password" name="pass2" value="<?php if (isset($_POST['pass2'])) echo $_POST['pass2']; ?>"></td>
-        </tr>
-    </table>
-    <br>
-    <input type="submit" name="submit_registration" value="REGISTER" />      
+<div class="container text-center">
+	<div class="row text-start">
+		<h5>Login Credentials:</h5>
+	</div>
+	<div class="row">
+		<div class="col">
+			<div class="form-floating mb-3">
+				<input type="text" class="form-control" id="reg_username" placeholder="Username" name="username" value="<?php if (isset($_POST['username'])) echo $_POST['username']; ?>">
+				<label for="reg_username">Username *</label>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col">
+			<div class="form-floating mb-3">
+				<input type="password" class="form-control" id="reg_pass1" placeholder="Password" name="pass1" value="<?php if (isset($_POST['pass1'])) echo $_POST['pass1']; ?>">
+				<label for="reg_pass1">Password *</label>
+			</div>
+		</div>
+		<div class="col">
+			<div class="form-floating mb-3">
+				<input type="password" class="form-control" id="reg_pass2" placeholder="Confirm Password" name="pass2" value="<?php if (isset($_POST['pass2'])) echo $_POST['pass2']; ?>">
+				<label for="reg_pass2">Confirm Password *</label>
+			</div>
+		</div>
+	</div>
+</div>
+
+<input type="submit" class="btn btn-primary" name="submit_registration" value="REGISTER" />      
 
 </form>
