@@ -160,24 +160,25 @@
 					<form action="admin.php" method="POST">
 						<p>
 							Item Name :
-							<input type="text" name="newName" value="">
+							<input type="text" name="newName">
 							<!-- keeps the item name value given and also protects against injection attacks -->
 							<?php print $newNameErr; ?> <!-- error message if name is empty from add.php -->
 						</p>
 						<div class="d-flex flex-columns my-4">
 							<label for="newDescArea">Item Description : </label>
 
-							<textarea id="newDescArea" rows="5" cols="30" type="text" name="newDesc" value=""></textarea>
+							<textarea id="newDescArea" rows="5" cols="30" type="text" name="newDesc"></textarea>
 							<!-- keeps the item name value given and also protects against injection attacks -->
 							<?php print $newDescErr; ?> <!-- error message if description is empty from add.php -->
 						</div>
 
 						<p>
 							Item Price :
-							<input type="text" name="newPrice" value="">
+							<input type="text" name="newPrice">
 							<!-- keeps the item name value given and also protects against injection attacks -->
 							<?php print $newPriceErr; ?> <!-- error message if price is empty from add.php -->
 						</p>
+
 						<input type="hidden" name="itemID" value="">
 						<input type="submit" name="edit" value="SUBMIT">
 					</form>

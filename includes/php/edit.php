@@ -25,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // when there is more time add replace number strings with appropriate dollar strings
         if (empty($_POST["newPrice"])) {
             $newPriceErr = "*Please enter a price";
-        } else if (!preg_match("/^[0-9]*.[0-9][0-9]$/", $_POST["price"])) {
+        } else if (!preg_match("/^[0-9]*.[0-9][0-9]$/", $_POST["newPrice"])) {
             $newPriceErr = "Please enter a value in the format **.**";
         } else {
             $newPriceErr = "";
@@ -33,20 +33,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 
-if (!empty($_POST['newName']) && !empty($_POST['newDesc']) && !empty($_POST['newPrice'])) {
+if (isset($_POST['newName']) && isset($_POST['newDesc']) && isset($_POST['newPrice'])) {
     $item_id = $_POST['itemID'];
-    $name = mysqli_real_escape_string($dbc, $_POST['name']);
-    $description = mysqli_real_escape_string($dbc, $_POST['description']);
-    $price = mysqli_real_escape_string($dbc, $_POST['price']);
+    $name = mysqli_real_escape_string($dbc, $_POST['newName']);
+    $description = mysqli_real_escape_string($dbc, $_POST['newDesc']);
+    $price = mysqli_real_escape_string($dbc, $_POST['newPrice']);
 
     $query = "update menu_items set item_name = '$name', item_desc ='$description', item_price = $price where item_id = $item_id;";
     $result = @mysqli_query($dbc, $query);
 
+    // For now, I will leave it functional, but it's not very cool
     if($result) {
-        echo '<script> alert("Selected item information has been updated"); </script>';
-    }else {
-        echo '<script> alert("Selected item information has been updated); </script>';
+        echo '<script> alert("Item has been successfully updated, please refresh the page to see the result."); </script>'; 
+    } else {
+        echo '<script> alert("Selected item information has not been updated); </script>';
     }
+
 }
 
 
