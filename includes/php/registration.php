@@ -281,7 +281,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	</div>
 </div>
 
-<input type="submit" class="btn btn-primary mx-5" name="submit_registration" value="REGISTER" />      
+<a type="button" class="btn btn-secondary ms-5" href="../../index.php">Cancel</a>
+<input type="submit" class="btn btn-primary" name="submit_registration" value="REGISTER" />      
 
 </form>
 
