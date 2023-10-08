@@ -1,0 +1,41 @@
+INSERT INTO categories 
+	(cat_name)
+VALUES 
+	('Breakfast'),
+	('Burgers'),
+	('Pizza'),
+	('Desserts'),
+	('Beverages');
+
+INSERT INTO menu_items 
+	(item_name, item_desc, item_picture, item_price, disable_item, cat_id)
+VALUES
+	('Burger', 'Tasty Burger', '.\\includes\\images\\burger.webp', 12.5, 'N', 2),
+    ('Hearty Breakfast Delight', 'Sunny-side-up fried eggs, crispy hashbrowns, a ripe, creamy avocado half, and a succulent sausage, all adorned with a drizzle of zesty sauce.', '.\\includes\\images\\set1.jpg', 20.5, 'N', 1),
+	('The Ultimate Breakfast Symphony', 'Sun-kissed fried eggs, cooked to perfection, nestled beside crispy bacon that adds a savory crunch to every bite. Alongside, a pancake awaits, adorned with delightful chocolate chunks that create a tantalizing fusion of sweet and savory.', '.\\includes\\images\\set2.jpg', 22, 'N', 1),
+    ('Golden Waffles', 'Waffles with a crispy, golden-brown texture Drizzled with Decadent Homemade Sauce.', '.\\includes\\images\\waffles.jpg', 12.5, 'N', 1),
+    ('Classic Juicy Cheeseburger', 'Classic Juicy Cheeseburger, crafted with the utmost care, this burger features a succulent, hand-formed beef patty cooked to perfection, resulting in a juicy, mouthwatering delight. Topped with a generous slice of premium melted cheddar cheese that oozes over the patty.', '.\\includes\\images\\classic_cheeseburger.jpg', 22.5, 'N', 2),
+    ('Extra Nom Nom Burger', 'Flame-grilled beef patty cooked to perfection, boasting a mouthwatering blend of flavors and juiciness. Topped with layers of premium cheddar cheese, crisp lettuce, vine-ripened tomatoes, and crispy bacon, this towering delight is a symphony of textures and tastes.', '.\\includes\\images\\extra nom nom.jpg', 27, 'N', 2),
+    ('Avocado Toast Delight', 'Freshly toasted artisanal bread, creamy, ripe avocado slices, drizzle of extra virgin olive oil with sprinkle of red pepper flakes for a subtle kick, garnished with finely chopped cilantro.', '.\\includes\\images\\avokado_tost.jpg', 18, 'N', 1),
+    ('Delicious Veggie Burger', 'Our veggie patty is a delightful blend of hearty black beans, chickpeas, quinoa, and a mix of colorful vegetables, carefully seasoned and seared to perfection.', '.\\includes\\images\\veggiburger.jpg', 18.9, 'N', 2),
+    ('Bold and Flavorful Red Bun Burger', 'This burger is a true visual and culinary delight, featuring a vibrant red bun that adds a striking twist to your classic burger experience. It iss crowned with a melting slice of premium cheddar cheese, crisp lettuce, succulent tomato, and a zesty secret sauce that harmonizes all the flavors.', '.\\includes\\images\\redbun_burger.jpg', 22, 'N', 2),
+    ('Ciabatta Bliss Burger', 'This culinary marvel combines the artisanal charm of a freshly baked ciabatta bun with the juiciness of a well-seasoned beef patty. Encased within, you`ll find a succulent beef patty grilled to perfection.', '.\\includes\\images\\chiabatta_burger.jpg', 21.5, 'N', 2),
+    ('Pepperoni Passion Pizza', 'Our hand-tossed pizza dough forms the perfect canvas for this indulgence, baked to a golden perfection. It is generously adorned with a generous layer of zesty tomato sauce, followed by a lavish covering of savory, thinly sliced pepperoni that crisps and curls up as it bakes.', '.\\includes\\images\\piperroni.jpg', 28, 'N', 3),
+    ('Seafood Delight Pizza', 'Our handcrafted pizza begins with a foundation of rich tomato sauce, providing the perfect backdrop for a symphony of seafood. Plump, succulent shrimp, tender morsels of calamari, and delectable pieces of fresh fish are scattered generously across the pizza.', '.\\includes\\images\\seafood.jpg', 28.5, 'N', 3),
+    ('Garden Fresh Veggie Pizza', 'Our pizza starts with a luscious tomato sauce base, brimming with the vibrant essence of sun-ripened tomatoes. A colorful array of fresh, crisp vegetables adorns the pizza, including sweet bell peppers, juicy tomatoes, earthy mushrooms, and tender spinach leaves.', '.\\includes\\images\\veggie.jpg', 25, 'N', 3),
+    ('Burrata Bliss Pizza', 'Our Burrata Bliss Pizza‚Äîa culinary masterpiece that combines the creamy allure of burrata cheese with the rich flavors of Italy. This artisanal pizza begins with a canvas of luscious tomato sauce, providing the perfect base for an extravagant layer of creamy burrata cheese.', '.\\includes\\images\\buratta.jpg', 27.5, 'N', 3),
+    ('Oreo Delight Muffin', 'Our moist and fluffy muffin batter is generously studded with crushed Oreo cookies, infusing each bite with a symphony of rich chocolate and creamy vanilla flavors. As you take your first bite, you` ll encounter pockets of Oreo goodness that add a delightful crunch.', '.\\includes\\images\\oreo_muffin.jpg', 9, 'N', 4),
+    ('Classic Cheesecake Delight', 'Our cheesecake starts with a buttery graham cracker crust, providing a delightful contrast to the velvety, melt-in-your-mouth cream cheese filling. Each bite is a celebration of rich, tangy sweetness, perfectly balanced and oh-so-satisfying.', '.\\includes\\images\\cheesecake.jpg', 13, 'N', 4),
+    ('Chocolate-Glazed Donut', 'Our freshly baked donut boasts a tender, airy interior that practically melts in your mouth. It`s generously coated with a glossy, rich chocolate glaze that glistens with temptation, promising a burst of cocoa goodness in every bite.', '.\\includes\\images\\donut.jpg', 11, 'N', 4),
+    ('Elegant Macaron Assortment', 'Each macaron is a work of art, with a perfectly smooth and crisp shell that encases a luscious, flavorful filling. Our set includes a variety of enticing flavors, from classic vanilla and rich chocolate to fruity raspberry and zesty lemon.', '.\\includes\\images\\macaron.jpg', 18.5, 'N', 4),
+    ('Brownie Bliss with Cream', 'Our brownie is a chocolate lover`s dream, boasting a dense, moist interior that`s loaded with cocoa goodness. It is baked to perfection, achieving that perfect balance of cakey textures.', '.\\includes\\images\\brownie.jpg', 15.5, 'N', 4),
+    ('Refreshing Fresh-Squeezed Orange Juice', 'Our oranges are carefully selected for their juiciness and flavor. They are freshly squeezed to extract the purest essence of the fruit, resulting in a liquid that`s as close to nature as it gets.', '.\\includes\\images\\fresh_juice.jpg', 10, 'N', 5),
+    ('Zesty Lemon-Lime Lemonade', 'Our lemon-lime concoction is gently sweetened to perfection, creating a harmonious blend that`s both revitalizing and thirst-quenching. Served over ice, it`s the ideal companion for a hot summer day or any time you crave a burst of citrusy refreshment.', '.\\includes\\images\\lemonade.jpg', 10, 'N', 5),
+    ('Strawberry Bliss Smoothie', 'We carefully select the ripest strawberries, bursting with natural sweetness and vibrant color. Blended to perfection, they create a smooth and velvety base for this refreshing beverage.', '.\\includes\\images\\smoothie.jpg', 13, 'N', 5),
+    ('Strawberry Milkshake', 'Indulge in pure strawberry bliss with our Luscious Strawberry Milkshake. This creamy delight is a celebration of sweet, ripe strawberries blended to perfection with velvety, ice-cold milk. We start with plump and juicy strawberries that are bursting with natural flavor.', '.\\includes\\images\\milkshake.jpg', 12.5, 'N', 5);
+
+INSERT INTO users
+    (first_name, last_name, street_1, street_2, city, province, postal, email, phone, username, password, role, privacy, reg_date)
+VALUES
+    ('Manny', 'Jonson', '76 Treanor Ave', null, 'Langford', 'BC', 'V5J3N9', 'manny@gmail.com', '2509983828', 'Manny', SHA1('hello'), 'A', 'Y', now()),
+    ('Bob', 'Baker', '123 Beach Street', null, 'Saanich', 'BC', 'V7Y3G5', 'bobbaker@fake.com', null, 'bobbaker', SHA1('goodbye'), 'U', 'Y', now());

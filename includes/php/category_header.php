@@ -150,21 +150,11 @@ print               '</div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Decline</button>
-                <button class="btn btn-primary" data-bs-target="#reg_modal" data-bs-toggle="modal">Accept</button>
+                <a class="btn btn-primary" href="./includes/php/registration.php">Accept</a>
             </div>
         </div>
     </div>
-</div>
-<div class="modal fade" id="reg_modal" aria-hidden="true" aria-labelledby="reg_modalLabel" tabindex="-1">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h1 class="modal-title fs-5" id="reg_modalLabel">User Registration</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">';
-            
-            include('./includes/php/registration.php');
+</div>';
 
 print
             '</div>
