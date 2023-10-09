@@ -62,7 +62,7 @@
                                         <a class="nav-link" href='.$pizza.'>Pizza</a>
                                         <a class="nav-link" href='.$dessert.'>Desserts</a>
                                         <a class="nav-link" href='.$beverage.'>Beverages</a>
-                                        <a class="nav-link" href="./includes/php/history.php">View Order History</a>
+                                        <a class="nav-link" href="./includes/php/account.php">Account Info</a>
                                         <form action="./includes/php/logout.php" method="post">	<!-- logout button form action takes you to the logout page (will probably update to just take them back to the landing page) -->
                                             <input type="hidden" name="logout" value="true" />
                                             <input class="nav-link" type="submit" value="Logout" /> <!-- logout submit button -->
