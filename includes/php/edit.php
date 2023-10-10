@@ -42,7 +42,7 @@ if (isset($_POST['newName']) && isset($_POST['newDesc']) && isset($_POST['newPri
     $query = "update menu_items set item_name = '$name', item_desc ='$description', item_price = $price where item_id = $item_id;";
     $result = @mysqli_query($dbc, $query);
 
-    // For now, I will leave it functional, but it's not very cool
+    // For now, I will leave it because it is functional, but UI is not very good.
     if($result) {
         echo '<script> alert("Item has been successfully updated, please refresh the page to see the result."); </script>'; 
     } else {
