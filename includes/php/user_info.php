@@ -9,6 +9,20 @@
     $sql = "SELECT * from users where user_id='$u_id'; "; // get all the data from the users table
     $result = @mysqli_query($dbc, $sql);
 
+    // actions for when the user either opts into the privacy policy or opts out
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (isset($_POST["out"])) {
+            $sql = "UPDATE users set privacy = 'N' where user_id = '$u_id';";
+            @mysqli_query($dbc, $sql);
+        }
+        if (isset($_POST["in"])) {
+            $sql = "UPDATE users set privacy = 'Y' where user_id = '$u_id';";
+            @mysqli_query($dbc, $sql);
+        }
+        header("location: ./account.php");  // refresh the page to update the variables in real time
+        exit;
+    }
+    
     // if there are results fill in all there user variables 
     if($result){
         $row = @mysqli_fetch_array($result);
@@ -29,18 +43,6 @@
             $privacy = "Signed";
         } else {
             $privacy = "Not Signed";
-        }
-    }
-
-    // actions for when the user either opts into the privacy policy or opts out
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if (isset($_POST["out"])) {
-            $sql = "UPDATE users set privacy = 'N' where user_id = '$u_id';";
-            @mysqli_query($dbc, $sql);
-        }
-        if (isset($_POST["in"])) {
-            $sql = "UPDATE users set privacy = 'Y' where user_id = '$u_id';";
-            @mysqli_query($dbc, $sql);
         }
     }
 ?>
