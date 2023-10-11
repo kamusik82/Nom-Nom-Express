@@ -6,6 +6,13 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <title>Display Category</title>
+    <style>
+        #products img{
+            aspect-ratio: 1/1;
+            object-fit: cover;
+            width: 100%;
+        }
+    </style>
 </head>
 
 <body>
@@ -13,7 +20,7 @@
     <?php include ("./includes/php/category_header.php"); ?>
 
     <!-- Display Items Here -->
-    <div class="container text-center my-5">
+    <div id="products" class="container text-center my-5">
         <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 products g-2 g-lg-3">
 
             <?php

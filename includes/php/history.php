@@ -1,6 +1,6 @@
 <?php
 
-    $sql = "SELECT distinct oi.order_id, tax, shipping, total, date from order_items oi inner join orders o using (order_id) where user_id = $u_id;";
+    $sql = "SELECT distinct oi.order_id, tax, shipping, total, date from order_items oi inner join orders o using (order_id) where user_id = $u_id order by date desc;";
     $oResult = @mysqli_query($dbc, $sql);
     if(mysqli_num_rows($oResult) > 0){
         // go through each individual order

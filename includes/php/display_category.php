@@ -126,10 +126,4 @@ if ($num > 0) { // If it ran OK, display the records.
 
 }
 
-// this is just for debugging
-if(isset($_SESSION['user_id'])){
-    $test = $_SESSION['user_id'];
-    print "<p>$test</p>";
-}
-
 ?>
