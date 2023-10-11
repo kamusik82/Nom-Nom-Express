@@ -67,6 +67,8 @@
                                             <input type="hidden" name="logout" value="true" />
                                             <input class="nav-link" type="submit" value="Logout" /> <!-- logout submit button -->
                                         </form>
+                                        <a class="nav-link" href="./includes/php/cart.php">Cart</a>
+
                                     </div>
 
                                 </div>
