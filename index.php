@@ -19,7 +19,7 @@
             <?php
                 include("./includes/php/display_category.php");
             ?>
-            <?php include("./includes/php/add_to_cart.php"); ?>
+            <?php include("./includes/php/add_to_cart.php"); ?>       
         </div>
     </div>
 
