@@ -38,11 +38,11 @@ if (isset($_GET['beverage'])){
 // Make the query:
 if ($selected == 'All') // no filter
 {
-    $q = "SELECT item_id, item_name, item_desc, item_picture, item_price FROM menu_items;"; 
+    $q = "SELECT item_id, item_name, item_desc, item_picture, item_price FROM menu_items where disable_item = 'N';"; 
 } else { #// filtered by category
     $q = "SELECT item_id, item_name, item_desc, item_picture, item_price 
           FROM menu_items INNER JOIN categories USING(cat_id)
-          WHERE cat_name = '$selected';"; 
+          WHERE (cat_name = '$selected' and disable_item = 'N');"; 
 } 
 
 $r = @mysqli_query($dbc, $q); // Run the query.
@@ -73,7 +73,7 @@ if ($num > 0) { // If it ran OK, display the records.
             if($check_row['privacy'] == 'Y'){
             echo "<div class='col'>
                     <div class='card product h-100'>
-                        <img src='$pic' class='card-img-top product-image' alt='$name'>
+                        <img src='./includes/images/$pic' class='card-img-top product-image' alt='$name'>
                         <div class='card-body'>
                             <h5 class='card-title product-title'>$name</h5>
                             <p class='card-text product-description'>$desc</p>
@@ -88,7 +88,7 @@ if ($num > 0) { // If it ran OK, display the records.
             } else {
                 echo "<div class='col'>
                     <div class='card product h-100'>
-                        <img src='$pic' class='card-img-top product-image' alt='$name'>
+                        <img src='./includes/images/$pic' class='card-img-top product-image' alt='$name'>
                         <div class='card-body'>
                             <h5 class='card-title product-title'>$name</h5>
                             <p class='card-text product-description'>$desc</p>
@@ -104,7 +104,7 @@ if ($num > 0) { // If it ran OK, display the records.
         } else {
             echo "<div class='col'>
                     <div class='card product h-100'>
-                        <img src='$pic' class='card-img-top product-image' alt='$name'>
+                        <img src='./includes/images/$pic' class='card-img-top product-image' alt='$name'>
                         <div class='card-body'>
                             <h5 class='card-title product-title'>$name</h5>
                             <p class='card-text product-description'>$desc</p>

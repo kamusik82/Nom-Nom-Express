@@ -107,7 +107,7 @@
             ob_start();
             echo '<tr>
                 <td align="center">' . $row['item_name'] . '</td>
-                <td align="center"><img width="100px" src="includes/images/' . $row['item_picture'] . '" alt="Food description"></td>
+                <td align="center"><img width="100px" src="../images/' . $row['item_picture'] . '" alt="Food description"></td>
                 <td align="center">
                 <button class="change-quantity minus" data-item-name="' . $row['item_name'] . '">-</button>
                 <span class="quantity">' . $row['quantity'] . '</span>
