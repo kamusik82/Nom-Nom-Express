@@ -13,8 +13,9 @@
         $sessionUser = $_SESSION['user_name'];
         $sql = "SELECT role from users where username ='$sessionUser'; ";
         $result = mysqli_query($dbc,$sql);
+        $row = mysqli_fetch_array($result);
 
-        if($result == 'A'){
+        if($row['role'] == 'A'){
             print   '<!-- navigation bar to show categories -->
                     <nav class="navbar navbar-expand-lg bg-body-tertiary">
                         <div class="container-fluid">

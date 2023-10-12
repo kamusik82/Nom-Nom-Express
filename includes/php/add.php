@@ -58,7 +58,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $description = mysqli_real_escape_string($dbc, $_POST['description']);
             $category = mysqli_real_escape_string($dbc, $_POST['category']);
             $price = mysqli_real_escape_string($dbc, $_POST['price']);
-            $pic = mysqli_real_escape_string($dbc, ".\\includes\\images\\{$_FILES["pic"]["name"]}");    // pull from relevant location
+            $pic = mysqli_real_escape_string($dbc, "{$_FILES["pic"]["name"]}");    // pull from relevant location
 
 
             $sql = "insert into menu_items (item_name, item_desc, cat_id, item_price, item_picture) values ('$name', '$description', '$category', '$price', '$pic')";

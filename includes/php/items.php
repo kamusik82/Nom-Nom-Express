@@ -60,15 +60,6 @@
 
     $sql = "select item_id, item_name, item_picture, item_desc, item_price, disable_item from menu_items order by item_id asc"; 
     $result = mysqli_query($dbc,$sql);
-
-    echo "<style>";
-	echo "table, th, td {";
-	echo "border: 1px solid black;";
-	echo "}";
-    echo ".item_picture {";
-    echo "width: 100%; height:100%; object-fit: contain;";
-    echo "}";
-	echo "</style>";
     
     echo "<BR>";
 	echo '<table  width="100%" cellspacing="3" cellpadding="3" align="center">
@@ -92,7 +83,7 @@
 				
 				echo "<tr>
 						<td align=\"center\">{$row['item_id']}</td>
-						<td align=\"center\"><img src=\"{$row['item_picture']}\" class='item_picture'></td>
+						<td align=\"center\"><img src=\"./includes/images/{$row['item_picture']}\" class='item_picture'></td>
 						<td align=\"center\">{$row['item_name']}</td>
 						<td align=\"left\">{$row['item_desc']}</td>
 						<td align=\"center\">{$row['item_price']}$</td>
@@ -105,7 +96,7 @@
 
 				echo "<tr>
 						<td align=\"center\">{$row['item_id']}</td>
-						<td align=\"center\"><img src=\"{$row['item_picture']}\" class='item_picture'></td>
+						<td align=\"center\"><img src=\"./includes/images/{$row['item_picture']}\" class='item_picture'></td>
 						<td align=\"center\">{$row['item_name']}</td>
 						<td align=\"left\">{$row['item_desc']}</td>
 						<td align=\"center\">{$row['item_price']}$</td>
