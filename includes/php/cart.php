@@ -108,7 +108,7 @@
             ob_start();
             echo '<tr>
                 <td align="center">' . $row['item_name'] . '</td>
-                <td align="center"><img width="100px" src="includes/images/' . $row['item_picture'] . '" alt="Food description"></td>
+                <td align="center"><img width="100px" src="../images/' . $row['item_picture'] . '" alt="Food description"></td>
                 <form method="post">
                 <td align="center">
                 <input type="hidden" name="item_id" value="'.$row['item_id'].'">
