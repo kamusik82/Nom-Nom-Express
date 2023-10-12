@@ -103,16 +103,21 @@
             $subtotal = $row['quantity'] * $row['item_price'];
             $totalPrice += $subtotal;
             $grandTotal = number_format($subtotal, 2);
+           
              
             ob_start();
             echo '<tr>
                 <td align="center">' . $row['item_name'] . '</td>
-                <td align="center"><img width="100px" src="../images/' . $row['item_picture'] . '" alt="Food description"></td>
+                <td align="center"><img width="100px" src="includes/images/' . $row['item_picture'] . '" alt="Food description"></td>
+                <form method="post">
                 <td align="center">
-                <button class="change-quantity minus" data-item-name="' . $row['item_name'] . '">-</button>
-                <span class="quantity">' . $row['quantity'] . '</span>
-                <button class="change-quantity plus" data-item-name="' . $row['item_name'] . '">+</button>
+                <input type="hidden" name="item_id" value="'.$row['item_id'].'">
+                <button class="change-quantity" type="submit" name="action" value="decrease">-</button>
+                <span class="quantity">' .$row['quantity'] . '</span>
+                <button class="change-quantity" type="submit" name="action" value="increase">+</button>
                 </td>
+                </form>
+
                 <td align="center">' . $row['item_price'] . '</td>
                 <td align="center">' . $grandTotal . '</td>
                 <form method="post">
@@ -132,7 +137,8 @@
         echo '<p>No items in the cart</p>';
     }
     
-    
+    // Deleting items by click on delete button
+
     if (isset($_POST['btn-delete'])) {
         $item_id_to_delete = $_POST['item_id'];
     $sql_delete = "DELETE FROM cart_items WHERE item_id = $item_id_to_delete";
@@ -145,7 +151,7 @@
     ob_end_flush();
 }
  
-    ?>
+?>
 
     <div class="d-flex justify-content-start ms-5 mt-1">
      <form method="post">
@@ -154,7 +160,7 @@
     </form>    
     </div>
     
-
+ <!-- Clear all from shopping cart -->
 <?php 
     if (isset($_POST['clear-cart']) && $_POST['clear-cart'] === 'true') { 
     $sql_clear_cart = "DELETE FROM cart_items WHERE user_id = $u_id";
@@ -165,10 +171,37 @@
         echo "Error deleting item: " . mysqli_error($dbc);
         }
     }
-
-
 ?>
+<!-- Adjust a quantity -->
+<?php
+    if (isset($_POST['action'])) {
+        $item_to_adjust = $_POST['item_id'];
+        $action = $_POST['action'];
+        $sql_fetch_quantity = "SELECT quantity FROM cart_items WHERE user_id = $u_id AND item_id = $item_to_adjust";
+        $result = mysqli_query($dbc, $sql_fetch_quantity);
+    
+        if ($result) {
+            $row = mysqli_fetch_assoc($result);
+            $currentQuantity = $row['quantity'];
 
+        if ($action === 'increase') {
+            $newQuantity = $currentQuantity + 1;
+        } elseif ($action === 'decrease' && $currentQuantity > 1) {
+            $newQuantity = $currentQuantity - 1;
+        } else {
+            $newQuantity = $currentQuantity;
+        }
+    }
+        $sql_adjust = "UPDATE cart_items SET quantity = $newQuantity WHERE item_id = $item_to_adjust";
+    
+        if (mysqli_query($dbc, $sql_adjust)) {
+            header("Location: ./cart.php");
+            exit();
+        } else {
+            echo "Error updating quantity: " . mysqli_error($dbc);
+        }
+    }
+?>
 </body>
 </html>
  
