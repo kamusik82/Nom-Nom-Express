@@ -1,6 +1,6 @@
 <?php
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
-        if(isset($_POST['user_id'])){
+        if(isset($_SESSION['user_id'])){
             for($i = 0; $i < count($id_array); $i++){
                 $k = $id_array[$i];
                 $u_id = $_SESSION['user_id'];

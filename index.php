@@ -40,7 +40,7 @@
         <!-- this script makes it so the modal keeps opening unless the correct information is put in -->
         <?php 
             echo "<script>$(document).ready(function(){";
-            if (!empty($userErr) || !empty($passErr) || !empty($creds)) {
+            if (!isset($_SESSION['user_id'])) {
                 echo '$("#loginModal").modal("show");';
             } else {
                 echo '$("#loginModal").modal("hide");';
