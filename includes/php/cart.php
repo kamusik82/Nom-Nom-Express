@@ -98,9 +98,13 @@
             </thead>
             <tbody>';
         $totalPrice = 0;
+        $tax = 0;
+        $delivery = 0;
+        $numItems = 0;
         
         while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
             $subtotal = $row['quantity'] * $row['item_price'];
+            $numItems += $row['quantity'];
             $totalPrice += $subtotal;
             $grandTotal = number_format($subtotal, 2);
            
@@ -132,7 +136,15 @@
         echo '</tbody>
             </table></div>';
 
-        echo '<p class = "order">Your order`s total price: $' . number_format($totalPrice, 2) . '</p>';
+        $tax = $totalPrice*0.12;
+        $delivery = $numItems*2.50;
+        $owing = $totalPrice + $tax + $delivery;
+        $owing_cents = $owing*100;
+
+        echo '<p>Subtotal: $' . number_format($totalPrice, 2) . '</p>
+            <p>Tax: $' . number_format($tax, 2) . '</p>
+            <p>Delivery Fee: $' . number_format($delivery, 2) . '</p>
+            <p>Order Total: $' . number_format($owing, 2) . '</p>';
     } else {
         echo '<p>No items in the cart</p>';
     }
@@ -153,14 +165,34 @@
  
 ?>
 
+<?php require_once('../../config.php'); ?>
+
+<!-- Clear cart button & Payment button -->
     <div class="d-flex justify-content-start ms-5 mt-1">
-     <form method="post">
-    <input type="hidden" name="clear-cart" value="true">
-    <input type="submit" value="Clear Cart" class ="clear">
-    </form>    
+        <div class="row">
+            <div class="col">
+                <form method="post">
+                    <input type="hidden" name="clear-cart" value="true">
+                    <input type="submit" value="Clear Cart" class ="clear">
+                </form>    
+            </div>
+            <div class="col">
+                <form action="charge.php" method="post">
+                    <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                        data-key="<?php echo $stripe['publishable_key']; ?>"
+                        data-description="<?php echo 'Order Payment'; ?>"
+                        data-amount="<?php echo $owing_cents; ?>"
+                        data-locale="auto"></script>
+                    <input type="hidden" name="totalamt_cents" value="<?php echo $owing_cents; ?>" />
+                    <input type="hidden" name="totalamt" value="<?php echo $owing; ?>" />
+                    <input type="hidden" name="taxamt" value="<?php echo $tax; ?>" />
+                    <input type="hidden" name="shipamt" value="<?php echo $delivery; ?>" />
+                    <input type="hidden" name="user" value="<?php echo $u_id; ?>" />
+                </form>
+            </div>
+        </div>
     </div>
-    
- <!-- Clear all from shopping cart -->
+
 <?php 
     if (isset($_POST['clear-cart']) && $_POST['clear-cart'] === 'true') { 
     $sql_clear_cart = "DELETE FROM cart_items WHERE user_id = $u_id";
