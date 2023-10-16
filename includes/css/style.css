@@ -1,0 +1,75 @@
+:root{
+	--background-colour : rgb(250, 206, 127);		
+	--header-colour : rgb(145, 31, 39);			
+	--emphasis-1 : rgb(99, 10, 16);				
+    --emphasis-1-faded: rgba(99, 10, 16, 0.3);
+	--emphasis-2: rgb(252, 240, 200);	
+    --emphasis-2-faded: rgba(252, 240, 200, 0.2);	
+    --emphasis-3: rgb(78, 72, 66);
+    --emphasis-3-faded: rgba(78, 72, 66, 0.2);			
+}
+
+body{
+    background-color: var(--background-colour);
+    color: var(--emphasis-1);
+}
+
+#info{
+    background-color: var(--emphasis-2-faded);
+}
+
+.btn-primary{
+    --bs-btn-bg: var(--header-colour);
+    --bs-btn-border-color: var(--header-colour);
+
+    --bs-btn-hover-bg: var(--emphasis-1);
+    --bs-btn-hover-border-color: var(--emphasis-1);
+
+    --bs-btn-active-bg: var(--header-colour);
+    --bs-btn-active-border-color: var(--header-colour);
+
+    --bs-btn-disabled-bg: var(--emphasis-1-faded);
+    --bs-btn-disabled-border-color: var(--emphasis-2-faded);
+
+    --bs-btn-color: var(--emphasis-2);
+    --bs-btn-hover-color: var(--emphasis-2);
+    --bs-btn-active-color: var(--emphasis-2);
+    --bs-btn-disabled-color: var(--emphasis-2);
+}
+
+.btn-secondary{
+    --bs-btn-bg: var(--emphasis-3);
+    --bs-btn-border-color: var(--emphasis-3);
+
+    --bs-btn-color: var(--emphasis-2);
+    --bs-btn-hover-color: var(--emphasis-2);
+    --bs-btn-active-color: var(--emphasis-2);
+    --bs-btn-disabled-color: var(--emphasis-2);
+}
+
+.card{
+    background-color: var(--emphasis-2-faded);
+    border: var(--bs-card-border-width) solid var(--emphasis-2-faded);
+    color: var(--emphasis-1)
+}
+
+.navbar{
+    --bs-navbar-color: var(--emphasis-2);
+    --bs-navbar-hover-color: var(--emphasis-2-faded);
+    --bs-navbar-active-color: var(--emphasis-2-faded);
+}
+
+.navbar-brand{
+    color: var(--emphasis-2);
+}
+
+.modal{
+    --bs-modal-bg: var(--emphasis-2);
+    --bs-modal-color: var(--emphasis-1);
+    --bs-modal-footer-border-color: none;
+    --bs-modal-header-border-color: none;
+}
+
+.bg{
+    background-color: var(--header-colour);
+}

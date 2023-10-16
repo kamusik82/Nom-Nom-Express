@@ -42,7 +42,7 @@ print
             <span>'.$passErr.'</span>
         </p>
 
-        <input type="submit" value="SUBMIT" />      
+        <button type="submit" value="SUBMIT" class="btn btn-primary" />Submit</button>      
 
     </form>';
 

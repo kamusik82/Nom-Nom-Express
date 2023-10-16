@@ -4,6 +4,7 @@
 	<title> Admin Page </title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="../css/style.css" rel="stylesheet">
 </head>
 
 <body>
@@ -16,7 +17,7 @@
 
     <!-- order history buttons dynamically created using history.php -->
     <div class="container-fluid d-flex flex-row">
-        <div class="col-8">
+        <div class="col-7 mt-2 me-3">
             <h1>Order History</h1>
             <div class="d-flex flex-column">
                 <?php include("./history.php"); ?>
@@ -24,7 +25,7 @@
         </div>
 
         <!-- Account info uses variables from user_info.php -->
-        <div class="col-4 d-flex align-items-center flex-column">
+        <div id="info" class="col-4 d-flex align-items-center flex-column mt-2 me-5 shadow rounded">
             <h1 class="me-5">Account Info</h1>
             <div>
                 <div>
@@ -56,7 +57,7 @@
                                         </form>";
                             } else {
                                 print   "<div>
-                                            <button data-bs-target='#privacy' data-bs-toggle='modal' class='btn btn-secondary'>Opt In</button>
+                                            <button data-bs-target='#privacy' data-bs-toggle='modal' class='btn btn-primary'>Opt In</button>
                                         </div>
 
                                         <div class='modal fade' id='privacy' aria-hidden='true' aria-labelledby='privacyModalLabel' tabindex='-1'>
@@ -92,7 +93,7 @@
                                                     <div class='modal-footer'>
                                                         <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Decline</button>
                                                         <form action='./account.php' method='POST'>
-                                                            <button type='submit' class='btn btn-secondary' name='in'>Accept</button>
+                                                            <button type='submit' class='btn btn-primary' name='in'>Accept</button>
                                                         </form>
                                                     </div>
                                                 </div>
