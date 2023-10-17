@@ -116,7 +116,7 @@
 
 print               '</div>
             <div class="modal-footer">
-                <a class="pointer" data-bs-target="#privacy" data-bs-toggle="modal">Create a New Account</a>
+                <a class="" role="button" data-bs-target="#privacy" data-bs-toggle="modal">Create a New Account</a>
             </div>
         </div>
     </div>
@@ -152,7 +152,7 @@ print               '</div>
             </p>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Decline</button>
+                <button type="button" class="btn btn-secondary" data-bs-target="#loginModal" data-bs-toggle="modal">Decline</button>
                 <a class="btn btn-primary" href="./includes/php/registration.php">Accept</a>
             </div>
         </div>
