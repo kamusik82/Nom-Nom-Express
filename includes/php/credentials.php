@@ -1,5 +1,5 @@
 <?php 
-    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if (!empty($_POST['username']) && !empty($_POST['pass'])){
         
@@ -13,22 +13,21 @@
             $num = mysqli_num_rows($result); // Count the number of row.
     
             // error message variable
-            $creds = "";
+            $creds = '';
     
             // if there is a returned row
             if ($num == 1){
                 $row = mysqli_fetch_array($result);
-                $role = $row["role"];
+                $role = $row['role'];
 
-                // TODO: Session thing is not working
-                $_SESSION["user_id"] = $row["user_id"]; // store user_id to the session
-                $_SESSION["user_name"] = $row["username"]; // store username to the session
+                $_SESSION['user_id'] = $row['user_id']; // store user_id to the session
+                $_SESSION['user_name'] = $row['username']; // store username to the session
                 
                 // go to admin or customer page depending on a returned role
                 if ($role == 'A') {
-                    header("Location: ./admin.php");  // go to admin page 
+                    header('Location: ./admin.php');  // go to admin page 
                 } else {
-                    header("Location: ./index.php"); // go to customer page
+                    header('Location: ./index.php'); // go to customer page
                 }
     
                 exit;

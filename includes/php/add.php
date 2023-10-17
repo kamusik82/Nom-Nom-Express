@@ -3,39 +3,39 @@
 // set up variables
 $nameErr = $descErr = $priceErr = $catErr = $fileErr = "";
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // only validate if the add submit is clicked
-    if(isset($_POST["add"])){
+    if(isset($_POST['add'])){
 
         // check if item name is empty
-        if (empty($_POST["name"])) {
-            $nameErr = "*Please enter an Item Name";
+        if (empty($_POST['name'])) {
+            $nameErr = '*Please enter an Item Name';
         } else {
-            $nameErr = "";
+            $nameErr = '';
         }
 
         //check if description is empty
-        if(empty($_POST["description"])){
-            $descErr = "*Please enter a description";
+        if(empty($_POST['description'])){
+            $descErr = '*Please enter a description';
         } else {
-            $descErr = "";
+            $descErr = '';
         }
 
         // check if the price is empty or in the incorrect format
         // when there is more time add replace number strings with appropriate dollar strings
-        if (empty($_POST["price"])) {
-            $priceErr = "*Please enter a price";
-        } else if (!preg_match("/^[0-9]*.[0-9][0-9]$/", $_POST["price"])){
-            $priceErr = "Please enter a value in the format **.**";
+        if (empty($_POST['price'])) {
+            $priceErr = '*Please enter a price';
+        } else if (!preg_match('/^[0-9]*.[0-9][0-9]$/', $_POST['price'])){
+            $priceErr = 'Please enter a value in the format **.**';
         } else {
-            $priceErr = "";
+            $priceErr = '';
         }
 
         // check if the category drop down has chosen a category
-        if(empty($_POST["category"])){
-            $catErr = "*Please enter a category";
+        if(empty($_POST['category'])){
+            $catErr = '*Please enter a category';
         } else {
-            $catErr = "";
+            $catErr = '';
         }
 
         /* 
@@ -43,22 +43,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             given upload error data from the exercises. Will try to figure out by friday
             but just commented out for now
         */
-        // if(empty($_FILES["pic"])){
+        // if(empty($_FILES['pic'])){
         //     $fileErr = 'No file was uploaded';
         // } else {
-        //     $fileErr = "";
+        //     $fileErr = '';
         // }
     }
 
 
     if(isset($_FILES['pic']) && !empty($_POST['category']) && !empty($_POST['price']) && !empty($_POST['description']) && !empty($_POST['name'])){
-        if (move_uploaded_file ($_FILES["pic"]["tmp_name"], ".\\includes\\images\\{$_FILES["pic"]["name"]}")) {  // save to relevant location
+        if (move_uploaded_file ($_FILES['pic']['tmp_name'], ".\\includes\\images\\{$_FILES['pic']['name']}")) {  // save to relevant location
 
             $name = mysqli_real_escape_string($dbc, $_POST['name']);
             $description = mysqli_real_escape_string($dbc, $_POST['description']);
             $category = mysqli_real_escape_string($dbc, $_POST['category']);
             $price = mysqli_real_escape_string($dbc, $_POST['price']);
-            $pic = mysqli_real_escape_string($dbc, "{$_FILES["pic"]["name"]}");    // pull from relevant location
+            $pic = mysqli_real_escape_string($dbc, "{$_FILES['pic']['name']}");    // pull from relevant location
 
 
             $sql = "insert into menu_items (item_name, item_desc, cat_id, item_price, item_picture) values ('$name', '$description', '$category', '$price', '$pic')";

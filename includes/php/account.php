@@ -9,7 +9,7 @@
 
 <body>
     <!-- user_info.php calls connection for the page and holds variables for user info -->
-    <?php include ("./user_info.php"); ?>
+    <?php include ('./user_info.php'); ?>
     <!-- Button in the top right orner that leads back to the the index -->
     <div class="d-flex justify-content-end">
         <a class="btn btn-primary me-3" href="../../index.php">Back</a>
@@ -20,7 +20,7 @@
         <div class="col-7 mt-2 me-3">
             <h1>Order History</h1>
             <div class="d-flex flex-column">
-                <?php include("./history.php"); ?>
+                <?php include('./history.php'); ?>
             </div>
         </div>
 
@@ -51,7 +51,7 @@
                     <?php print $privacy; ?>
 
                     <!-- php for privacy button -->
-                    <?php   if($privacy == "Signed"){
+                    <?php   if($privacy == 'Signed'){
                                 print   "<form action='./account.php' method='POST'>
                                             <button type='submit' class='btn btn-secondary' name='out'>Opt Out</button>
                                         </form>";

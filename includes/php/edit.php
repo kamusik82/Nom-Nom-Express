@@ -1,34 +1,34 @@
 <?php // edit item information (basically same as add.php)
 
 // set up variables
-$newNameErr = $newDescErr = $newPriceErr = "";
+$newNameErr = $newDescErr = $newPriceErr = '';
 
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     // only validate if the add submit is clicked
-    if (isset($_POST["edit"])) {
+    if (isset($_POST['edit'])) {
 
         // check if item name is empty
-        if (empty($_POST["newName"])) {
-            $newNameErr = "*Please enter an Item Name";
+        if (empty($_POST['newName'])) {
+            $newNameErr = '*Please enter an Item Name';
         } else {
-            $newNameErr = "";
+            $newNameErr = '';
         }
 
         //check if description is empty
-        if (empty($_POST["newDesc"])) {
-            $newDescErr = "*Please enter a description";
+        if (empty($_POST['newDesc'])) {
+            $newDescErr = '*Please enter a description';
         } else {
-            $newDescErr = "";
+            $newDescErr = '';
         }
 
         // check if the price is empty or in the incorrect format
         // when there is more time add replace number strings with appropriate dollar strings
-        if (empty($_POST["newPrice"])) {
-            $newPriceErr = "*Please enter a price";
-        } else if (!preg_match("/^[0-9]*.[0-9][0-9]$/", $_POST["newPrice"])) {
-            $newPriceErr = "Please enter a value in the format **.**";
+        if (empty($_POST['newPrice'])) {
+            $newPriceErr = '*Please enter a price';
+        } else if (!preg_match('/^[0-9]*.[0-9][0-9]$/', $_POST['newPrice'])) {
+            $newPriceErr = 'Please enter a value in the format **.**';
         } else {
-            $newPriceErr = "";
+            $newPriceErr = '';
         }
     }
 }

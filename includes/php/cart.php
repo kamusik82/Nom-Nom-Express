@@ -77,9 +77,9 @@
     require('connection.php');
     $u_id = $_SESSION['user_id'];
     $sql = "SELECT cart_items.item_id, item_name, item_picture, quantity, item_price, item_price * quantity AS 'TotalPrice' 
-    FROM cart_items
-    INNER JOIN menu_items ON cart_items.item_id = menu_items.item_id
-    WHERE user_id = $u_id";
+            FROM cart_items
+            INNER JOIN menu_items ON cart_items.item_id = menu_items.item_id
+            WHERE user_id = $u_id";
 
     $result = @mysqli_query($dbc, $sql);
     $num = mysqli_num_rows($result);
