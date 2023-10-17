@@ -78,7 +78,7 @@ if ($num > 0) { // If it ran OK, display the records.
                             <h5 class='card-title product-title'>$name</h5>
                             <p class='card-text product-description'>$desc</p>
                             <p class='card-text product-price'>$$price</p>
-                            <form action='index.php' method='POST'>
+                            <form method='POST'>
                                 <button type='submit' class='btn btn-secondary add-to-cart-btn' name='$id'>Add to Cart</button>
                             </form>
                         </div>
@@ -93,7 +93,7 @@ if ($num > 0) { // If it ran OK, display the records.
                             <h5 class='card-title product-title'>$name</h5>
                             <p class='card-text product-description'>$desc</p>
                             <p class='card-text product-price'>$$price</p>
-                            <form action='index.php' method='POST'>
+                            <form method='POST'>
                                 <button type='submit' class='btn btn-secondary add-to-cart-btn disabled' name='$id'>Add to Cart</button>
                             </form>
                         </div>
@@ -109,7 +109,7 @@ if ($num > 0) { // If it ran OK, display the records.
                             <h5 class='card-title product-title'>$name</h5>
                             <p class='card-text product-description'>$desc</p>
                             <p class='card-text product-price'>$$price</p>
-                            <form action='index.php' method='POST'>
+                            <form method='POST'>
                                 <button type='submit' class='btn btn-secondary add-to-cart-btn disabled' name='$id'>Add to Cart</button>
                             </form>
                         </div>
