@@ -89,8 +89,8 @@
         echo '<div class="d-flex justify-content-center" width="100%"><table class="table table-hover" width="40%">
             <thead>
                 <tr>
-                    <th align="center">Item_name</th>
-                    <th align="center">Item_picture</th>
+                    <th align="center">Item</th>
+                    <th align="center">Photo</th>
                     <th align="center">Quantity</th>
                     <th align="center">Price</th>
                     <th align="center">Total Price</th>
@@ -142,10 +142,34 @@
         $owing = $totalPrice + $tax + $delivery;
         $owing_cents = $owing*100;
 
-        echo '<p>Subtotal: $' . number_format($totalPrice, 2) . '</p>
-            <p>Tax: $' . number_format($tax, 2) . '</p>
-            <p>Delivery Fee: $' . number_format($delivery, 2) . '</p>
-            <p>Order Total: $' . number_format($owing, 2) . '</p>';
+        $sql_address = "SELECT street_1, street_2, city, province, postal, phone FROM users WHERE user_id=$u_id;";
+        $result_address = @mysqli_query($dbc, $sql_address);
+        $row_address = mysqli_fetch_assoc($result_address);
+        $street1 = $row_address['street_1'];
+        $street2 = $row_address['street_2'];
+        $city = $row_address['city'];
+        $province = $row_address['province'];
+        $postal = $row_address['postal'];
+        $phone = $row_address['phone'];
+
+        echo '<div class="container">
+                <div class="row">
+                    <div class="col d-flex flex-column align-items-start">
+                        <div class="fw-bold">Delivery Address:</div>
+                        <div>' . $street1 . '</div>
+                        <div>' . $street2 . '</div>
+                        <div>' . $city . '</div>
+                        <div>' . $province . '  ' . $postal . '</div>
+                        <div>' . $phone . '</div>
+                    </div>
+                    <div class="col d-flex flex-column align-items-end">
+                        <div>Subtotal: $' . number_format($totalPrice, 2) . '</div>
+                        <div>Tax: $' . number_format($tax, 2) . '</div>
+                        <div>Delivery Fee: $' . number_format($delivery, 2) . '</div>
+                        <div class="fs-5 fw-bold">Order Total: $' . number_format($owing, 2) . '</div>
+                    </div>
+                </div>
+            </div>';
     } else {
         echo '<p>No items in the cart</p>';
     }
@@ -169,15 +193,15 @@
 <?php require_once('../../config.php'); ?>
 
 <!-- Clear cart button & Payment button -->
-    <div class="d-flex justify-content-start ms-5 mt-1">
-        <div class="row">
+    <div class="mx-5 my-3">
+        <div class="row d-flex justify-content-start">
             <div class="col">
                 <form method="post">
                     <input type="hidden" name="clear-cart" value="true">
                     <input type="submit" value="Clear Cart" class ="clear">
                 </form>    
             </div>
-            <div class="col">
+            <div class="col d-flex justify-content-end">
                 <form action="charge.php" method="post">
                     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                         data-key="<?php echo $stripe['publishable_key']; ?>"
