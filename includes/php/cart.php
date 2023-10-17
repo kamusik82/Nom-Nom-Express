@@ -137,9 +137,9 @@
         echo '</tbody>
             </table></div>';
 
-        $tax = $totalPrice*0.12;
         $delivery = $numItems*2.50;
-        $owing = $totalPrice + $tax + $delivery;
+        $tax = ($totalPrice+$delivery)*0.12;
+        $owing = $totalPrice + $delivery + $tax;
         $owing_cents = $owing*100;
 
         $sql_address = "SELECT street_1, street_2, city, province, postal, phone FROM users WHERE user_id=$u_id;";

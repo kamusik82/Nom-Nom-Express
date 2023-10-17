@@ -18,14 +18,6 @@
             <?php
                 require('connection.php');
 
-                // debug...remove before production
-                echo '<p>Debug text:</p>';
-                echo 'user: ' . $u_id . '<br>';
-                echo 'total: ' . $totalamt . '<br>';
-                echo 'tax: ' . $taxamt . '<br>';
-                echo 'delivery: ' . $shipamt . '<br>';
-                //
-
                 // insert order entry in orders table
                 $sql_order = "INSERT INTO orders (user_id, tax, shipping, total, date) VALUES ($u_id, $taxamt, $shipamt, $totalamt, now());";
                 $result_order = @mysqli_query($dbc, $sql_order);
@@ -36,35 +28,36 @@
                 $row_order_num = mysqli_fetch_assoc($result_order_num);
                 $order_num = $row_order_num['max(order_id)'];
 
-                // debug...remove before production
-                echo 'max order number is ' . $order_num . '<br>';
-                //
-
                 // get rows from cart_items
-                $sql_cart = "SELECT cart_items.item_id, quantity, item_price FROM cart_items INNER JOIN menu_items USING (item_id) WHERE user_id = $u_id;";
+                $sql_cart = "SELECT cart_items.item_id, quantity, item_price, item_name FROM cart_items INNER JOIN menu_items USING (item_id) WHERE user_id = $u_id;";
                 $result_cart = @mysqli_query($dbc, $sql_cart);
                 $num_cart = mysqli_num_rows($result_cart);
+
+                // Initialize arrays to store item info for confirmation message
+                $priceArray = array();
+                $nameArray = array();
+                $quantityArray = array();
 
                 // for each cart item, insert into order_items table and delete from cart_items table
                 while ($row_cart = mysqli_fetch_array($result_cart, MYSQLI_ASSOC)) {
                     $item = $row_cart['item_id'];
+                    $itemName = $row_cart['item_name'];
                     $price = $row_cart['item_price'];
                     $quant = $row_cart['quantity'];
 
+                    // gather item info for confirmation message               
+                    array_push($priceArray, $price);
+                    array_push($nameArray, $itemName);
+                    array_push($quantityArray, $quant);
+
+                    // Insert into order_items table
                     $sql_items = "INSERT INTO order_items (order_id, item_id, cost, quantity) VALUES ($order_num, $item, $price, $quant);";
                     $result_items = @mysqli_query($dbc, $sql_items);
 
+                    // delete from cart_items table
                     $sql_delete_cart = "DELETE FROM cart_items WHERE user_id = $u_id AND item_id = $item;";
                     $result_delete_cart = @mysqli_query($dbc, $sql_delete_cart);
-
-                    // debug...remove before production
-                    echo 'order_items & cart_items updated for item_id: ' . $item . '<br>';
-                    //
                 }
-
-                // debug...remove before production
-                echo 'Updates Complete';
-                //
                 
                 // get users name to use in thank you message
                 $sql_user = "SELECT first_name FROM users WHERE user_id=$u_id;";
@@ -72,14 +65,55 @@
                 $row_user = mysqli_fetch_assoc($result_user);
                 $user = $row_user['first_name'];
             ?>
+
         </div>
-        <div>
-            <br>
-            <h5>Thank you for your Nom Nom Express order <?php print $user?>!</h5>
-            <p>Details</p>
-            <p>Order ID: <?php print $order_num?></p>
-            <p>Order Total: $<?php print number_format($totalamt, 2)?></p>
-            <p>We hope you enjoy your meal!</p>
+        <div class="container">
+            <div class="row mb-3">
+                <h5>Thank you for your Nom Nom Express order <span class="fw-bold"><?php print $user?></span>!</h5>
+                <br>
+            </div>
+            <div class="row mb-2">
+                <div class="col">
+                    <div class="card-title">Order #<?php echo $order_num ?></div>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col-8 d-flex justify-content-center">
+                    <table width="100%" class="border-bottom border-primary">
+                        <tr class="border-bottom border-primary">
+                            <th class="fw-bold" align="left" width="50%">Item</th>
+                            <th class="fw-bold" align="left" width="20%">Price per Item</th>
+                            <th class="fw-bold" align="left" width="20%">Quantity</th>
+                        </tr>
+
+                        <?php
+                            for ($i = 0; $i < count($nameArray); $i++) {
+                                print
+                                    '<tr>
+                                        <td align="left">' . $nameArray[$i] . '</td>
+                                        <td align="left">' . $priceArray[$i] . '</td>
+                                        <td align="left">' . $quantityArray[$i] . '</td>
+                                    </tr>';
+                            }
+                        ?>
+
+                    </table>
+                    <br>
+                </div>
+            </div>
+            <div class="row mb-2">
+                <div class="col d-flex flex-column">
+                    <div style="font-size: 0.75rem">Sub-total: $<?php print number_format(($totalamt-$taxamt-$shipamt), 2)?></div>
+                    <div style="font-size: 0.75rem">Shipping: $<?php print number_format($shipamt, 2)?></div>
+                    <div style="font-size: 0.75rem">Taxes: $<?php print number_format($taxamt, 2)?></div>
+                    <div class="">Order Total: $<?php print number_format($totalamt, 2)?></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="fw-bold">We hope you enjoy your meal!</div>
+                </div>
+            </div>
         </div>
     </body>
 </html>
