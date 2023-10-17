@@ -60,10 +60,6 @@ if ($result) {
         <title>Order Confirmation</title>
     </head>
     <style>
-        body {
-            max-width: 800px;
-        }
-
         .item-pic {
             max-width: 220px;
             width: 100%;

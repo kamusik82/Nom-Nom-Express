@@ -17,6 +17,35 @@
 
         if($row['role'] == 'A'){
             print   '<!-- navigation bar to show categories -->
+            <nav class="navbar navbar-expand-lg bg fixed-top">
+                <div class="container-fluid d-flex">
+                    <a class="navbar-brand" href="#">Nom Nom Express</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="mr-5 collapse navbar-collapse justify-content-lg-end" id="navbarNavAltMarkup">
+
+                        <!-- categories -->
+                        <div class="navbar-nav align-items-center">
+                            <a class="nav-link" href='.$all.'>All</a>
+                            <a class="nav-link" href='.$breakfast.'>Breakfast</a>
+                            <a class="nav-link" href='.$burger.'>Burgers</a>
+                            <a class="nav-link" href='.$pizza.'>Pizza</a>
+                            <a class="nav-link" href='.$dessert.'>Desserts</a>
+                            <a class="nav-link" href='.$beverage.'>Beverages</a>
+                            <a class="nav-link" href="./admin.php">Admin Page</a>
+                            <form class="pt-3" action="./includes/php/logout.php" method="post">	<!-- logout button form action takes you to the logout page (will probably update to just take them back to the landing page) -->
+                                <input type="hidden" name="logout" value="true" />
+                                <input class="nav-link" type="submit" value="Logout" /> <!-- logout submit button -->
+                            </form>
+                        </div>
+
+                    </div>
+                </div>
+            </nav>';
+        } else {
+            print   '<!-- navigation bar to show categories -->
                     <nav class="navbar navbar-expand-lg bg fixed-top">
                         <div class="container-fluid d-flex">
                             <a class="navbar-brand" href="#">Nom Nom Express</a>
@@ -34,73 +63,44 @@
                                     <a class="nav-link" href='.$pizza.'>Pizza</a>
                                     <a class="nav-link" href='.$dessert.'>Desserts</a>
                                     <a class="nav-link" href='.$beverage.'>Beverages</a>
-                                    <a class="nav-link" href="./admin.php">Admin Page</a>
+                                    <a class="nav-link" href="./includes/php/account.php">Account Info</a>
                                     <form class="pt-3" action="./includes/php/logout.php" method="post">	<!-- logout button form action takes you to the logout page (will probably update to just take them back to the landing page) -->
                                         <input type="hidden" name="logout" value="true" />
                                         <input class="nav-link" type="submit" value="Logout" /> <!-- logout submit button -->
                                     </form>
+                                    <a class="nav-link" href="./includes/php/cart.php">Cart</a>
+
                                 </div>
 
                             </div>
                         </div>
                     </nav>';
-            } else {
-                print   '<!-- navigation bar to show categories -->
-                        <nav class="navbar navbar-expand-lg bg fixed-top">
-                            <div class="container-fluid d-flex">
-                                <a class="navbar-brand" href="#">Nom Nom Express</a>
-                                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                                    aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                                    <span class="navbar-toggler-icon"></span>
-                                </button>
-                                <div class="mr-5 collapse navbar-collapse" id="navbarNavAltMarkup">
-
-                                    <!-- categories -->
-                                    <div class="navbar-nav align-items-center justify-content-lg-end">
-                                        <a class="nav-link" href='.$all.'>All</a>
-                                        <a class="nav-link" href='.$breakfast.'>Breakfast</a>
-                                        <a class="nav-link" href='.$burger.'>Burgers</a>
-                                        <a class="nav-link" href='.$pizza.'>Pizza</a>
-                                        <a class="nav-link" href='.$dessert.'>Desserts</a>
-                                        <a class="nav-link" href='.$beverage.'>Beverages</a>
-                                        <a class="nav-link" href="./includes/php/account.php">Account Info</a>
-                                        <form class="pt-3" action="./includes/php/logout.php" method="post">	<!-- logout button form action takes you to the logout page (will probably update to just take them back to the landing page) -->
-                                            <input type="hidden" name="logout" value="true" />
-                                            <input class="nav-link" type="submit" value="Logout" /> <!-- logout submit button -->
-                                        </form>
-                                        <a class="nav-link" href="./includes/php/cart.php">Cart</a>
-
-                                    </div>
-
-                                </div>
-                            </div>
-                        </nav>';
-            }
+        }
     } else {
-        print   '<!-- navigation bar to show categories -->
-                <nav class="navbar navbar-expand-lg bg fixed-top">
-                    <div class="container-fluid d-flex">
-                        <a class="navbar-brand" href="#">Nom Nom Express</a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-                            aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="mr-5 collapse navbar-collapse justify-content-lg-end" id="navbarNavAltMarkup">
+    print   '<!-- navigation bar to show categories -->
+            <nav class="navbar navbar-expand-lg bg fixed-top">
+                <div class="container-fluid d-flex">
+                    <a class="navbar-brand" href="#">Nom Nom Express</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+                        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="mr-5 collapse navbar-collapse justify-content-lg-end" id="navbarNavAltMarkup">
 
-                            <!-- categories -->
-                            <div class="navbar-nav align-items-center">
-                                <a class="nav-link" href='.$all.'>All</a>
-                                <a class="nav-link" href='.$breakfast.'>Breakfast</a>
-                                <a class="nav-link" href='.$burger.'>Burgers</a>
-                                <a class="nav-link" href='.$pizza.'>Pizza</a>
-                                <a class="nav-link" href='.$dessert.'>Desserts</a>
-                                <a class="nav-link" href='.$beverage.'>Beverages</a>
-                                <a class="nav-link btn" id="logon" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
-                            </div>
-
+                        <!-- categories -->
+                        <div class="navbar-nav align-items-center">
+                            <a class="nav-link" href='.$all.'>All</a>
+                            <a class="nav-link" href='.$breakfast.'>Breakfast</a>
+                            <a class="nav-link" href='.$burger.'>Burgers</a>
+                            <a class="nav-link" href='.$pizza.'>Pizza</a>
+                            <a class="nav-link" href='.$dessert.'>Desserts</a>
+                            <a class="nav-link" href='.$beverage.'>Beverages</a>
+                            <a class="nav-link btn" id="logon" data-bs-toggle="modal" data-bs-target="#loginModal">Login</a>
                         </div>
+
                     </div>
-                </nav>';
+                </div>
+            </nav>';
     }
 
     print   '<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">

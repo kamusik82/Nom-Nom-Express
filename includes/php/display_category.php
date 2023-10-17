@@ -73,7 +73,7 @@ if ($num > 0) { // If it ran OK, display the records.
             if($check_row['privacy'] == 'Y'){
             echo "<div class='col'>
                     <div class='card product h-100'>
-                        <img src='./includes/images/$pic' class='card-img-top product-image' alt='$name'>
+                        <img src='./includes/images/$pic' class='card-img-top  item_picture' alt='$name'>
                         <div class='card-body'>
                             <h5 class='card-title product-title'>$name</h5>
                             <p class='card-text product-description'>$desc</p>
@@ -88,7 +88,7 @@ if ($num > 0) { // If it ran OK, display the records.
             } else {
                 echo "<div class='col'>
                     <div class='card product h-100'>
-                        <img src='./includes/images/$pic' class='card-img-top product-image' alt='$name'>
+                        <img src='./includes/images/$pic' class='card-img-top  item_picture' alt='$name'>
                         <div class='card-body'>
                             <h5 class='card-title product-title'>$name</h5>
                             <p class='card-text product-description'>$desc</p>
@@ -104,7 +104,7 @@ if ($num > 0) { // If it ran OK, display the records.
         } else {
             echo "<div class='col'>
                     <div class='card product h-100'>
-                        <img src='./includes/images/$pic' class='card-img-top product-image' alt='$name'>
+                        <img src='./includes/images/$pic' class='card-img-top  item_picture' alt='$name'>
                         <div class='card-body'>
                             <h5 class='card-title product-title'>$name</h5>
                             <p class='card-text product-description'>$desc</p>

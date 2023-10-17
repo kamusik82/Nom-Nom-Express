@@ -30,7 +30,7 @@
                 }
 
                 // each order is placed into a collapse 
-                print   "<a class='btn btn-primary' data-bs-toggle='collapse' data-bs-target='#collapse$order' href='#collapse$order' role='button' aria-expanded='false' aria-controls='#collapse$order'>
+                print   "<a class='btn btn-primary mb-2' data-bs-toggle='collapse' data-bs-target='#collapse$order' href='#collapse$order' role='button' aria-expanded='false' aria-controls='#collapse$order'>
                             Order on $oDate
                         </a>";
                 print   "<div class='collapse'  id='collapse$order'>

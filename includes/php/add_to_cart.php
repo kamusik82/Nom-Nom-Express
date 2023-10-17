@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $k = $id_array[$i];
             $u_id = $_SESSION['user_id'];
 
-            if (isset($_POST['$k'])) {
+            if (isset($_POST[$k])) {
                 $sql = "SELECT item_id,quantity from cart_items where (item_id='$k' and user_id='$u_id');";
                 $result = mysqli_query($dbc, $sql);
                 $row = mysqli_fetch_array($result);
