@@ -1,5 +1,6 @@
 :root{
-	--background-colour : rgb(250, 206, 127);		
+	--background-colour : rgba(250, 206, 127, 0.8);
+    --card-colour: rgba(236, 200, 133, .9);	
 	--header-colour : rgb(145, 31, 39);			
 	--emphasis-1 : rgb(99, 10, 16);				
     --emphasis-1-faded: rgba(99, 10, 16, 0.3);
@@ -12,10 +13,21 @@
 body{
     background-color: var(--background-colour);
     color: var(--emphasis-1);
+    background-image: url("../images/background.webp"); /*fast drawing PNG Designed By pngtree 6843833 from https://pngtree.com/freepng/fast-food-seamless-background-with-ice-cream-burger-chocolate-pizza-french-fries-sweets-vector-pattern_5082565.html?sol=downref&id=bef */
 }
 
 #info{
-    background-color: var(--emphasis-2-faded);
+    background-color: var(--card-colour);
+}
+
+#cart{
+    background-color: var(--card-colour);
+    border-radius: 10px 10px 5px 5px;
+}
+
+#cart_info{
+    background-color: var(--card-colour);
+    border-radius: 0px 0px 10px 10px;
 }
 
 .btn-primary{
@@ -48,7 +60,7 @@ body{
 }
 
 .card{
-    background-color: var(--emphasis-2-faded);
+    background-color: var(--card-colour);
     border: var(--bs-card-border-width) solid var(--emphasis-2-faded);
     color: var(--emphasis-1)
 }
@@ -78,6 +90,6 @@ nav.navbar.navbar-expand-lg.bg.fixed-top{
     background-color: var(--header-colour);
 }
 
-table, th, td { border: 1px solid var(--emphasis-1);}
+table, th, td { border-bottom: 1px solid var(--emphasis-1);}
 .item_picture {width: 100%; aspect-ratio: 1/1; object-fit: cover;}
 .cart_picture {width: 20%; aspect-ratio: 1/1; object-fit: cover;}

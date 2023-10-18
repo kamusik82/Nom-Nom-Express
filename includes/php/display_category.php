@@ -79,7 +79,7 @@ if ($num > 0) { // If it ran OK, display the records.
                             <p class='card-text product-description'>$desc</p>
                             <p class='card-text product-price'>$$price</p>
                             <form method='POST'>
-                                <button type='submit' class='btn btn-secondary add-to-cart-btn' name='$id'>Add to Cart</button>
+                                <button type='submit' class='btn btn-primary add-to-cart-btn' name='$id'>Add to Cart</button>
                             </form>
                         </div>
                     </div>
@@ -94,7 +94,7 @@ if ($num > 0) { // If it ran OK, display the records.
                             <p class='card-text product-description'>$desc</p>
                             <p class='card-text product-price'>$$price</p>
                             <form method='POST'>
-                                <button type='submit' class='btn btn-secondary add-to-cart-btn disabled' name='$id'>Add to Cart</button>
+                                <button type='submit' class='btn btn-primary add-to-cart-btn disabled' name='$id'>Add to Cart</button>
                             </form>
                         </div>
                     </div>
@@ -110,7 +110,7 @@ if ($num > 0) { // If it ran OK, display the records.
                             <p class='card-text product-description'>$desc</p>
                             <p class='card-text product-price'>$$price</p>
                             <form method='POST'>
-                                <button type='submit' class='btn btn-secondary add-to-cart-btn disabled' name='$id'>Add to Cart</button>
+                                <button type='submit' class='btn btn-primary add-to-cart-btn disabled' name='$id'>Add to Cart</button>
                             </form>
                         </div>
                     </div>

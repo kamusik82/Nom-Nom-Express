@@ -39,12 +39,12 @@
                                     <div class='col'>
                                         <h5 class='card-title'>Order #$order</h5>
                                     </div>
-                                    <div class='col-8 d-flex justify-content-center'>
+                                    <div class='col-8'>
                                         <table width='100%'>
                                             <tr>
-                                                <th align='left' width='50%'><b>Name</b></th>
-                                                <th align='left' width='20%'><b>Cost</b></th>
-                                                <th align='left' width='20%'><b>Amount</b></th>
+                                                <th align='left' width='50%'>Name</th>
+                                                <th align='left' width='20%'>Cost</th>
+                                                <th align='left' width='20%'>Amount</th>
                                             </tr>";
                 // go through the arrays to fill in the data for each field             
                 for ($i = 0; $i < count($nameArray); $i++) {
@@ -57,7 +57,7 @@
                     print           "    </table>
                                     </div>
                                     
-                                    <div class='col-md-2'>
+                                    <div class='col-2'>
                                         <table>
                                             <tr>
                                                 <th align='center'>Shipping</th>
