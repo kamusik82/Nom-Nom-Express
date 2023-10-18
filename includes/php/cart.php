@@ -11,67 +11,6 @@
     <div class="d-flex justify-content-end">
         <a class="btn btn-primary me-3" href="../../index.php">Back to menu</a>
     </div>
-    <style>
-        /* Add CSS styles */
-
-        h2 {
-            text-align: center;
-        }
-
-        table {
-            width: 60%;
-            margin: 10px auto;
-            border-collapse: collapse;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        th, td {
-            padding: 5px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #f2f2f2;
-        }
-
-
-        tr:hover {
-            background-color: #ddd;
-        }
-
-        p {
-            text-align: center;
-            font-weight: bold;
-            margin-top: 20px;
-        }
-        .change-quantity {
-        background-color: green;
-        color: white;
-        border: none;  
-        padding: 3px 5px;  
-        cursor: pointer;  
-        }
-        .delete {
-        background-color: red;
-        color: white;
-        border: none;
-        padding: 5px 10px;
-        cursor: pointer;
-        text-align: center; 
-        display: block;
-        }
-        .clear {
-        background-color: red;
-        color: white;
-        border: none;
-        padding: 5px 10px;
-        cursor: pointer;
-        text-align: center; 
-        display: block;   
-        }
-         
-        
-    </style>
 
     <?php
     require('connection.php');
@@ -86,15 +25,17 @@
 
     if ($num > 0) {
         // Display the cart contents in a table
-        echo '<div class="d-flex justify-content-center" width="100%"><table class="table table-hover" width="40%">
+        echo '<div class="d-flex justify-content-center">
+                <table class="col-8 mt-1">
+
             <thead>
                 <tr>
-                    <th align="center">Item</th>
-                    <th align="center">Photo</th>
-                    <th align="center">Quantity</th>
-                    <th align="center">Price</th>
-                    <th align="center">Total Price</th>
-                    <th alin="center">Delete item</th>
+                    <th class="text-center">Item Name</th>
+                    <th class="text-center">Item Picture</th>
+                    <th class="text-center">Quantity</th>
+                    <th class="text-center">Price</th>
+                    <th class="text-center">Total Price</th>
+                    <th class="text-center">Delete item</th>
                 </tr>
             </thead>
             <tbody>';
@@ -112,24 +53,39 @@
              
             ob_start();
             echo '<tr>
-                <td align="center">' . $row['item_name'] . '</td>
-                <td align="center"><img width="100px" src="../images/' . $row['item_picture'] . '" alt="Food description"></td>
+                <td class="text-center">' . $row['item_name'] . '</td>
+                <td class="text-center"><img class="cart_picture" src="../images/' . $row['item_picture'] . '" alt="'.$row['item_name'].'"></td>
                 <form method="post">
-                <td align="center">
+                <td class="text-center">
                 <input type="hidden" name="item_id" value="'.$row['item_id'].'">
-                <button class="change-quantity" type="submit" name="action" value="decrease">-</button>
+                <button class="btn btn-primary border-0" type="submit" name="action" value="decrease">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
+                    </svg>
+                </button>
                 <span class="quantity">' .$row['quantity'] . '</span>
-                <button class="change-quantity" type="submit" name="action" value="increase">+</button>
+                <button class="btn btn-primary border-0" type="submit" name="action" value="increase">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                        <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                        <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                    </svg>
+                </button>
                 </td>
                 </form>
 
-                <td align="center">' . $row['item_price'] . '</td>
-                <td align="center">' . $grandTotal . '</td>
+                <td class="text-center">' . $row['item_price'] . '</td>
+                <td class="text-center">' . $grandTotal . '</td>
                 <form method="post">
-                <td align="center">
+                <td class="text-center">
                 <input type="hidden" name="item_id" value="'.$row['item_id'].'" />
-                <input type="submit" name="btn-delete" value="X" class="delete" />
-                 </td>
+                <button type="submit" name="btn-delete" class="btn btn-primary border-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
+                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                    </svg>
+                </button>
+                </td>
                 </form>
                 </tr>';
         }
@@ -198,7 +154,12 @@
             <div class="col">
                 <form method="post">
                     <input type="hidden" name="clear-cart" value="true">
-                    <input type="submit" value="Clear Cart" class ="clear">
+                    <button type="submit" class="btn btn-primary">
+                        Clear 
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart4" viewBox="0 0 16 16">
+                            <path d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l.5 2H5V5H3.14zM6 5v2h2V5H6zm3 0v2h2V5H9zm3 0v2h1.36l.5-2H12zm1.11 3H12v2h.61l.5-2zM11 8H9v2h2V8zM8 8H6v2h2V8zM5 8H3.89l.5 2H5V8zm0 5a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z"/>
+                        </svg>
+                    </button>
                 </form>    
             </div>
             <div class="col d-flex justify-content-end">

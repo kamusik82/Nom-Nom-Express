@@ -15,6 +15,7 @@
         <title>Order Confirmation</title>
     </head>
     <style>
+
         body {
             max-width: 800px;
         }

@@ -7,13 +7,6 @@
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
     <link href="./includes/css/style.css" rel="stylesheet" >
     <title>Display Category</title>
-    <style>
-        #products img{
-            aspect-ratio: 1/1;
-            object-fit: cover;
-            width: 100%;
-        }
-    </style>
 </head>
 
 <body>
