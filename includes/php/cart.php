@@ -97,7 +97,7 @@
 
         $delivery = $numItems*2.50;
         $tax = ($totalPrice+$delivery)*0.12;
-        $owing = $totalPrice + $delivery + $tax;
+        $owing = number_format(($totalPrice + $delivery + $tax), 2);
         $owing_cents = $owing*100;
 
         $sql_address = "SELECT street_1, street_2, city, province, postal, phone FROM users WHERE user_id=$u_id;";
@@ -129,7 +129,9 @@
                 </div>
             </div>';
     } else {
-        echo '<p>No items in the cart</p>';
+        echo '<div class="background w-25 d-flex justify-content-center me-auto ms-auto rounded">
+                <p class="pt-2">No items in the cart</p>
+            </div>';
     }
     
     // Deleting items by click on delete button

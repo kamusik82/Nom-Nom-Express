@@ -76,7 +76,7 @@
             ?>
 
         </div>
-        <div class="container">
+        <div class="container background">
             <div class="row mb-3">
                 <h5>Thank you for your Nom Nom Express order <span class="fw-bold"><?php print $first_name?></span>!</h5>
                 <br>

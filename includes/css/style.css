@@ -117,3 +117,8 @@ table, th, td { border-bottom: 1px solid var(--emphasis-1);}
 .cart_picture {width: 20%; aspect-ratio: 1/1; object-fit: cover;}
 
 .m-border{border-radius:0 5px 5px 0 !important;}
+
+.border-top{border-top: var(--bs-border-width) var(--bs-border-style) var(--emphasis-1)!important;}
+.border-bottom {border-bottom: var(--bs-border-width) var(--bs-border-style) var(--emphasis-1)!important;}
+
+.colour{color: var(--emphasis-1);}

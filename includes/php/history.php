@@ -74,7 +74,7 @@
                                                 <th align='center'>Tax</th>
                                             </tr>
                                             <tr>
-                                                <td align='center'>$tax%</td>
+                                                <td align='center'>$$tax</td>
                                             </tr>
                                         </table>
                                     </div>
