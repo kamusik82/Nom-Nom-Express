@@ -69,7 +69,7 @@
 		<td class="text-center" width="15%"><b>Name</b></td>
         <td class="text-center" width="40%"><b>Description</b></td>
 		<td class="text-center" width="10%"><b>Price</b></td>
-		<td class="text-center"><b>Edith</b></td>
+		<td class="text-center"><b>Edit</b></td>
 		<td class="text-center"><b>Delete</b></td>
         <td class="text-center"><b>E/D</b></td>
 	</tr>';
@@ -86,7 +86,7 @@
 						<td align=\"center\"><img src=\"./includes/images/{$row['item_picture']}\" class='item_picture'></td>
 						<td align=\"center\">{$row['item_name']}</td>
 						<td align=\"left\">{$row['item_desc']}</td>
-						<td align=\"center\">{$row['item_price']}$</td>
+						<td align=\"center\">${$row['item_price']}</td>
 						<td align=\"center\"> <button item_id=\"{$row['item_id']}\" item_name=\"{$row['item_name']}\" item_desc=\"{$row['item_desc']}\" item_price=\"{$row['item_price']}\" type='button' class='btn btn-primary edit'>Edit</button></td>
 						<td align=\"center\"> <button item_id=\"{$row['item_id']}\" item_name=\"{$row['item_name']}\" type='button' class='btn btn-primary delete'>Delete</button></td>
 						<td align=\"center\"> <button item_id=\"{$row['item_id']}\" item_name=\"{$row['item_name']}\" type='button' class='btn btn-primary enable'>Enable</button></td>
@@ -99,7 +99,7 @@
 						<td align=\"center\"><img src=\"./includes/images/{$row['item_picture']}\" class='item_picture'></td>
 						<td align=\"center\">{$row['item_name']}</td>
 						<td align=\"left\">{$row['item_desc']}</td>
-						<td align=\"center\">{$row['item_price']}$</td>
+						<td align=\"center\">\${$row['item_price']}</td>
 						<td align=\"center\"> <button item_id=\"{$row['item_id']}\" item_name=\"{$row['item_name']}\" item_desc=\"{$row['item_desc']}\" item_price=\"{$row['item_price']}\" type='button' class='btn btn-primary edit'>Edit</button></td>
 						<td align=\"center\"> <button item_id=\"{$row['item_id']}\" item_name=\"{$row['item_name']}\" type='button' class='btn btn-primary delete'>Delete</button></td>
 						<td align=\"center\"> <button item_id=\"{$row['item_id']}\" item_name=\"{$row['item_name']}\" type='button' class='btn btn-primary disable'>Disable</button></td>

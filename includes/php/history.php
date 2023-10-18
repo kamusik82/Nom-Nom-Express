@@ -12,7 +12,7 @@
             $oDate = $row['date'];
 
             // find all the items and info for the individual order
-            $newSql = "SELECT oi.order_id, oi.quantity, m.item_name, m.item_price, o.total, o.date, o.shipping, o.tax
+            $newSql = "SELECT oi.order_id, oi.quantity, m.item_name, m.item_price, o.total, FORMAT(o.date, 'dd-MM-yy'), o.shipping, o.tax
                     from orders o inner join order_items oi using (order_id) inner join menu_items m using (item_id)
                     where order_id='$order'
                     order by o.date desc";
@@ -31,65 +31,26 @@
 
                 // each order is placed into a collapse 
                 print   "<a class='btn btn-primary mb-2' data-bs-toggle='collapse' data-bs-target='#collapse$order' href='#collapse$order' role='button' aria-expanded='false' aria-controls='#collapse$order'>
-                            Order on $oDate
+                            Order #$order on $oDate &emsp;Tax: $$tax &emsp;Delivery: $$shipping &emsp;Total: $$total
                         </a>";
                 print   "<div class='collapse'  id='collapse$order'>
                             <div class='card mb-3'>
                                 <div class='row g-0'>
-                                    <div class='col'>
-                                        <h5 class='card-title'>Order #$order</h5>
-                                    </div>
-                                    <div class='col-8'>
-                                        <table width='100%'>
-                                            <tr>
-                                                <th align='left' width='50%'>Name</th>
-                                                <th align='left' width='20%'>Cost</th>
-                                                <th align='left' width='20%'>Amount</th>
-                                            </tr>";
+                                    <table class='d-flex align-items-center justify-content-center' width='100%'>
+                                        <tr>
+                                            <th align='left' width='50%'>Name</th>
+                                            <th align='left' width='20%'>Cost</th>
+                                            <th align='left' width='20%'>Amount</th>
+                                        </tr>";
                 // go through the arrays to fill in the data for each field             
                 for ($i = 0; $i < count($nameArray); $i++) {
-                    print                   "<tr>
-                                                <td align='left'>". $nameArray[$i] ."</td>
-                                                <td align='left'>$". $priceArray[$i] ."</td>
-                                                <td align='left'>". $quantityArray[$i] ."</td>
-                                            </tr>";
-                }
-                    print           "    </table>
-                                    </div>
-                                    
-                                    <div class='col-2'>
-                                        <table>
-                                            <tr>
-                                                <th align='center'>Shipping</th>
-                                            </tr>
-                                            <tr>
-                                                <td align='center'>$$shipping</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-
-                                    <div class='col'>
-                                        <table>
-                                            <tr>
-                                                <th align='center'>Tax</th>
-                                            </tr>
-                                            <tr>
-                                                <td align='center'>$$tax</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-
-                                    <div class='col'>
-                                        <table>
-                                            <tr>
-                                                <th align='center'>Total</th>
-                                            </tr>
-                                            <tr>
-                                                <td align='center'>$$total</td>
-                                            </tr>
-                                        </table>
-                                    </div>
-                                    
+                    print               "<tr>
+                                            <td align='left'>". $nameArray[$i] ."</td>
+                                            <td align='left'>$". $priceArray[$i] ."</td>
+                                            <td align='left'>". $quantityArray[$i] ."</td>
+                                        </tr>";
+            }
+                    print      "    </table>                                 
                                 </div>
                             </div>
                         </div>";

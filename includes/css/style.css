@@ -1,6 +1,6 @@
 :root{
 	--background-colour : rgba(250, 206, 127, 0.8);
-    --card-colour: rgba(236, 200, 133, .9);	
+    --card-colour: rgba(236, 200, 133, .7);	
 	--header-colour : rgb(145, 31, 39);			
 	--emphasis-1 : rgb(99, 10, 16);				
     --emphasis-1-faded: rgba(99, 10, 16, 0.3);
@@ -112,7 +112,7 @@ nav.navbar.navbar-expand-lg.bg.fixed-top{
     background-color: var(--header-colour);
 }
 
-table, th, td { border-bottom: 1px solid var(--emphasis-1);}
+th, td { border-bottom: 1px solid var(--emphasis-1);}
 .item_picture {width: 100%; aspect-ratio: 1/1; object-fit: cover;}
 .cart_picture {width: 20%; aspect-ratio: 1/1; object-fit: cover;}
 

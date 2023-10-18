@@ -15,7 +15,7 @@
     <?php
     require('connection.php');
     $u_id = $_SESSION['user_id'];
-    $sql = "SELECT cart_items.item_id, item_name, item_picture, quantity, item_price, item_price * quantity AS 'TotalPrice' 
+    $sql = "SELECT cart_items.item_id, item_name, item_picture, quantity, item_price 
             FROM cart_items
             INNER JOIN menu_items ON cart_items.item_id = menu_items.item_id
             WHERE user_id = $u_id";
@@ -26,16 +26,15 @@
     if ($num > 0) {
         // Display the cart contents in a table
         echo '<div class="d-flex justify-content-center">
-                <table id="cart" class="col-11 mt-1">
+                <table id="cart" class="col-10 mt-1 pt-4 pb-4">
 
             <thead>
                 <tr>
-                    <th class="text-center col-2">Item Name</th>
-                    <th class="text-center col-2">Item Picture</th>
+                    <th class="text-end col-3">Item</th>
+                    <th class="text-center col-3"></th>
                     <th class="text-center col-2">Quantity</th>
-                    <th class="text-center col-1">Price</th>
-                    <th class="text-center col-1">Total Price</th>
-                    <th class="text-center col-1">Delete item</th>
+                    <th class="text-center col-1">Price Per Item</th>
+                    <th class="text-center"></th>
                 </tr>
             </thead>
             <tbody>';
@@ -48,13 +47,12 @@
             $subtotal = $row['quantity'] * $row['item_price'];
             $numItems += $row['quantity'];
             $totalPrice += $subtotal;
-            $grandTotal = number_format($subtotal, 2);
            
              
             ob_start();
             echo '<tr>
-                <td class="text-center">' . $row['item_name'] . '</td>
                 <td class="text-center "><img class="cart_picture" src="../images/' . $row['item_picture'] . '" alt="'.$row['item_name'].'"></td>
+                <td class="text-center">' . $row['item_name'] . '</td>
                 <form method="post">
                 <td class="text-center">
                 <div class="d-flex flex-row justify-content-center align-items-center">
@@ -65,7 +63,7 @@
                             <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
                         </svg>
                     </button>
-                    <span class="quantity"> &nbsp;' .$row['quantity'] . '&nbsp; </span>
+                    <span class="quantity"> &emsp;' .$row['quantity'] . '&emsp; </span>
                     <button class="btn btn-primary border-0" type="submit" name="action" value="increase">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                             <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -77,7 +75,6 @@
                 </form>
 
                 <td class="text-center">$' . $row['item_price'] . '</td>
-                <td class="text-center">$' . $grandTotal . '</td>
                 <form method="post">
                 <td class="text-center">
                 <input type="hidden" name="item_id" value="'.$row['item_id'].'" />
@@ -110,7 +107,7 @@
         $postal = $row_address['postal'];
         $phone = $row_address['phone'];
 
-        echo '<div id="cart_info" class="container">
+        echo '<div id="cart_info" class="container-fluid col-10">
                 <div class="row">
                     <div class="col d-flex flex-column align-items-start">
                         <div class="fw-bold">Delivery Address:</div>
@@ -130,7 +127,7 @@
             </div>';
     } else {
         echo '<div class="background w-25 d-flex justify-content-center me-auto ms-auto rounded">
-                <p class="pt-2">No items in the cart</p>
+                <p class="pt-2 fw-bold">No items in the cart</p>
             </div>';
     }
     
