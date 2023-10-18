@@ -120,7 +120,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <div class="fw-bold">We hope you enjoy your meal!</div>
+                    <h5>We hope you enjoy your meal!</h5>
                 </div>
             </div>
         </div>
