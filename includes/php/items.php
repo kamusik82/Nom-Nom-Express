@@ -62,16 +62,16 @@
     $result = mysqli_query($dbc,$sql);
     
     echo "<BR>";
-	echo '<table  width="100%" cellspacing="3" cellpadding="3" align="center">
+	echo '<table cellspacing="3" cellpadding="3" class="text-center ms-4 me-4">
 	<tr>
-		<td align="center" width="5%"><b>ID</b></td>
-		<td align="center" width="20%"><b>Picture</b></td>
-		<td align="center" width="20%"><b>Name</b></td>
-        <td align="left" width="30%"><b>Description</b></td>
-		<td align="center" width="10%"><b>Price</b></td>
-		<td align="center" width="5%"><b>Edit</b></td>
-		<td align="center" width="5%"><b>Delete</b></td>
-        <td align="center" width="5%"><b>E/D</b></td>
+		<td class="text-center" width="5%"><b>ID</b></td>
+		<td class="text-center" width="10%"><b>Picture</b></td>
+		<td class="text-center" width="15%"><b>Name</b></td>
+        <td class="text-center" width="40%"><b>Description</b></td>
+		<td class="text-center" width="10%"><b>Price</b></td>
+		<td class="text-center"><b>Edith</b></td>
+		<td class="text-center"><b>Delete</b></td>
+        <td class="text-center"><b>E/D</b></td>
 	</tr>';
     
     if ($result) {
@@ -87,9 +87,9 @@
 						<td align=\"center\">{$row['item_name']}</td>
 						<td align=\"left\">{$row['item_desc']}</td>
 						<td align=\"center\">{$row['item_price']}$</td>
-						<td align=\"center\"> <button item_id=\"{$row['item_id']}\" item_name=\"{$row['item_name']}\" item_desc=\"{$row['item_desc']}\" item_price=\"{$row['item_price']}\" type='button' class='btn btn-info edit'>Edit</button></td>
-						<td align=\"center\"> <button item_id=\"{$row['item_id']}\" item_name=\"{$row['item_name']}\" type='button' class='btn btn-danger delete'>Delete</button></td>
-						<td align=\"center\"> <button item_id=\"{$row['item_id']}\" item_name=\"{$row['item_name']}\" type='button' class='btn btn-success enable'>Enable</button></td>
+						<td align=\"center\"> <button item_id=\"{$row['item_id']}\" item_name=\"{$row['item_name']}\" item_desc=\"{$row['item_desc']}\" item_price=\"{$row['item_price']}\" type='button' class='btn btn-primary edit'>Edit</button></td>
+						<td align=\"center\"> <button item_id=\"{$row['item_id']}\" item_name=\"{$row['item_name']}\" type='button' class='btn btn-primary delete'>Delete</button></td>
+						<td align=\"center\"> <button item_id=\"{$row['item_id']}\" item_name=\"{$row['item_name']}\" type='button' class='btn btn-primary enable'>Enable</button></td>
 					</tr>";
 
 			} else { // When item is not disabled, display "Disable" button
@@ -100,9 +100,9 @@
 						<td align=\"center\">{$row['item_name']}</td>
 						<td align=\"left\">{$row['item_desc']}</td>
 						<td align=\"center\">{$row['item_price']}$</td>
-						<td align=\"center\"> <button item_id=\"{$row['item_id']}\" item_name=\"{$row['item_name']}\" item_desc=\"{$row['item_desc']}\" item_price=\"{$row['item_price']}\" type='button' class='btn btn-info edit'>Edit</button></td>
-						<td align=\"center\"> <button item_id=\"{$row['item_id']}\" item_name=\"{$row['item_name']}\" type='button' class='btn btn-danger delete'>Delete</button></td>
-						<td align=\"center\"> <button item_id=\"{$row['item_id']}\" item_name=\"{$row['item_name']}\" type='button' class='btn btn-warning disable'>Disable</button></td>
+						<td align=\"center\"> <button item_id=\"{$row['item_id']}\" item_name=\"{$row['item_name']}\" item_desc=\"{$row['item_desc']}\" item_price=\"{$row['item_price']}\" type='button' class='btn btn-primary edit'>Edit</button></td>
+						<td align=\"center\"> <button item_id=\"{$row['item_id']}\" item_name=\"{$row['item_name']}\" type='button' class='btn btn-primary delete'>Delete</button></td>
+						<td align=\"center\"> <button item_id=\"{$row['item_id']}\" item_name=\"{$row['item_name']}\" type='button' class='btn btn-primary disable'>Disable</button></td>
 					</tr>";
 
 			}

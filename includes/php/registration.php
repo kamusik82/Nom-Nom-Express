@@ -176,12 +176,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 	<link href="../css/style.css" rel="stylesheet" >
 </head>
-<header class="pt-5 pb-3 ps-5">
-	<h3>New User Registration Form</h3>
-</header>
+
 <body>
 <form action="registration.php" method="POST">
 
+<div class="background mx-5 mb-5 pb-2 rounded">
+<h3 class="mt-5 pt-3 ps-5">New User Registration Form</h3>
+<h6 class="ps-5 pb-3">fields with * are required</h6>
 <div class="container text-center">
 	<div class="row text-start">
 		<h5>User Details:</h5>
@@ -280,6 +281,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			</div>
 		</div>
 	</div>
+</div>
 </div>
 
 <a type="button" class="btn btn-secondary ms-5" href="../../index.php">Cancel</a>

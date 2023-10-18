@@ -10,122 +10,132 @@
 <body>
 
 	<?php include("./includes/php/connection.php"); ?> <!-- include for connection php to connect to the database -->
+	
+	<div class="d-flex flex-row justify-content-end">
+		<form action='./includes/php/logout.php' method='post'>
+			<!-- logout button form action takes you to the logout page (will probably update to just take them back to the landing page) -->
+			<input type='hidden' name='logout' value='true' />
+			<button class="btn btn-primary" type='submit' value='Logout'>Log out</button> <!-- logout submit button -->
+		</form>
 
-	<form action='./includes/php/logout.php' method='post'>
-		<!-- logout button form action takes you to the logout page (will probably update to just take them back to the landing page) -->
-		<input type='hidden' name='logout' value='true' />
-		<input type='submit' value='Logout' /> <!-- logout submit button -->
-	</form>
-
-	<a href="./index.php"><button>Index</button></a>
+		<a href="./index.php"><button class="btn btn-primary me-2 ms-2">Index</button></a>
+	</div>
 
 	<?php include("./includes/php/store_info.php"); ?> <!-- include for the store_info -->
 
-	<h1> Store info</h1>
-	<!-- information that comes from store_info php -->
-	<p>Working Hours:
-		<?php print $workingHours ?>
-	</p>
-	<p>Store Phone Number:
-		<?php print $storeNum ?>
-	</p>
-	<p>Store Location:
-		<?php print $storeLoc ?>
-	</p>
-	<p>Store Email:
-		<?php print $storeEmail ?>
-	</p>
+	<div class="container-fluid d-flex flex-row">
+		<div id="str_info" class="background col-2">
+			<h1> Store info</h1>
+			<!-- information that comes from store_info php -->
+			<p>Working Hours:
+				<?php print $workingHours ?>
+			</p>
+			<p>Store Phone Number:
+				<?php print $storeNum ?>
+			</p>
+			<p>Store Location:
+				<?php print $storeLoc ?>
+			</p>
+			<p>Store Email:
+				<?php print $storeEmail ?>
+			</p>
 
-	<!-- button to open the update store info form -->
-	<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoModal">
-		Update Store information
-	</button>
+			<!-- button to open the update store info form -->
+			<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#infoModal">
+				Update Store information
+			</button>
+		</div>
 
-	<!-- modal containing the update store info form -->
-	<div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h1 class="modal-title fs-5" id="infoModalLabel">Update Form</h1>
-					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-				</div>
-				<div class="modal-body">
-					<form action="admin.php" method="POST">
-						<!-- form action is the admin page to stay on the same page -->
-						<p> Working hours <input type="text" name="hours"></p>
-						<p> Store Phone Number <input type="text" name="phone"></p>
-						<p> Store Location <input type="text" name="location"></p>
-						<p> Store Email <input type="text" name="email"></p>
-						<input type="submit" name="update" value="Submit" /> <!-- update submit button -->
-					</form>
+		<!-- modal containing the update store info form -->
+		<div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h1 class="modal-title fs-5" id="infoModalLabel">Update Form</h1>
+						<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<form action="admin.php" method="POST">
+							<!-- form action is the admin page to stay on the same page -->
+							<p> Working hours <input type="text" name="hours"></p>
+							<p> Store Phone Number <input type="text" name="phone"></p>
+							<p> Store Location <input type="text" name="location"></p>
+							<p> Store Email <input type="text" name="email"></p>
+							<input type="submit" name="update" value="Submit" /> <!-- update submit button -->
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
+
+
+		<div id="add" class="background col-3">
+			<h1 class="ms-5">Add Menu Items Form</h1>
+
+			<?php include("./includes/php/add.php"); ?>
+			<!-- include add that validates given form data and updates the database -->
+
+			<form id="addItem" enctype="multipart/form-data" action="admin.php" method="POST">
+				<!-- form action is the admin page to stay on the same page -->
+
+				<div class="input-group w-75 ms-5">
+					<span class="input-group-text" id="addItem-addon1">Item Name</span>
+					<input type="text" class="form-control" aria-label="ItemName" aria-describedby="addItem-addon1" 
+						name="name" value="<?php if (isset($_POST['name'])) { // keeps the item name value given and also protects against injection attacks
+						print htmlspecialchars($_POST['name']);
+					} ?>" />
+				</div>
+				<p class="ms-5"><?php print $nameErr ?></p> <!-- error message if name is empty from add.php -->
+
+				<div class="input-group w-75 ms-5">
+					<span class="input-group-text" id="addItem-addon2">Item Description</span>
+					<input type="text" class="form-control" aria-label="ItemDesc" aria-describedby="addItem-addon2" 
+					name="description" value="<?php if (isset($_POST['description'])) { // keeps the description value given and also protects against injection attacks
+						print htmlspecialchars($_POST['description']);
+					} ?>" />
+				</div>
+				<p class="ms-5"><?php print $descErr ?></p> <!-- error message if description is empty from add.php -->
+				
+				<div class="input-group w-75 ms-5">
+					<span class="input-group-text" id="addItem-addon3">Item Price $</span>
+					<input type="text" class="form-control" aria-label="ItemPrice" aria-describedby="addItem-addon3" 
+					name="price" value="<?php if (isset($_POST['price'])) { // keeps the price value given and also protects against injection attacks
+						print htmlspecialchars($_POST['price']);
+					} ?>" />
+				</div>
+				<p class="ms-5"><?php print $priceErr ?></p> <!-- error message if price is empty or not a price from add.php -->
+
+				<select class="form-select w-75 ms-5" name="category"> <!-- select drop down for categories -->
+					<option value="" selected>Item Category</option>
+					<option value="1">Breakfast</option>
+					<option value="2">Burgers</option>
+					<option value="3">Pizza</option>
+					<option value="4">Dessert</option>
+					<option value="5">Beverage</option>
+				</select>
+				<p class="ms-5"><?php print $catErr ?></p> <!-- error message if category is not selected from add.php -->
+
+				<div class="w-75 ms-5">
+					<label for="formFile" class="form-label">Item Picture</label>
+					<input type="hidden" name="MAX_FILE_SIZE" value="300000" />
+					<input class="form-control" name="pic" type="file" id="formFile">
+				</div>
+				<p class="ms-5"><?php print $fileErr ?></p> <!-- add a file to the form -->
+				
+				<button type="submit" name="add" class="btn btn-primary ms-5">Submit</button> <!-- add submit button -->
+			</form>
+		</div>
+
 	</div>
 
+	<div class="container-fluid">
+		<div id="items_table" class="background mt-5">
+			<h1 class="pt-2 px-4">Current Menu Items</h1>
 
-	<h1>Add Menu Items Form</h1>
-
-	<?php include("./includes/php/add.php"); ?>
-	<!-- include add that validates given form data and updates the database -->
-
-	<form id="addItem" enctype="multipart/form-data" action="admin.php" method="POST">
-		<!-- form action is the admin page to stay on the same page -->
-
-		<p>
-			Item Name
-			<input type="text" name="name" value="<?php if (isset($_POST['name'])) {
-				print htmlspecialchars($_POST['name']);
-			} ?>" />
-			<!-- keeps the item name value given and also protects against injection attacks -->
-			<?php print $nameErr ?> <!-- error message if name is empty from add.php -->
-		</p>
-
-		<p>
-			Item Description
-			<input type="text" name="description" value="<?php if (isset($_POST['description'])) {
-				print htmlspecialchars($_POST['description']);
-			} ?>" />
-			<!-- keeps the description value given and also protects against injection attacks -->
-			<?php print $descErr ?> <!-- error message if description is empty from add.php -->
-		</p>
-		<p>
-			Item Price $
-			<input type="text" name="price" value="<?php if (isset($_POST['price'])) {
-				print htmlspecialchars($_POST['price']);
-			} ?>" />
-			<!-- keeps the price value given and also protects against injection attacks -->
-			<?php print $priceErr ?> <!-- error message if price is empty or not a price from add.php -->
-		</p>
-
-		<p>
-			Item Category
-			<select name="category"> <!-- select drop down for categories -->
-				<option value="">---</option>
-				<option value="1">Breakfast</option>
-				<option value="2">Burgers</option>
-				<option value="3">Pizza</option>
-				<option value="4">Dessert</option>
-				<option value="5">Beverage</option>
-			</select>
-			<?php print $catErr ?> <!-- error message if category is not selected from add.php -->
-		</p>
-
-		<p>
-			Item Picture
-			<input type="hidden" name="MAX_FILE_SIZE" value="300000" /> <!-- sets a max file size for the image -->
-			<input type="file" name="pic" />
-		</p>
-		<?php print $fileErr ?> <!-- add a file to the form -->
-		</p>
-		<input type="submit" name="add" value="Submit" /> <!-- add submit button -->
-	</form>
-
-	<h1>Current Menu Items</h1>
-
-	<?php include("./includes/php/items.php"); ?> <!-- display current items with php include -->
-	<?php include("./includes/php/edit.php"); ?> <!-- edit current items with php include -->
-
+			<?php include("./includes/php/items.php"); ?> <!-- display current items with php include -->
+			<?php include("./includes/php/edit.php"); ?> <!-- edit current items with php include -->
+		</div>
+	</div>
 	<!-- Confirmation Modal for delete, disable, enable-->
 	<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -134,15 +144,15 @@
 					<h1 class="modal-title fs-5" id="confirmationLabel"></h1>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
-				<div class="modal-body">
-					<h6 class="confirmation-top"></h6>
+				<div class="modal-body d-flex flex-column">
+					<h6 class="confirmation-top text-center "></h6>
 					<h6 class="fs-4 confirmation-item text-center text-decoration-underline"></h6>
-					<h6 class="text-end confirmation-bottom"></h6>
+					<h6 class="text-center  confirmation-bottom"></h6>
 				</div>
 				<div class="modal-footer">
 					<a class="btn btn-secondary" href="#" role="button" data-bs-dismiss="modal">No</a>
 					<!-- Just close modal -->
-					<a class="btn btn-danger" href="admin.php" role="button">Yes</a>
+					<a class="btn btn-primary" href="admin.php" role="button">Yes</a>
 					<!-- the url of this confirmation button will change depending on the button clicked -->
 				</div>
 			</div>
@@ -159,29 +169,29 @@
 				</div>
 				<div class="modal-body">
 					<form action="admin.php" method="POST">
-						<p>
-							Item Name :
-							<input type="text" name="newName">
+						<div class="input-group">
+							<span class="input-group-text" id="edit-addon1">Item Name :</span>
+							<input type="text" class="form-control m-border" aria-label="ItemName" aria-describedby="edit-addon1" name="newName">
 							<!-- keeps the item name value given and also protects against injection attacks -->
-							<?php print $newNameErr; ?> <!-- error message if name is empty from add.php -->
-						</p>
-						<div class="d-flex flex-columns my-4">
-							<label for="newDescArea">Item Description : </label>
+							<p><?php print $newNameErr; ?></p> <!-- error message if name is empty from add.php -->
+						</div>
 
-							<textarea id="newDescArea" rows="5" cols="30" type="text" name="newDesc"></textarea>
+						<div class="input-group my-4">
+							<span class="input-group-text">Item Description :</span>
+							<textarea id="newDescArea" class="form-control" aria-label="With textarea" rows="5" cols="30" name="newDesc"></textarea>
 							<!-- keeps the item name value given and also protects against injection attacks -->
 							<?php print $newDescErr; ?> <!-- error message if description is empty from add.php -->
 						</div>
-
-						<p>
-							Item Price :
-							<input type="text" name="newPrice">
+						
+						<div class="input-group mb-5">
+							<span class="input-group-text" id="edit-addon2">Item Price :</span>
+							<input type="text" class="form-control m-border" aria-label="ItemPrice" aria-describedby="edit-addon2" name="newPrice">
 							<!-- keeps the item name value given and also protects against injection attacks -->
-							<?php print $newPriceErr; ?> <!-- error message if price is empty from add.php -->
-						</p>
+							<p><?php print $newPriceErr; ?></p> <!-- error message if name is empty from add.php -->
+						</div>
 
 						<input type="hidden" name="itemID" value="">
-						<input type="submit" name="edit" value="SUBMIT">
+						<button type="submit" name="edit" class="btn btn-primary">Submit</button>
 					</form>
 				</div>
 			</div>
@@ -202,7 +212,7 @@
 			$(".confirmation-top").html("Are you sure you want to delete");
 			$(".confirmation-item").html(item_name);
 			$(".confirmation-bottom").html("from menu item?");
-			$("#confirmationModal .modal-footer .btn-danger").attr('href', `./admin.php?action=delete&itemID=${item_id}`);
+			$("#confirmationModal .modal-footer .btn-primary").attr('href', `./admin.php?action=delete&itemID=${item_id}`);
 
 			$('#confirmationModal').modal('show');
 
@@ -219,7 +229,7 @@
 			$(".confirmation-top").html("Are you sure you want to disable");
 			$(".confirmation-item").html(item_name);
 			$(".confirmation-bottom").html("from menu display?");
-			$("#confirmationModal .modal-footer .btn-danger").attr('href', `./admin.php?action=disable&itemID=${item_id}`);
+			$("#confirmationModal .modal-footer .btn-primary").attr('href', `./admin.php?action=disable&itemID=${item_id}`);
 
 			$('#confirmationModal').modal('show');
 
@@ -235,7 +245,7 @@
 			$(".confirmation-top").html("Are you sure you want to enable");
 			$(".confirmation-item").html(item_name);
 			$(".confirmation-bottom").html("onto menu display?");
-			$("#confirmationModal .modal-footer .btn-danger").attr('href', `./admin.php?action=enable&itemID=${item_id}`);
+			$("#confirmationModal .modal-footer .btn-primary").attr('href', `./admin.php?action=enable&itemID=${item_id}`);
 
 			$('#confirmationModal').modal('show');
 		})
