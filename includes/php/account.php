@@ -1,7 +1,7 @@
 <html>
 
 <head>
-	<title> Admin Page </title>
+	<title>Nom Nom Express</title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="../css/style.css" rel="stylesheet">
@@ -11,8 +11,8 @@
     <!-- user_info.php calls connection for the page and holds variables for user info -->
     <?php include ('./user_info.php'); ?>
     <!-- Button in the top right orner that leads back to the the index -->
-    <div class="d-flex justify-content-end">
-        <a class="btn btn-primary me-3" href="../../index.php">Back</a>
+    <div class="d-flex justify-content-end mt-3">
+        <a class="btn btn-primary me-3" href="../../index.php">Back to Menu</a>
     </div>
 
     <!-- order history buttons dynamically created using history.php -->

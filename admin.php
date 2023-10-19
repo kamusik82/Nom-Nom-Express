@@ -1,7 +1,7 @@
 <html>
 
 <head>
-	<title> Admin Page </title>
+	<title> Nom Nom Express Admin Page </title>
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
 	<link href="./includes/css/style.css" rel="stylesheet" >
@@ -11,7 +11,7 @@
 
 	<?php include("./includes/php/connection.php"); ?> <!-- include for connection php to connect to the database -->
 	
-	<div class="d-flex flex-row justify-content-end">
+	<div class="d-flex flex-row justify-content-end mt-3">
 		<form action='./includes/php/logout.php' method='post'>
 			<!-- logout button form action takes you to the logout page (will probably update to just take them back to the landing page) -->
 			<input type='hidden' name='logout' value='true' />

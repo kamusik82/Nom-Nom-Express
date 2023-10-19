@@ -36,18 +36,18 @@
                 print   "<div class='collapse'  id='collapse$order'>
                             <div class='card mb-3'>
                                 <div class='row g-0'>
-                                    <table class='d-flex align-items-center justify-content-center' width='100%'>
+                                    <table width='100%'>
                                         <tr>
-                                            <th align='left' width='50%'>Name</th>
-                                            <th align='left' width='20%'>Cost</th>
-                                            <th align='left' width='20%'>Amount</th>
+                                            <th align='left' width='60%'>Name</th>
+                                            <th align='left' width='20%'>Price</th>
+                                            <th class='text-center' width='20%'>Amount</th>
                                         </tr>";
                 // go through the arrays to fill in the data for each field             
                 for ($i = 0; $i < count($nameArray); $i++) {
                     print               "<tr>
                                             <td align='left'>". $nameArray[$i] ."</td>
                                             <td align='left'>$". $priceArray[$i] ."</td>
-                                            <td align='left'>". $quantityArray[$i] ."</td>
+                                            <td class='text-center'>". $quantityArray[$i] ."</td>
                                         </tr>";
             }
                     print      "    </table>                                 

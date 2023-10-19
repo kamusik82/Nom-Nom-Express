@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Cart Content</title>
+    <title>Nom Nom Express</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="../css/style.css" rel="stylesheet" >
 </head>
 <body>
-    <h2>Shopping Cart</h2>
-    <div class="d-flex justify-content-end">
-        <a class="btn btn-primary me-3" href="../../index.php">Back to menu</a>
+    <div class="d-flex justify-content-end mt-3">
+        <a class="btn btn-primary me-3" href="../../index.php">Back to Menu</a>
     </div>
 
     <?php
@@ -27,7 +26,7 @@
 
         // set up variables
         $totalPrice = $tax = $delivery = $numItems = 0;
-        $street1 = $street2 = $city = $province = $postal = $phone;
+        $street1 = $street2 = $city = $province = $postal = $phone = "";
 
         // display the cart contents in a table
         if ($num > 0) {

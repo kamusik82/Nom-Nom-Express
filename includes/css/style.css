@@ -1,3 +1,4 @@
+/* All Colours for the site*/
 :root{
 	--background-colour : rgba(250, 206, 127, 0.8);
     --card-colour: rgba(236, 200, 133, .7);	
@@ -10,48 +11,56 @@
     --emphasis-3-faded: rgba(78, 72, 66, 0.2);			
 }
 
+/* sets the background colour, picture, and sites text colour*/
 body{
     background-color: var(--background-colour);
     color: var(--emphasis-1);
     background-image: url("../images/background.webp"); /*fast drawing PNG Designed By pngtree 6843833 from https://pngtree.com/freepng/fast-food-seamless-background-with-ice-cream-burger-chocolate-pizza-french-fries-sweets-vector-pattern_5082565.html?sol=downref&id=bef */
 }
 
+/* Id used in account.php for user info div*/
 #info{
     background-color: var(--card-colour);
-    height: 600px;
+    height: 600px;  /* sets fixed height for div that will need to change if we make it mobile friendly */
 }
 
+/* Id used in admin.php for the store information div*/
 #str_info{
-    margin-right: 10%;
+    margin-right: 10%;  /* Margin used to push add items div away*/
     padding-left: 30px;
     border-radius: 15px;
-    height: 350;
+    height: 350;    /* fixed height for the div that will need to change when made mobile friendly */
 }
 
+/* Id used in admin.php for the add items div */
 #add{
-    margin-left: 10%;
+    margin-left: 10%;   /* Margin to push away from store information div */
     padding-left: 13px;
     border-radius: 15px;
 }
 
-#items_table{
-    border-radius: 15px;
-}
+/* Id used in admin.php for the current items div*/ 
+#items_table{ border-radius: 15px;}
 
+/* Id used in cart.php for the cart items div*/
 #cart{
     background-color: var(--card-colour);
-    border-radius: 10px 10px 5px 5px;
+    border-radius: 10px 10px 0 0;
 }
 
+/* Id used in cart.php for the order information div*/
 #cart_info{
     background-color: var(--card-colour);
     border-radius: 0px 0px 10px 10px;
 }
 
-.background{
-    background-color: var(--card-colour);
-}
+/* Id used in cart_to_order.php for the header div */
+#order{ height: 40px; }
 
+/* Class that adds a transparent background like all other cards */
+.background{ background-color: var(--card-colour);}
+
+/* bootstrap btn class updated with our colour scheme */
 .btn-primary{
     --bs-btn-bg: var(--header-colour);
     --bs-btn-border-color: var(--header-colour);
@@ -71,6 +80,7 @@ body{
     --bs-btn-disabled-color: var(--emphasis-2);
 }
 
+/* bootstrap btn class updated with our colour scheme */
 .btn-secondary{
     --bs-btn-bg: var(--emphasis-3);
     --bs-btn-border-color: var(--emphasis-3);
@@ -81,26 +91,27 @@ body{
     --bs-btn-disabled-color: var(--emphasis-2);
 }
 
+/* bootstrap card class updated with our colour scheme */
 .card{
     background-color: var(--card-colour);
     border: var(--bs-card-border-width) solid var(--emphasis-2-faded);
     color: var(--emphasis-1)
 }
 
+/* bootstrap navbar class updated with our colour scheme */
 .navbar{
     --bs-navbar-color: var(--emphasis-2);
     --bs-navbar-hover-color: var(--emphasis-2-faded);
     --bs-navbar-active-color: var(--emphasis-2-faded);
 }
 
-nav.navbar.navbar-expand-lg.bg.fixed-top{
-    height: 50px;
-}
+/* Prevents the navbar size from being inconsistent */
+nav.navbar.navbar-expand-lg.bg.fixed-top{ height: 50px; }
 
-.navbar-brand{
-    color: var(--emphasis-2);
-}
+/* updates bootstrap navbar-brand with our colour scheme */
+.navbar-brand{ color: var(--emphasis-2); }
 
+/* updates bootstrap model with our colour scheme */
 .modal{
     --bs-modal-bg: var(--emphasis-2);
     --bs-modal-color: var(--emphasis-1);
@@ -108,17 +119,24 @@ nav.navbar.navbar-expand-lg.bg.fixed-top{
     --bs-modal-header-border-color: none;
 }
 
-.bg{
-    background-color: var(--header-colour);
-}
+/* background colour for navbar*/
+.bg{ background-color: var(--header-colour); }
 
+/* general styles for table elements */
 th, td { border-bottom: 1px solid var(--emphasis-1);}
+
+/* pictures for the index menu */
 .item_picture {width: 100%; aspect-ratio: 1/1; object-fit: cover;}
+
+/* initially used just for the cart but now used for any smaller version of the pictures */
 .cart_picture {width: 20%; aspect-ratio: 1/1; object-fit: cover;}
 
+/* force inputs inside of modals to have rounded edges */
 .m-border{border-radius:0 5px 5px 0 !important;}
 
+/* Updates bootstrap class with our colour scheme*/
 .border-top{border-top: var(--bs-border-width) var(--bs-border-style) var(--emphasis-1)!important;}
 .border-bottom {border-bottom: var(--bs-border-width) var(--bs-border-style) var(--emphasis-1)!important;}
 
+/* Used for updating text colour when needed */
 .colour{color: var(--emphasis-1);}

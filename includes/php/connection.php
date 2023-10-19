@@ -19,7 +19,7 @@ if (!$dbc) {
     die ('MySQL Error:' . mysqli_connect_error());
 }
  else {
-     print "Connected to database " . $db . "<BR><BR>"; // print a message to indicate connection is live for testing purposes
+    // do nothing if connection is successful
  }
 
 
