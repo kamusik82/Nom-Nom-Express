@@ -1,5 +1,4 @@
 <!-- This code runs updates the database with the order info, removes the items from the cart, and displays a thank you page for the customer -->
-<!-- Need to update with what details we want to display on this page -->
 
 <!DOCTYPE html>
 <html lang="eng">

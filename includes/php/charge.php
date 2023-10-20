@@ -26,6 +26,7 @@
       'currency' => 'cad',
   ]);
 
+  // updates db and displays an order complete message
   include('./cart_to_order.php');
 ?>
 
