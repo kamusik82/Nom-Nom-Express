@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
 	<title> Nom Nom Express Admin Page </title>
@@ -11,14 +12,14 @@
 
 	<?php include("./includes/php/connection.php"); ?> <!-- include for connection php to connect to the database -->
 	
-	<div class="d-flex flex-row justify-content-end mt-3">
+	<div class="d-flex flex-row justify-content-end mt-3 mb-3">
 		<form action='./includes/php/logout.php' method='post'>
 			<!-- logout button form action takes you to the logout page (will probably update to just take them back to the landing page) -->
-			<input type='hidden' name='logout' value='true' />
+			<input type='hidden' name='logout' value='true' >
 			<button class="btn btn-primary" type='submit' value='Logout'>Log out</button> <!-- logout submit button -->
 		</form>
 
-		<a href="./index.php"><button class="btn btn-primary me-2 ms-2">Index</button></a>
+		<a id="index" href="./index.php" class="btn btn-primary me-2 ms-2">Index</a>
 	</div>
 
 	<?php include("./includes/php/store_info.php"); ?> <!-- include for the store_info -->
@@ -61,7 +62,7 @@
 							<p> Store Phone Number <input type="text" name="phone"></p>
 							<p> Store Location <input type="text" name="location"></p>
 							<p> Store Email <input type="text" name="email"></p>
-							<input type="submit" name="update" value="Submit" /> <!-- update submit button -->
+							<input type="submit" name="update" value="Submit" > <!-- update submit button -->
 						</form>
 					</div>
 				</div>
@@ -83,7 +84,7 @@
 					<input type="text" class="form-control" aria-label="ItemName" aria-describedby="addItem-addon1" 
 						name="name" value="<?php if (isset($_POST['name'])) { // keeps the item name value given and also protects against injection attacks
 						print htmlspecialchars($_POST['name']);
-					} ?>" />
+					} ?>" >
 				</div>
 				<p class="ms-5"><?php print $nameErr ?></p> <!-- error message if name is empty from add.php -->
 
@@ -92,7 +93,7 @@
 					<input type="text" class="form-control" aria-label="ItemDesc" aria-describedby="addItem-addon2" 
 					name="description" value="<?php if (isset($_POST['description'])) { // keeps the description value given and also protects against injection attacks
 						print htmlspecialchars($_POST['description']);
-					} ?>" />
+					} ?>" >
 				</div>
 				<p class="ms-5"><?php print $descErr ?></p> <!-- error message if description is empty from add.php -->
 				
@@ -101,7 +102,7 @@
 					<input type="text" class="form-control" aria-label="ItemPrice" aria-describedby="addItem-addon3" 
 					name="price" value="<?php if (isset($_POST['price'])) { // keeps the price value given and also protects against injection attacks
 						print htmlspecialchars($_POST['price']);
-					} ?>" />
+					} ?>" >
 				</div>
 				<p class="ms-5"><?php print $priceErr ?></p> <!-- error message if price is empty or not a price from add.php -->
 
@@ -117,7 +118,7 @@
 
 				<div class="w-75 ms-5">
 					<label for="formFile" class="form-label">Item Picture</label>
-					<input type="hidden" name="MAX_FILE_SIZE" value="300000" />
+					<input type="hidden" name="MAX_FILE_SIZE" value="300000" >
 					<input class="form-control" name="pic" type="file" id="formFile">
 				</div>
 				<p class="ms-5"><?php print $fileErr ?></p> <!-- add a file to the form -->
@@ -141,7 +142,7 @@
 		<div class="modal-dialog">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h1 class="modal-title fs-5" id="confirmationLabel"></h1>
+					<h1 class="modal-title fs-5" id="confirmationLabel">-</h1>
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
 				<div class="modal-body d-flex flex-column">
@@ -205,13 +206,16 @@
 		$(document).on('click', '.delete', function () {
 			// get the item_id from a data attribute of the button
 
-			let item_id = $(this).attr("item_id");
-			let item_name = $(this).attr("item_name");
+			// item_id needs to be split from id attribute before it is useable
+			let split = $(this).attr('id').split("_");
+			let item_id = split[0];
+			let item_name = $(this).attr("name");
 
 			$("#confirmationLabel").html("Delete Confirmation");
 			$(".confirmation-top").html("Are you sure you want to delete");
 			$(".confirmation-item").html(item_name);
 			$(".confirmation-bottom").html("from menu item?");
+			//uses href attribute to delete item
 			$("#confirmationModal .modal-footer .btn-primary").attr('href', `./admin.php?action=delete&itemID=${item_id}`);
 
 			$('#confirmationModal').modal('show');
@@ -222,13 +226,16 @@
 		$(document).on('click', '.disable', function () {
 			// get the item_id from a data attribute of the button
 
-			let item_id = $(this).attr("item_id");
-			let item_name = $(this).attr("item_name");
+			// item_id needs to be split from id attribute before it is useable
+			let split = $(this).attr('id').split("_");
+			let item_id = split[0];
+			let item_name = $(this).attr("name");
 
 			$("#confirmationLabel").html("Disable Confirmation");
 			$(".confirmation-top").html("Are you sure you want to disable");
 			$(".confirmation-item").html(item_name);
 			$(".confirmation-bottom").html("from menu display?");
+			//uses href attribute to disable item
 			$("#confirmationModal .modal-footer .btn-primary").attr('href', `./admin.php?action=disable&itemID=${item_id}`);
 
 			$('#confirmationModal').modal('show');
@@ -238,13 +245,16 @@
 		// When clicked enable button
 		$(document).on('click', '.enable', function () {
 
-			let item_id = $(this).attr("item_id");
-			let item_name = $(this).attr("item_name");
+			// item_id needs to be split from id attribute before it is useable
+			let split = $(this).attr('id').split("_");
+			let item_id = split[0];
+			let item_name = $(this).attr("name");
 
 			$("#confirmationLabel").html("Enable Confirmation");
 			$(".confirmation-top").html("Are you sure you want to enable");
 			$(".confirmation-item").html(item_name);
 			$(".confirmation-bottom").html("onto menu display?");
+			//uses href attribute to enable item
 			$("#confirmationModal .modal-footer .btn-primary").attr('href', `./admin.php?action=enable&itemID=${item_id}`);
 
 			$('#confirmationModal').modal('show');
@@ -253,10 +263,13 @@
 		// When clicked edit button
 		$(document).on('click', '.edit', function () {
 
-			let item_id = $(this).attr("item_id");
-			let item_name = $(this).attr("item_name");
-			let item_desc = $(this).attr("item_desc");
-			let item_price = $(this).attr("item_price");
+			// item_id needs to be split from id attribute before it is useable
+			let split = $(this).attr('id').split("_");
+			let item_id = split[0];
+			let item_name = $(this).attr("name");
+			let item_val = $(this).attr("value").split("#");
+			let item_desc = item_val[0];
+			let item_price = item_val[1];
 
 			$("#editModal input[name=itemID]").val(item_id);
 			$("#editModal input[name=newName]").val(item_name);

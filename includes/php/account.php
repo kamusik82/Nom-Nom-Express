@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
 	<title>Nom Nom Express</title>
@@ -11,7 +12,7 @@
     <!-- user_info.php calls connection for the page and holds variables for user info -->
     <?php include ('./user_info.php'); ?>
     <!-- Button in the top right orner that leads back to the the index -->
-    <div class="d-flex justify-content-end mt-3">
+    <div class="d-flex justify-content-end mt-3 mb-3">
         <a class="btn btn-primary me-3" href="../../index.php">Back to Menu</a>
     </div>
 
@@ -47,8 +48,10 @@
                     <p>Phone Number: <span><?php print $usePhone; ?></span></p>
                     <p>Registration Date: <span><?php print $regDate; ?></span> </p>
                 </div>
-                <p>Privacy Policy: 
+                <p>
+                    Privacy Policy: 
                     <?php print $privacy; ?>
+                </p>
 
                     <!-- php for privacy button -->
                     <?php   if($privacy == 'Signed'){

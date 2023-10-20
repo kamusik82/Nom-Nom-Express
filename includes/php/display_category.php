@@ -62,8 +62,8 @@ if ($num > 0) { // If it ran OK, display the records.
         $price = $row['item_price'];
         array_push($id_array, $id);
 
-        // the button is disabled if the user is not logged in
-        if(isset($_SESSION['user_name'])){
+        // the button is disabled if the user is not logged in or if they are an admin
+        if(isset($_SESSION['user_name']) && $_SESSION['role'] == 'U'){
             $uName = $_SESSION['user_name'];
             $check_sql = "SELECT privacy from users where username = '$uName'";
             $check = @mysqli_query($dbc, $check_sql);

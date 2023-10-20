@@ -18,13 +18,13 @@
             // if there is a returned row
             if ($num == 1){
                 $row = mysqli_fetch_array($result);
-                $role = $row['role'];
 
                 $_SESSION['user_id'] = $row['user_id']; // store user_id to the session
                 $_SESSION['user_name'] = $row['username']; // store username to the session
+                $_SESSION['role'] = $row['role']; // users role used in index as well as here
                 
                 // go to admin or customer page depending on a returned role
-                if ($role == 'A') {
+                if ($_SESSION['role'] == 'A') {
                     header('Location: ./admin.php');  // go to admin page 
                 } else {
                     header('Location: ./index.php'); // go to customer page

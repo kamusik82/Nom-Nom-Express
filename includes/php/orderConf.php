@@ -4,6 +4,7 @@
     ob_start(); ?>
 
     <!-- Actual html content here -->
+    <!DOCTYPE html>
     <html lang="en">
 
     <head>
@@ -16,7 +17,7 @@
     </head>
 
     <body class="m-5">
-        <div class="container background">
+        <div class="container background pt-3 pb-3 rounded">
             <h2 class="pt-5">Order Confirmation</h2>
             <p>Hi <span class="fw-bold"></span><?php echo "$first_name $last_name" ?></span></p>
             <p>Thank you for shopping at Nom Nom Express.<br>
@@ -35,8 +36,8 @@
 
                             for ($i = 0; $i < count($nameArray); $i++) {
                                 print   "<tr>
-                                            <td align='left'><img src='../images/$pictureArray[$i]' class='cart_picture'></td>
-                                            <td align='left' class='align-middle'>
+                                            <td class='text-start'><img src='../images/$pictureArray[$i]' class='cart_picture rounded'></td>
+                                            <td class='text-start'>
                                                 <div >
                                                     <h5 class='my-3 colour'>$nameArray[$i]</h5>
                                                     <p class='fw-bold colour'>$$priceArray[$i] <span class='colour'>x $quantityArray[$i]</span></p>
@@ -54,23 +55,23 @@
                     <tbody class="me-3">
                         <tr>
                             <td>Order ID</td>
-                            <td align="right">No.<?php echo $order_num ?></td>
+                            <td class="text-end">No.<?php echo $order_num ?></td>
                         </tr>
                         <tr>
                             <td>Sub-total</td>
-                            <td align="right">$<?php print number_format(($totalamt-$taxamt-$shipamt), 2)?></td>
+                            <td class="text-end">$<?php print number_format(($totalamt-$taxamt-$shipamt), 2)?></td>
 
                         <tr>
                             <td>Tax</td>
-                            <td align="right">$<?php echo number_format($taxamt, 2) ?></td>
+                            <td class="text-end">$<?php echo number_format($taxamt, 2) ?></td>
                         </tr>
                         <tr>
                             <td>Shipping</td>
-                            <td align="right">$<?php echo number_format($shipamt, 2) ?></td>
+                            <td class="text-end">$<?php echo number_format($shipamt, 2) ?></td>
                         </tr>
                         <tr>
                             <td class="fw-bold">Total</td>
-                            <td class="fw-bold" align="right">$<?php echo number_format($totalamt, 2) ?></td>
+                            <td class="fw-bold text-end">$<?php echo number_format($totalamt, 2) ?></td>
                         </tr>
                     </tbody>
                 </table>

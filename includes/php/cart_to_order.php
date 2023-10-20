@@ -2,7 +2,7 @@
 <!-- Need to update with what details we want to display on this page -->
 
 <!DOCTYPE html>
-<html>
+<html lang="eng">
     <head>
         <title>Nom Nom Express</title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -78,7 +78,7 @@
             ?>
 
         </div>
-        <div class="container background">
+        <div class="container background pt-3 pb-3 rounded">
             <div class="row mb-3">
                 <h5>Thank you for your Nom Nom Express order <span class="fw-bold"><?php print $first_name?></span>!</h5>
                 <br>
@@ -90,20 +90,20 @@
             </div>
             <div class="row mb-2">
                 <div class="col-8 d-flex justify-content-center">
-                    <table width="100%" class="border-bottom border-primary">
+                    <table class="border-bottom border-primary col-12">
                         <tr class="border-bottom border-primary">
-                            <th class="fw-bold" align="left" width="50%">Item</th>
-                            <th class="fw-bold" align="left" width="20%">Price per Item</th>
-                            <th class="fw-bold" align="left" width="20%">Quantity</th>
+                            <th class="fw-bold text-start col-6">Item</th>
+                            <th class="fw-bold text-start col-2">Price per Item</th>
+                            <th class="fw-bold text-start col-2">Quantity</th>
                         </tr>
 
                         <?php
                             for ($i = 0; $i < count($nameArray); $i++) {
                                 print
                                     '<tr>
-                                        <td align="left">' . $nameArray[$i] . '</td>
-                                        <td align="left">' . $priceArray[$i] . '</td>
-                                        <td align="left">' . $quantityArray[$i] . '</td>
+                                        <td class="text-start">' . $nameArray[$i] . '</td>
+                                        <td class="text-start">' . $priceArray[$i] . '</td>
+                                        <td class="text-start">' . $quantityArray[$i] . '</td>
                                     </tr>';
                             }
                         ?>

@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -9,7 +10,7 @@
     <title>Nom Nom Express</title>
 </head>
 
-<body>
+<body class="pt-5">
     <?php require('./includes/php/connection.php'); ?>
     <?php include ("./includes/php/category_header.php"); ?>
 

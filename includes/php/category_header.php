@@ -1,12 +1,12 @@
 
 <?php
 
-    $all = 'index.php?all=true';
-    $breakfast ='index.php?breakfast=true';
-    $burger = 'index.php?burger=true';
-    $pizza = 'index.php?pizza=true';
-    $dessert = 'index.php?dessert=true';
-    $beverage = 'index.php?beverage=true';
+    $all = '"index.php?all=true"';
+    $breakfast ='"index.php?breakfast=true"';
+    $burger = '"index.php?burger=true"';
+    $pizza = '"index.php?pizza=true"';
+    $dessert = '"index.php?dessert=true"';
+    $beverage = '"index.php?beverage=true"';
 
     if(isset($_SESSION['user_name'])){
 
@@ -18,8 +18,8 @@
         if($row['role'] == 'A'){
             print   '<!-- navigation bar to show categories -->
             <nav class="navbar navbar-expand-lg bg fixed-top">
-                <div class="container-fluid d-flex">
-                    <a class="navbar-brand" href="#">Nom Nom Express</a>
+                <div class="container-fluid d-flex bg">
+                    <a class="navbar-brand" href="http://localhost/nom-nom-express/index.php?all=true">Nom Nom Express</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -35,9 +35,9 @@
                             <a class="nav-link" href='.$dessert.'>Desserts</a>
                             <a class="nav-link" href='.$beverage.'>Beverages</a>
                             <a class="nav-link" href="./admin.php">Admin Page</a>
-                            <form class="pt-3" action="./includes/php/logout.php" method="post">	<!-- logout button form action takes you to the logout page (will probably update to just take them back to the landing page) -->
-                                <input type="hidden" name="logout" value="true" />
-                                <input class="nav-link" type="submit" value="Logout" /> <!-- logout submit button -->
+                            <form action="./includes/php/logout.php" method="post">	<!-- logout button form action takes you to the logout page (will probably update to just take them back to the landing page) -->
+                                <input type="hidden" name="logout" value="true" >
+                                <input class="nav-link" type="submit" value="Logout" > <!-- logout submit button -->
                             </form>
                         </div>
 
@@ -47,8 +47,8 @@
         } else {
             print   '<!-- navigation bar to show categories -->
                     <nav class="navbar navbar-expand-lg bg fixed-top">
-                        <div class="container-fluid d-flex">
-                            <a class="navbar-brand" href="#">Nom Nom Express</a>
+                        <div class="container-fluid d-flex bg">
+                            <a class="navbar-brand" href="http://localhost/nom-nom-express/index.php?all=true">Nom Nom Express</a>
                             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                                 <span class="navbar-toggler-icon"></span>
@@ -64,9 +64,9 @@
                                     <a class="nav-link" href='.$dessert.'>Desserts</a>
                                     <a class="nav-link" href='.$beverage.'>Beverages</a>
                                     <a class="nav-link" href="./includes/php/account.php">Account Info</a>
-                                    <form class="pt-3" action="./includes/php/logout.php" method="post">	<!-- logout button form action takes you to the logout page (will probably update to just take them back to the landing page) -->
-                                        <input type="hidden" name="logout" value="true" />
-                                        <input class="nav-link" type="submit" value="Logout" /> <!-- logout submit button -->
+                                    <form action="./includes/php/logout.php" method="post">	<!-- logout button form action takes you to the logout page (will probably update to just take them back to the landing page) -->
+                                        <input type="hidden" name="logout" value="true" >
+                                        <input class="nav-link" type="submit" value="Logout" > <!-- logout submit button -->
                                     </form>
                                     <a class="nav-link" href="./includes/php/cart.php">Cart</a>
 
@@ -79,8 +79,8 @@
     } else {
     print   '<!-- navigation bar to show categories -->
             <nav class="navbar navbar-expand-lg bg fixed-top">
-                <div class="container-fluid d-flex">
-                    <a class="navbar-brand" href="#">Nom Nom Express</a>
+                <div class="container-fluid d-flex bg">
+                    <a class="navbar-brand" href="http://localhost/nom-nom-express/index.php?all=true">Nom Nom Express</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -136,8 +136,8 @@ print               '</div>
             for their data to be used and give individuals the right to know who is accessing their information and what it
             will be used for. All companies collecting and/or using personal information on Canadian citizens must comply
             with this new law.
-            <p>
             </p>
+            <p>
             Nom Nom Express collects the following information for purposes of Account Registration, Order Tracking and Order Delivery:
                 <ul>
                     <li>Name</li> 
@@ -155,12 +155,6 @@ print               '</div>
                 <button type="button" class="btn btn-secondary" data-bs-target="#loginModal" data-bs-toggle="modal">Decline</button>
                 <a class="btn btn-primary" href="./includes/php/registration.php">Accept</a>
             </div>
-        </div>
-    </div>
-</div>';
-
-print
-            '</div>
         </div>
     </div>
 </div>';

@@ -168,7 +168,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 } // End of the main Submit conditional.
 ?>
 
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
 	<title> Registration </title>
@@ -284,8 +285,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </div>
 </div>
 
-<a type="button" class="btn btn-secondary ms-5" href="../../index.php">Cancel</a>
-<input type="submit" class="btn btn-primary" name="submit_registration" value="REGISTER" />      
+<a class="btn btn-secondary ms-5" href="../../index.php">Cancel</a>
+<input type="submit" class="btn btn-primary" name="submit_registration" value="REGISTER" >      
 
 </form>
 

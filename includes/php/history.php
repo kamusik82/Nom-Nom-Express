@@ -30,23 +30,23 @@
                 }
 
                 // each order is placed into a collapse 
-                print   "<a class='btn btn-primary mb-2' data-bs-toggle='collapse' data-bs-target='#collapse$order' href='#collapse$order' role='button' aria-expanded='false' aria-controls='#collapse$order'>
+                print   "<a class='btn btn-primary mb-2' data-bs-toggle='collapse' data-bs-target='#collapse$order' href='#collapse$order' role='button' aria-expanded='false' aria-controls='collapse$order'>
                             Order #$order on $oDate &emsp;Tax: $$tax &emsp;Delivery: $$shipping &emsp;Total: $$total
                         </a>";
                 print   "<div class='collapse'  id='collapse$order'>
                             <div class='card mb-3'>
                                 <div class='row g-0'>
-                                    <table width='100%'>
+                                    <table class='col-12'>
                                         <tr>
-                                            <th align='left' width='60%'>Name</th>
-                                            <th align='left' width='20%'>Price</th>
-                                            <th class='text-center' width='20%'>Amount</th>
+                                            <th class='col-8 text-start'>Name</th>
+                                            <th class='col-2 text-start'>Price</th>
+                                            <th class='col-2 text-center'>Amount</th>
                                         </tr>";
                 // go through the arrays to fill in the data for each field             
                 for ($i = 0; $i < count($nameArray); $i++) {
                     print               "<tr>
-                                            <td align='left'>". $nameArray[$i] ."</td>
-                                            <td align='left'>$". $priceArray[$i] ."</td>
+                                            <td class='text-start'>". $nameArray[$i] ."</td>
+                                            <td class='text-start'>$". $priceArray[$i] ."</td>
                                             <td class='text-center'>". $quantityArray[$i] ."</td>
                                         </tr>";
             }

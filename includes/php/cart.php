@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>Nom Nom Express</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -7,7 +7,7 @@
     <link href="../css/style.css" rel="stylesheet" >
 </head>
 <body>
-    <div class="d-flex justify-content-end mt-3">
+    <div class="d-flex justify-content-end mt-3 mb-3">
         <a class="btn btn-primary me-3" href="../../index.php">Back to Menu</a>
     </div>
 
@@ -35,8 +35,8 @@
                     <table id="cart" class="col-10 mt-1 pt-4 pb-4">
                         <thead>
                             <tr>
-                                <th class="text-end col-3">Item</th>
                                 <th class="text-center col-3"></th>
+                                <th class="text-center col-3">Item</th>
                                 <th class="text-center col-2">Quantity</th>
                                 <th class="text-center col-1">Price Per Item</th>
                                 <th class="text-center"></th>
@@ -53,7 +53,7 @@
                 ob_start();
                 print 
                             '<tr>
-                                <td class="text-center "><img class="cart_picture" src="../images/' . $row['item_picture'] . '" alt="'.$row['item_name'].'"></td>
+                                <td class="text-center "><img class="cart_picture rounded" src="../images/' . $row['item_picture'] . '" alt="'.$row['item_name'].'"></td>
                                 <td class="text-center">' . $row['item_name'] . '</td>
                                 <form method="post">
                                     <td class="text-center">
@@ -78,7 +78,7 @@
                                 <td class="text-center">$' . $row['item_price'] . '</td>
                                 <form method="post">
                                     <td class="text-center">
-                                        <input type="hidden" name="item_id" value="'.$row['item_id'].'" />
+                                        <input type="hidden" name="item_id" value="'.$row['item_id'].'" >
                                         <button type="submit" name="btn-delete" class="btn btn-primary border-0">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
                                                 <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
@@ -153,11 +153,11 @@
                                     data-description="Order Payment"
                                     data-amount="' . $owing_cents . '"
                                     data-locale="auto"></script>
-                                <input type="hidden" name="totalamt_cents" value="' . $owing_cents . '" />
-                                <input type="hidden" name="totalamt" value="' . $owing . '" />
-                                <input type="hidden" name="taxamt" value="' . $tax . '" />
-                                <input type="hidden" name="shipamt" value="' . $delivery . '" />
-                                <input type="hidden" name="user" value="' . $u_id . '" />
+                                <input type="hidden" name="totalamt_cents" value="' . $owing_cents . '" >
+                                <input type="hidden" name="totalamt" value="' . $owing . '" >
+                                <input type="hidden" name="taxamt" value="' . $tax . '" >
+                                <input type="hidden" name="shipamt" value="' . $delivery . '" >
+                                <input type="hidden" name="user" value="' . $u_id . '" >
                             </form>
                         </div>
                     </div>

@@ -1,7 +1,7 @@
 /* All Colours for the site*/
 :root{
 	--background-colour : rgba(250, 206, 127, 0.8);
-    --card-colour: rgba(236, 200, 133, .7);	
+    --card-colour: rgba(236, 200, 133, .8);	
 	--header-colour : rgb(145, 31, 39);			
 	--emphasis-1 : rgb(99, 10, 16);				
     --emphasis-1-faded: rgba(99, 10, 16, 0.3);
@@ -57,6 +57,8 @@ body{
 /* Id used in cart_to_order.php for the header div */
 #order{ height: 40px; }
 
+/* Id used in admin php for index button height */
+#index{ height: 38px; }
 /* Class that adds a transparent background like all other cards */
 .background{ background-color: var(--card-colour);}
 
@@ -123,7 +125,10 @@ nav.navbar.navbar-expand-lg.bg.fixed-top{ height: 50px; }
 .bg{ background-color: var(--header-colour); }
 
 /* general styles for table elements */
-th, td { border-bottom: 1px solid var(--emphasis-1);}
+th, td { 
+    border-bottom: 1px solid var(--emphasis-1);
+    padding: 5px;
+}
 
 /* pictures for the index menu */
 .item_picture {width: 100%; aspect-ratio: 1/1; object-fit: cover;}

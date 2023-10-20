@@ -31,18 +31,18 @@ print
         <p> 
             USERNAME: <input type="text" name="username" 
             value="'.
-                $userName.'"/> <!-- keeps the username value given and also protects against injection attacks -->
+                $userName.'"> <!-- keeps the username value given and also protects against injection attacks -->
             <span>'.$userErr.'</span>
         </p>
 
         <p> 
             PASSWORD: <input type="password" name="pass" 
             value="'.
-                $passWord.'"/> <!-- keeps the password value given and also protects against injection attacks -->
+                $passWord.'"> <!-- keeps the password value given and also protects against injection attacks -->
             <span>'.$passErr.'</span>
         </p>
 
-        <button type="submit" value="SUBMIT" class="btn btn-primary" />Submit</button>      
+        <button type="submit" value="SUBMIT" class="btn btn-primary" >Submit</button>      
 
     </form>';
 
