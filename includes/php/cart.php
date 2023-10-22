@@ -31,18 +31,14 @@
         // display the cart contents in a table
         if ($num > 0) {
             print 
-                '<div class="d-flex justify-content-center">
-                    <table id="cart" class="col-10 mt-1 pt-4 pb-4">
-                        <thead>
-                            <tr>
-                                <th class="text-center col-3"></th>
-                                <th class="text-center col-3">Item</th>
-                                <th class="text-center col-2">Quantity</th>
-                                <th class="text-center col-1">Price Per Item</th>
-                                <th class="text-center"></th>
-                            </tr>
-                        </thead>
-                        <tbody>';
+                '<div id="cart" class="container-fluid col-10">
+                    <div class="row border-bottom pt-3 pb-2">
+                                <div class="text-center col-0 col-md-3 fw-bold"></div>
+                                <div class="text-center col-6 col-md-4 fw-bold">Item</div>
+                                <div class="text-center col-3 col-md-2 fw-bold">Quantity</div>
+                                <div class="text-center col-2 col-md-2 fw-bold">Price Per Item</div>
+                                <div class="text-center col-1 col-md-1 fw-bold"></div>
+                    </div>';
 
             // add a table row for each cart item
             while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
@@ -52,42 +48,41 @@
             
                 ob_start();
                 print 
-                            '<tr>
-                                <td class="text-center "><img class="cart_picture rounded" src="../images/' . $row['item_picture'] . '" alt="'.$row['item_name'].'"></td>
-                                <td class="text-center">' . $row['item_name'] . '</td>
+                        '<div class="row border-bottom py-2">
+                            <div class="text-center d-none d-md-block col-md-3"><img class="cart_picture rounded" src="../images/' . $row['item_picture'] . '" alt="'.$row['item_name'].'"></div>
+                            <div class="text-center col-6 col-md-4">' . $row['item_name'] . '</div>
+                            <div class="text-center col-3 col-md-2">
                                 <form method="post">
-                                    <td class="text-center">
-                                        <div class="d-flex flex-row justify-content-center align-items-center">
-                                            <input type="hidden" name="item_id" value="'.$row['item_id'].'">
-                                            <button class="btn btn-primary border-0" type="submit" name="action" value="decrease">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
-                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                                                    <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
-                                                </svg>
-                                            </button>
-                                            <span class="quantity"> &emsp;' .$row['quantity'] . '&emsp; </span>
-                                            <button class="btn btn-primary border-0" type="submit" name="action" value="increase">
-                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
-                                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                                                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </form>
-                                <td class="text-center">$' . $row['item_price'] . '</td>
-                                <form method="post">
-                                    <td class="text-center">
-                                        <input type="hidden" name="item_id" value="'.$row['item_id'].'" >
-                                        <button type="submit" name="btn-delete" class="btn btn-primary border-0">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
-                                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>
-                                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                                    <div class="d-flex flex-row justify-content-center align-items-center">
+                                        <input type="hidden" name="item_id" value="'.$row['item_id'].'">
+                                        <button class="btn btn-primary border-0" type="submit" name="action" value="decrease">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle" viewBox="0 0 16 16">
+                                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
                                             </svg>
                                         </button>
-                                    </td>
+                                        <div class="quantity px-3">' .$row['quantity'] . '</div>
+                                        <button class="btn btn-primary border-0" type="submit" name="action" value="increase">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
+                                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                                <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
+                                            </svg>
+                                        </button>
+                                    </div>
                                 </form>
-                            </tr>';
+                            </div>
+                            <div class="text-center col-2 col-md-2">$' . $row['item_price'] . '</div>
+                            <div class="text-center col-1">
+                                <form method="post">  
+                                    <input type="hidden" name="item_id" value="'.$row['item_id'].'" >
+                                    <button type="submit" name="btn-delete" class="btn btn-primary border-0">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z"/>                                                <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z"/>
+                                        </svg>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>';
             }
 
             // calculate order cost
@@ -113,13 +108,9 @@
 
             // display footer with delivery address, order cost breakdown and clear-cart / pay-with-card buttons
             print 
-                        '</tbody>
-                    </table>
-                </div>
-                <div id="cart_info" class="container-fluid col-10">
-                    <div class="row">
+                    '<div class="row py-3">
                         <div class="col d-flex flex-column align-items-start">
-                            <div class="fw-bold">Delivery Address:</div>
+                            <div class="fw-bold pb-1">Delivery Address:</div>
                             <div>' . $street1 . '</div>
                             <div>' . $street2 . '</div>
                             <div>' . $city . '</div>
@@ -130,7 +121,7 @@
                             <div>Subtotal: $' . number_format($totalPrice, 2) . '</div>
                             <div>Tax: $' . $tax . '</div>
                             <div>Delivery Fee: $' . $delivery . '</div>
-                            <div class="fs-5 fw-bold">Order Total: $' . $owing . '</div>
+                            <div class="fs-5 fw-bold pt-1">Order Total: $' . $owing . '</div>
                         </div>
                     </div>
                 </div>

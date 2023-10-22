@@ -2,64 +2,89 @@
 <html lang="en">
 
 <head>
-	<title>Nom Nom Express</title>
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <title>Nom Nom Express</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <link href="../css/style.css" rel="stylesheet">
 </head>
 
 <body>
     <!-- user_info.php calls connection for the page and holds variables for user info -->
-    <?php include ('./user_info.php'); ?>
-    <!-- Button in the top right orner that leads back to the the index -->
+    <?php include('./user_info.php'); ?>
+    <!-- Button in the top right that leads back to the the index -->
     <div class="d-flex justify-content-end mt-3 mb-3">
         <a class="btn btn-primary me-3" href="../../index.php">Back to Menu</a>
     </div>
 
     <!-- order history buttons dynamically created using history.php -->
-    <div class="container-fluid d-flex flex-row">
-        <div class="col-7 mt-2 me-3">
-            <h1>Order History</h1>
-            <div class="d-flex flex-column">
-                <?php include('./history.php'); ?>
-            </div>
-        </div>
+    <div class="container-fluid m-3">
+        <div class="row">
 
-        <!-- Account info uses variables from user_info.php -->
-        <div id="info" class="col-4 d-flex align-items-center flex-column mt-2 me-5 shadow rounded">
-            <h1 class="me-5">Account Info</h1>
-            <div>
-                <div>
-                    <p>Username: <span><?php print $useName; ?></span></p>
-                    <p>First Name: <span><?php print $useFirst; ?></span></p>
-                    <p>Last Name: <span><?php print $useLast; ?></span></p>
+            <!-- Order History -->
+            <div id="order_history" class="col-md-7 me-3 shadow rounded overflow-y-auto text-center">
+                <h1>Order History</h1>
+                <div class="d-flex flex-column m-3">
+                    <?php include('./history.php'); ?>
                 </div>
+            </div>
+
+            <!-- Account info uses variables from user_info.php -->
+            <div id="info" class="col-md-4 d-flex align-items-center flex-column shadow rounded">
+                <h1 class="me-5">Account Info</h1>
                 <div>
-                    <p>Street Address: <span><?php print $useAdd; ?></span> </p>
-                    <p>Street Address 2: <span><?php print $useAdd2; ?></span></p>
-                </div>
-                <div>
-                    <p>City: <span><?php print $useCity; ?></span></p>
-                    <p>Province: <span><?php print $useProv; ?></span></p>
-                    <p>Postal: <span><?php print $usePost; ?></span></p>
-                </div>
-                <div>
-                    <p>Email: <span><?php print $useEmail; ?></span></p>
-                    <p>Phone Number: <span><?php print $usePhone; ?></span></p>
-                    <p>Registration Date: <span><?php print $regDate; ?></span> </p>
-                </div>
-                <p>
-                    Privacy Policy: 
-                    <?php print $privacy; ?>
-                </p>
+                    <div>
+                        <p>Username: <span>
+                                <?php print $useName; ?>
+                            </span></p>
+                        <p>First Name: <span>
+                                <?php print $useFirst; ?>
+                            </span></p>
+                        <p>Last Name: <span>
+                                <?php print $useLast; ?>
+                            </span></p>
+                    </div>
+                    <div>
+                        <p>Street Address: <span>
+                                <?php print $useAdd; ?>
+                            </span> </p>
+                        <p>Street Address 2: <span>
+                                <?php print $useAdd2; ?>
+                            </span></p>
+                    </div>
+                    <div>
+                        <p>City: <span>
+                                <?php print $useCity; ?>
+                            </span></p>
+                        <p>Province: <span>
+                                <?php print $useProv; ?>
+                            </span></p>
+                        <p>Postal: <span>
+                                <?php print $usePost; ?>
+                            </span></p>
+                    </div>
+                    <div>
+                        <p>Email: <span>
+                                <?php print $useEmail; ?>
+                            </span></p>
+                        <p>Phone Number: <span>
+                                <?php print $usePhone; ?>
+                            </span></p>
+                        <p>Registration Date: <span>
+                                <?php print $regDate; ?>
+                            </span> </p>
+                    </div>
+                    <p>
+                        Privacy Policy:
+                        <?php print $privacy; ?>
+                    </p>
 
                     <!-- php for privacy button -->
-                    <?php   if($privacy == 'Signed'){
-                                print   "<form action='./account.php' method='POST'>
+                    <?php if ($privacy == 'Signed') {
+                        print "<form action='./account.php' method='POST'>
                                             <button type='submit' class='btn btn-secondary' name='out'>Opt Out</button>
                                         </form>";
-                            } else {
-                                print   "<div>
+                    } else {
+                        print "<div>
                                             <button data-bs-target='#privacy' data-bs-toggle='modal' class='btn btn-primary'>Opt In</button>
                                         </div>
 
@@ -102,15 +127,17 @@
                                                 </div>
                                             </div>
                                         </div>";
-                            }
+                    }
                     ?>
-                </p>
+                    </p>
+                </div>
             </div>
         </div>
     </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-		crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
 </body>
+
 </html>
