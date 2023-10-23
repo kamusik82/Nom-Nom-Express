@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nom Nom Express</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -31,13 +33,13 @@
         // display the cart contents in a table
         if ($num > 0) {
             print 
-                '<div id="cart" class="container-fluid col-10">
+                '<div id="cart" class="container-fluid col-11 col-sm-10">
                     <div class="row border-bottom pt-3 pb-2">
                                 <div class="text-center col-0 col-md-3 fw-bold"></div>
-                                <div class="text-center col-6 col-md-4 fw-bold">Item</div>
+                                <div class="text-center col-4 col-md-4 fw-bold">Item</div>
                                 <div class="text-center col-3 col-md-2 fw-bold">Quantity</div>
-                                <div class="text-center col-2 col-md-2 fw-bold">Price Per Item</div>
-                                <div class="text-center col-1 col-md-1 fw-bold"></div>
+                                <div class="text-center col-5 col-md-2 fw-bold">Price Per Item</div>
+                                <div class="text-center col-0 col-md-1 fw-bold"></div>
                     </div>';
 
             // add a table row for each cart item
@@ -50,7 +52,7 @@
                 print 
                         '<div class="row border-bottom py-2">
                             <div class="text-center d-none d-md-block col-md-3"><img class="cart_picture rounded" src="../images/' . $row['item_picture'] . '" alt="'.$row['item_name'].'"></div>
-                            <div class="text-center col-6 col-md-4">' . $row['item_name'] . '</div>
+                            <div class="text-center col-4 col-md-4">' . $row['item_name'] . '</div>
                             <div class="text-center col-3 col-md-2">
                                 <form method="post">
                                     <div class="d-flex flex-row justify-content-center align-items-center">
@@ -61,7 +63,7 @@
                                                 <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
                                             </svg>
                                         </button>
-                                        <div class="quantity px-3">' .$row['quantity'] . '</div>
+                                        <div class="quantity px-1 px-sm-3">' .$row['quantity'] . '</div>
                                         <button class="btn btn-primary border-0" type="submit" name="action" value="increase">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-plus-circle" viewBox="0 0 16 16">
                                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
@@ -71,8 +73,8 @@
                                     </div>
                                 </form>
                             </div>
-                            <div class="text-center col-2 col-md-2">$' . $row['item_price'] . '</div>
-                            <div class="text-center col-1">
+                            <div class="text-center col-3 col-md-2">$' . $row['item_price'] . '</div>
+                            <div class="text-center col-2 col-md-1">
                                 <form method="post">  
                                     <input type="hidden" name="item_id" value="'.$row['item_id'].'" >
                                     <button type="submit" name="btn-delete" class="btn btn-primary border-0">
@@ -109,7 +111,7 @@
             // display footer with delivery address, order cost breakdown and clear-cart / pay-with-card buttons
             print 
                     '<div class="row py-3">
-                        <div class="col d-flex flex-column align-items-start">
+                        <div class="col-12 col-sm-6 d-flex flex-column align-items-start">
                             <div class="fw-bold pb-1">Delivery Address:</div>
                             <div>' . $street1 . '</div>
                             <div>' . $street2 . '</div>
@@ -117,7 +119,7 @@
                             <div>' . $province . '  ' . $postal . '</div>
                             <div>' . $phone . '</div>
                         </div>
-                        <div class="col d-flex flex-column align-items-end">
+                        <div class="col-12 col-sm-6 d-flex flex-column align-items-end">
                             <div>Subtotal: $' . number_format($totalPrice, 2) . '</div>
                             <div>Tax: $' . $tax . '</div>
                             <div>Delivery Fee: $' . $delivery . '</div>

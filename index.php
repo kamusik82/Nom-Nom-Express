@@ -16,11 +16,10 @@
 
     <!-- Display Items Here -->
     <div id="products" class="container text-center my-5">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 products g-2 g-lg-3">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-3 row-cols-xl-4 products g-2 g-lg-3 justify-content-center">
 
             <?php include("./includes/php/display_category.php"); ?>
             <?php include("./includes/php/add_to_cart.php"); ?>
-
         </div>
     </div>
 

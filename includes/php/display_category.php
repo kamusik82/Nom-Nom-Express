@@ -71,7 +71,7 @@ if ($num > 0) { // If it ran OK, display the records.
             $check_row = mysqli_fetch_array($check, MYSQLI_ASSOC);
             // Add to cart button works if the user is logged in and privacy statement is signed
             if($check_row['privacy'] == 'Y'){
-            echo "<div class='col'>
+            echo "<div class='col-10'>
                     <div class='card product h-100'>
                         <img src='./includes/images/$pic' class='card-img-top  item_picture' alt='$name'>
                         <div class='card-body'>
@@ -91,7 +91,7 @@ if ($num > 0) { // If it ran OK, display the records.
                 </div>";
             // if the user has not signed the privacy statement they cannot click add to cart
             } else {
-                echo "<div class='col'>
+                echo "<div class='col-10'>
                     <div class='card product h-100'>
                         <img src='./includes/images/$pic' class='card-img-top  item_picture' alt='$name'>
                         <div class='card-body'>
@@ -99,10 +99,10 @@ if ($num > 0) { // If it ran OK, display the records.
                             <p class='card-text product-description'>$desc</p>
                             <p class='card-text product-price'>$$price</p>
                             <form method='POST'>
-                            <button type='submit' class='btn btn-primary add-to-cart-btn disabled' name='$id'>
-                                <svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='currentColor' class='bi bi-plus-lg' viewBox='0 0 16 16'>
-                                    <path fill-rule='evenodd' d='M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z'/>
-                                </svg>
+                                <button type='submit' class='btn btn-primary add-to-cart-btn disabled' name='$id'>
+                                    <svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='currentColor' class='bi bi-plus-lg' viewBox='0 0 16 16'>
+                                        <path fill-rule='evenodd' d='M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z'/>
+                                    </svg>
                                     Add to Cart
                                 </button>
                             </form>
@@ -112,7 +112,7 @@ if ($num > 0) { // If it ran OK, display the records.
             }
             // if the user is not logged in the add to cart button is disabled 
         } else {
-            echo "<div class='col'>
+            echo "<div class='col-10'>
                     <div class='card product h-100'>
                         <img src='./includes/images/$pic' class='card-img-top  item_picture' alt='$name'>
                         <div class='card-body'>
@@ -120,7 +120,12 @@ if ($num > 0) { // If it ran OK, display the records.
                             <p class='card-text product-description'>$desc</p>
                             <p class='card-text product-price'>$$price</p>
                             <form method='POST'>
-                                <button type='submit' class='btn btn-primary add-to-cart-btn disabled' name='$id'>Add to Cart</button>
+                                <button type='submit' class='btn btn-primary add-to-cart-btn disabled' name='$id'>
+                                    <svg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='currentColor' class='bi bi-plus-lg' viewBox='0 0 16 16'>
+                                        <path fill-rule='evenodd' d='M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z'/>
+                                    </svg>
+                                    Add to Cart
+                                </button>
                             </form>
                         </div>
                     </div>

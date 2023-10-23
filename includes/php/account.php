@@ -2,6 +2,8 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nom Nom Express</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -18,10 +20,10 @@
 
     <!-- order history buttons dynamically created using history.php -->
     <div class="container-fluid m-3">
-        <div class="row">
+        <div class="row justify-content-center">
 
             <!-- Order History -->
-            <div id="order_history" class="col-md-7 me-3 shadow rounded overflow-y-auto text-center">
+            <div id="order_history" class="col-9 col-md-7 me-3 mb-3 shadow rounded overflow-y-auto text-center">
                 <h1>Order History</h1>
                 <div class="d-flex flex-column m-3">
                     <?php include('./history.php'); ?>
@@ -29,7 +31,7 @@
             </div>
 
             <!-- Account info uses variables from user_info.php -->
-            <div id="info" class="col-md-4 d-flex align-items-center flex-column shadow rounded">
+            <div id="info" class="col-9 col-md-4 d-flex align-items-center flex-column shadow rounded">
                 <h1 class="me-5">Account Info</h1>
                 <div>
                     <div>
