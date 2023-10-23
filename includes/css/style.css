@@ -181,8 +181,14 @@ td {
 
 
 /* Change Stripe payment button */
-/* .stripe-button-el span {
-    background: #5e366a !important;
+.stripe-button-el span {
+    background:var(--header-colour) !important;
     background-image: none;
-    background-color: #5e366a !important;
-} */
+    background-color: var(--header-colour) !important;
+    color: var(--emphasis-2) !important;
+}
+
+.stripe-button-el{
+    background-image: none !important;
+    background-color: var(--header-colour) !important;
+}

@@ -50,7 +50,7 @@
             
                 ob_start();
                 print 
-                        '<div class="row border-bottom py-2">
+                        '<div class="row border-bottom py-2 align-items-center">
                             <div class="text-center d-none d-md-block col-md-3"><img class="cart_picture rounded" src="../images/' . $row['item_picture'] . '" alt="'.$row['item_name'].'"></div>
                             <div class="text-center col-4 col-md-4">' . $row['item_name'] . '</div>
                             <div class="text-center col-3 col-md-2">
