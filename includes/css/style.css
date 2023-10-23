@@ -179,7 +179,6 @@ td {
     justify-content: center;
 }
 
-
 /* Change Stripe payment button currently not working */
 .stripe-button-el span {
     background: var(--header-colour) !important;
