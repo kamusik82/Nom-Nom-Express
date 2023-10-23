@@ -180,9 +180,9 @@ td {
 }
 
 
-/* Change Stripe payment button */
-/* .stripe-button-el span {
-    background: #5e366a !important;
+/* Change Stripe payment button currently not working */
+.stripe-button-el span {
+    background: var(--header-colour) !important;
     background-image: none;
-    background-color: #5e366a !important;
-} */
+    background-color: var(--header-colour) !important;
+}

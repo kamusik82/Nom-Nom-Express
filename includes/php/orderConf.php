@@ -16,10 +16,10 @@
         <title>Nom Nom Express</title>
     </head>
 
-    <body class="m-5">
-        <div class="container background pt-3 pb-3 rounded">
-            <h2 class="pt-5">Order Confirmation</h2>
-            <p>Hi <span class="fw-bold"></span><?php echo "$first_name $last_name" ?></span></p>
+    <body class="p-3">
+        <div class="container-fluid background pt-2 pb-3 rounded">
+            <h2 class="py-3">Order Confirmation</h2>
+            <p>Hi <span class="fw-bold"><?php echo "$first_name $last_name" ?></span></p>
             <p>Thank you for shopping at Nom Nom Express.<br>
                 Your order id No.<?php echo $order_num ?> is confirmed. <br>
                 We'll let you know when your order ships.
@@ -29,26 +29,22 @@
             <p>Placed on
                 <?php echo $date ?>
             </p>
-            <div class="border-top border-bottom my-3">
-                <table class="table table-borderless border-bottom">
-                    <tbody>
-                        <?php 
+            <div class="border-top border-bottom my-3">  
+                <?php 
 
-                            for ($i = 0; $i < count($nameArray); $i++) {
-                                print   "<tr>
-                                            <td class='text-start'><img src='../images/$pictureArray[$i]' class='cart_picture rounded'></td>
-                                            <td class='text-start'>
-                                                <div >
-                                                    <h5 class='my-3 colour'>$nameArray[$i]</h5>
-                                                    <p class='fw-bold colour'>$$priceArray[$i] <span class='colour'>x $quantityArray[$i]</span></p>
-                                                </div>
-                                            </td>
-                                        </tr>";
-                            }
+                    for ($i = 0; $i < count($nameArray); $i++) {
+                        print   "<div class='row p-2'>
+                                    <div class='d-none d-md-block col text-start'><img src='../images/$pictureArray[$i]' class='cart_picture rounded'></div>
+                                    <div class='col text-start'>
+                                        <div>
+                                            <h5 class='my-3 colour'>$nameArray[$i]</h5>
+                                            <p class='fw-bold colour'>$$priceArray[$i] <span class='colour'>x $quantityArray[$i]</span></p>
+                                        </div>
+                                    </div>
+                                </div>";
+                    }
 
-                        ?>
-                    </tbody>
-                </table>
+                ?>
             </div>
             <div class="border-bottom">
                 <table class="table table-borderless border-bottom colour">
@@ -88,8 +84,6 @@
 
     <?php $orderConf = ob_get_clean(); # HTML is stored in orderConf variable
         $fileName = "O$order_num.php";
-
-        // echo $orderConf;
 
         # Change directory
         chdir('../orders');
