@@ -61,18 +61,17 @@
     $sql = "select item_id, item_name, item_picture, item_desc, item_price, disable_item from menu_items order by item_id asc"; 
     $result = mysqli_query($dbc,$sql);
     
-    echo "<BR>";
-	echo '<table class="text-center ms-4 me-4">
-	<tr>
-		<td class="text-center col"><b>ID</b></td>
-		<td class="text-center col"><b>Picture</b></td>
-		<td class="text-center col-2"><b>Name</b></td>
-        <td class="text-center col-4"><b>Description</b></td>
-		<td class="text-center col-2"><b>Price</b></td>
-		<td class="text-center col-1"><b>Edit</b></td>
-		<td class="text-center col-1"><b>Delete</b></td>
-        <td class="text-center col-1"><b>E/D</b></td>
-	</tr>';
+	echo 
+	'<div class="row my-1 border-bottom">
+		<div class="text-center col-1"><b>ID</b></div>
+		<div class="text-center d-none d-md-block col-md-1"><b>Picture</b></div>
+		<div class="text-center col-3 col-md-2"><b>Name</b></div>
+        <div class="text-center d-none d-md-block col-md-3"><b>Description</b></div>
+		<div class="text-center col-2"><b>Price</b></div>
+		<div class="text-center col-2 col-md-1"><b>Edit</b></div>
+		<div class="text-center col-2 col-md-1"><b>Delete</b></div>
+        <div class="text-center col-2 col-md-1"><b>E/D</b></div>
+	</div>';
     
     if ($result) {
 
@@ -82,35 +81,34 @@
 
 			if ($isDisabled == 'Y') { // When item is disabled, display "Enable" button
 				
-				echo "<tr>
-						<td class=\" text-center\">{$row['item_id']}</td>
-						<td class=\" text-center\"><img src=\"./includes/images/{$row['item_picture']}\" class='item_picture rounded' alt='$alt'></td>
-						<td class=\" text-center\">{$row['item_name']}</td>
-						<td class=\" text-center\">{$row['item_desc']}</td>
-						<td class=\" text-center\">${$row['item_price']}</td>
-						<td class=\" text-center\"> <button id=\"{$row['item_id']}_edit\" name=\"{$row['item_name']}\" value=\"{$row['item_desc']}, {$row['item_price']}\" type='button' class='btn btn-primary edit'>Edit</button></td>
-						<td class=\" text-center\"> <button id=\"{$row['item_id']}_delete\" name=\"{$row['item_name']}\" type='button' class='btn btn-primary delete'>Delete</button></td>
-						<td class=\" text-center\"> <button id=\"{$row['item_id']}_enable\" name=\"{$row['item_name']}\" type='button' class='btn btn-primary enable'>Enable</button></td>
-					</tr>";
+				echo "<div class=\"row my-1 border-bottom\">
+						<div class=\"col-1 text-center\">{$row['item_id']}</div>
+						<div class=\"d-none d-md-block col-md-1 text-center\"><img src=\"./includes/images/{$row['item_picture']}\" class='item_picture rounded' alt='$alt'></div>
+						<div class=\"col-3 col-md-2 text-center\">{$row['item_name']}</div>
+						<div class=\"d-none d-md-block col-md-3 text-center\">{$row['item_desc']}</div>
+						<div class=\"col-2 text-center\">${$row['item_price']}</div>
+						<div class=\"col-2 col-md-1 text-center\"> <button id=\"{$row['item_id']}_edit\" name=\"{$row['item_name']}\" value=\"{$row['item_desc']}, {$row['item_price']}\" type='button' class='btn btn-primary edit'>Edit</button></div>
+						<div class=\"col-2 col-md-1 text-center\"> <button id=\"{$row['item_id']}_delete\" name=\"{$row['item_name']}\" type='button' class='btn btn-primary delete'>Delete</button></div>
+						<div class=\"col-2 col-md-1 text-center\"> <button id=\"{$row['item_id']}_enable\" name=\"{$row['item_name']}\" type='button' class='btn btn-primary enable'>Enable</button></div>
+					</div>";
 
 			} else { // When item is not disabled, display "Disable" button
 
-				echo "<tr>
-						<td class=\" text-center\">{$row['item_id']}</td>
-						<td class=\" text-center\"><img src=\"./includes/images/{$row['item_picture']}\" class='item_picture rounded' alt='$alt'></td>
-						<td class=\" text-center\">{$row['item_name']}</td>
-						<td class=\" text-start\">{$row['item_desc']}</td>
-						<td class=\" text-center\">\${$row['item_price']}</td>
-						<td class=\" text-center\"> <button id=\"{$row['item_id']}_edit\" name=\"{$row['item_name']}\" value=\"{$row['item_desc']}#{$row['item_price']}\" type='button' class='btn btn-primary edit'>Edit</button></td>
-						<td class=\" text-center\"> <button id=\"{$row['item_id']}_delete\" name=\"{$row['item_name']}\" type='button' class='btn btn-primary delete'>Delete</button></td>
-						<td class=\" text-center\"> <button id=\"{$row['item_id']}_disable\" name=\"{$row['item_name']}\" type='button' class='btn btn-primary disable'>Disable</button></td>
-					</tr>";
+				echo "<div class=\"row my-1 border-bottom\">
+						<div class=\"col-1  text-center\">{$row['item_id']}</div>
+						<div class=\"d-none d-md-block col-md-1 text-center\"><img src=\"./includes/images/{$row['item_picture']}\" class='item_picture rounded' alt='$alt'></div>
+						<div class=\"col-3 col-md-2 text-center\">{$row['item_name']}</div>
+						<div class=\"d-none d-md-block col-md-3 text-start\">{$row['item_desc']}</div>
+						<div class=\"col-2 text-center\">\${$row['item_price']}</div>
+						<div class=\"col-2 col-md-1 text-center\"> <button id=\"{$row['item_id']}_edit\" name=\"{$row['item_name']}\" value=\"{$row['item_desc']}#{$row['item_price']}\" type='button' class='btn btn-primary edit'>Edit</button></div>
+						<div class=\"col-2 col-md-1 text-center\"> <button id=\"{$row['item_id']}_delete\" name=\"{$row['item_name']}\" type='button' class='btn btn-primary delete'>Delete</button></div>
+						<div class=\"col-2 col-md-1 text-center\"> <button id=\"{$row['item_id']}_disable\" name=\"{$row['item_name']}\" type='button' class='btn btn-primary disable'>Disable</button></div>
+					</div>";
 
 			}
 
         } 
 
     } else 
-	echo '</table>';
 
 ?>
