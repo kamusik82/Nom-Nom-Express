@@ -32,8 +32,8 @@
     
                 exit;
             } else {
-                $creds = 'Invalid Credentials';
-                print '<p style="color: red;">' .$creds. '</p>';    // print error message underneath form if credentials are wrong
+                $creds = 'Invalid username or password';
+                print   '<p class="pt-3" style="color: red;">' .$creds. '</p>'; // print error message underneath form if credentials are wrong
             }
             
         }
