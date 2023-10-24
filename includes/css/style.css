@@ -30,7 +30,6 @@ body {
 #info {
     background-color: var(--card-colour);
     height: 600px;
-    /* sets fixed height for div that will need to change if we make it mobile friendly */
 }
 
 /* Ids used in admin.php */
@@ -180,8 +179,13 @@ td {
 }
 
 /* Change Stripe payment button currently not working */
+.stripe-button-el {
+    background-image: none;
+    background-color: var(--header-colour);
+}
+
 .stripe-button-el span {
     background: var(--header-colour) !important;
     background-image: none;
-    background-color: var(--header-colour) !important;
+    border-color: var(--header-colour) !important;
 }

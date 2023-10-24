@@ -83,52 +83,52 @@
                     <!-- php for privacy button -->
                     <?php if ($privacy == 'Signed') {
                         print "<form action='./account.php' method='POST'>
-                                            <button type='submit' class='btn btn-secondary' name='out'>Opt Out</button>
-                                        </form>";
+                                    <button type='submit' class='btn btn-secondary' name='out'>Opt Out</button>
+                                </form>";
                     } else {
-                        print "<div>
-                                            <button data-bs-target='#privacy' data-bs-toggle='modal' class='btn btn-primary'>Opt In</button>
-                                        </div>
+                        print  "<div>
+                                    <button data-bs-target='#privacy' data-bs-toggle='modal' class='btn btn-primary'>Opt In</button>
+                                </div>
 
-                                        <div class='modal fade' id='privacy' aria-hidden='true' aria-labelledby='privacyModalLabel' tabindex='-1'>
-                                            <div class='modal-dialog modal-dialog-centered'>
-                                                <div class='modal-content'>
-                                                    <div class='modal-header'>
-                                                        <h1 class='modal-title fs-5' id='privacyModalLabel'>General Data Protection Regulation</h1>
-                                                        <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
-                                                    </div>
-                                                    <div class='modal-body'>
-                                                    
-                                                    <p>
-                                                    The Canadian federal government introduced a new privacy protection law called
-                                                    the <b>General Data Protection Regulation</b>. This law requires that individuals must give explicit permission
-                                                    for their data to be used and give individuals the right to know who is accessing their information and what it
-                                                    will be used for. All companies collecting and/or using personal information on Canadian citizens must comply
-                                                    with this new law.
-                                                    <p>
-                                                    </p>
-                                                    Nom Nom Express collects the following information for purposes of Account Registration, Order Tracking and Order Delivery:
-                                                        <ul>
-                                                            <li>Name</li> 
-                                                            <li>Email</li> 
-                                                            <li>Phone Number</li>
-                                                            <li>Street Address including city, province, and postal code</li>
-                                                        </ul>
-                                                    </p>
-                                                    <p>
-                                                    To create an account you must agree to Nom Nom Express collecting this information by clicking the \'Accept\' button below.
-                                                    You can change your selection to opt out at any time in User Account settings.
-                                                    </p>
-                                                    </div>
-                                                    <div class='modal-footer'>
-                                                        <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Decline</button>
-                                                        <form action='./account.php' method='POST'>
-                                                            <button type='submit' class='btn btn-primary' name='in'>Accept</button>
-                                                        </form>
-                                                    </div>
-                                                </div>
+                                <div class='modal fade' id='privacy' aria-hidden='true' aria-labelledby='privacyModalLabel' tabindex='-1'>
+                                    <div class='modal-dialog modal-dialog-centered'>
+                                        <div class='modal-content'>
+                                            <div class='modal-header'>
+                                                <h1 class='modal-title fs-5' id='privacyModalLabel'>General Data Protection Regulation</h1>
+                                                <button type='button' class='btn-close' data-bs-dismiss='modal' aria-label='Close'></button>
                                             </div>
-                                        </div>";
+                                            <div class='modal-body'>
+                                            
+                                            <p>
+                                            The Canadian federal government introduced a new privacy protection law called
+                                            the <b>General Data Protection Regulation</b>. This law requires that individuals must give explicit permission
+                                            for their data to be used and give individuals the right to know who is accessing their information and what it
+                                            will be used for. All companies collecting and/or using personal information on Canadian citizens must comply
+                                            with this new law.
+                                            <p>
+                                            </p>
+                                            Nom Nom Express collects the following information for purposes of Account Registration, Order Tracking and Order Delivery:
+                                                <ul>
+                                                    <li>Name</li> 
+                                                    <li>Email</li> 
+                                                    <li>Phone Number</li>
+                                                    <li>Street Address including city, province, and postal code</li>
+                                                </ul>
+                                            </p>
+                                            <p>
+                                            To create an account you must agree to Nom Nom Express collecting this information by clicking the \'Accept\' button below.
+                                            You can change your selection to opt out at any time in User Account settings.
+                                            </p>
+                                            </div>
+                                            <div class='modal-footer'>
+                                                <button type='button' class='btn btn-secondary' data-bs-dismiss='modal'>Decline</button>
+                                                <form action='./account.php' method='POST'>
+                                                    <button type='submit' class='btn btn-primary' name='in'>Accept</button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>";
                     }
                     ?>
                     </p>
