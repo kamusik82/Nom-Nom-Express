@@ -169,11 +169,19 @@
     ?>
 
     <!-- Deleting items by click on delete button -->
+
     <?php
+     // Check if the 'Delete' button is clicked
         if (isset($_POST['btn-delete'])) {
             $item_id_to_delete = $_POST['item_id'];
+
+     // SQL query to delete the item from the cart
             $sql_delete = "DELETE FROM cart_items WHERE item_id = $item_id_to_delete";
+
+    // Attempt to execute the delete query
         if (mysqli_query($dbc, $sql_delete)) {
+
+    // Attempt to execute the delete query
             header("Location: ./cart.php");  
             exit();
         }   else {
@@ -181,10 +189,13 @@
             }
             ob_end_flush();
         }
-    
+    // Check if the 'Clear Cart' button is clicked
         if (isset($_POST['clear-cart']) && $_POST['clear-cart'] === 'true') { 
+
+    // Attempt to execute the clear cart query
             $sql_clear_cart = "DELETE FROM cart_items WHERE user_id = $u_id";
             if (mysqli_query($dbc, $sql_clear_cart)) {
+     // Redirect to the cart page after successful clearing
                 header("Location: ./cart.php");
                 exit();
             }   else {
@@ -195,16 +206,23 @@
 
     <!-- Adjust a quantity -->
     <?php
+     // Check if an action is requested (increase or decrease quantity)
         if (isset($_POST['action'])) {
+
+    // Get the item ID and the requested action
             $item_to_adjust = $_POST['item_id'];
-            $action = $_POST['action'];
+            $action = $_POST['action'];  
+
+    // SQL query to fetch the current quantity of the item
             $sql_fetch_quantity = "SELECT quantity FROM cart_items WHERE user_id = $u_id AND item_id = $item_to_adjust";
+
+     // Execute the query to get the current quantity
             $result = mysqli_query($dbc, $sql_fetch_quantity);
-        
             if ($result) {
                 $row = mysqli_fetch_assoc($result);
                 $currentQuantity = $row['quantity'];
 
+     // Calculate the new quantity based on the requested action
                 if ($action === 'increase') {
                     $newQuantity = $currentQuantity + 1;
                 } elseif ($action === 'decrease' && $currentQuantity > 1) {
@@ -213,9 +231,11 @@
                     $newQuantity = $currentQuantity;
                 }
             }
+    // SQL query to update the item's quantity
             $sql_adjust = "UPDATE cart_items SET quantity = $newQuantity WHERE item_id = $item_to_adjust";
-        
             if (mysqli_query($dbc, $sql_adjust)) {
+
+      // Redirect to the cart page after successful quantity adjustment
                 header("Location: ./cart.php");
                 exit();
             } else {
