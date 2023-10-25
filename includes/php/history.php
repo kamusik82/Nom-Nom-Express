@@ -23,6 +23,7 @@
                 $nameArray = array();
                 $quantityArray = array();
 
+                //push all the values from the results into their corresponding array
                 while($itemRow = @mysqli_fetch_array($newResult)){
                     array_push($priceArray, $itemRow['item_price']);
                     array_push($nameArray, $itemRow['item_name']);
