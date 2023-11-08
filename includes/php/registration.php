@@ -119,16 +119,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 	if (empty($errors)) { // If everything's OK.
 		// Register the user in the database...
 
-		$sql_insert = @"INSERT INTO users (first_name, last_name, street_1, street_2, city, province, postal, email, phone, username, password, role, privacy, reg_date) VALUES (CONCAT(UPPER(SUBSTRING('$r_fname',1,1)),LOWER(SUBSTRING('$r_fname',2))), CONCAT(UPPER(SUBSTRING('$r_lname',1,1)),LOWER(SUBSTRING('$r_lname',2))), '$r_street1', '$r_street2', CONCAT(UPPER(SUBSTRING('$r_city',1,1)),LOWER(SUBSTRING('$r_city',2))), UPPER('$r_prov'), UPPER('$r_postal'), '$r_email', '$r_phone', '$r_username', SHA1('$r_password'), 'U', 'Y', now());";
+		$sql_insert = @"INSERT INTO users (first_name, last_name, street_1, street_2, city, province, postal, email, phone, username, 
+		password, role, privacy, reg_date)
+		VALUES (CONCAT(UPPER(SUBSTRING('$r_fname',1,1)),LOWER(SUBSTRING('$r_fname',2))), CONCAT(UPPER(SUBSTRING('$r_lname',1,1)),
+		LOWER(SUBSTRING('$r_lname',2))), '$r_street1', '$r_street2', CONCAT(UPPER(SUBSTRING('$r_city',1,1)),
+		LOWER(SUBSTRING('$r_city',2))), UPPER('$r_prov'), UPPER('$r_postal'), '$r_email', '$r_phone', '$r_username', 
+		SHA1('$r_password'), 'U', 'Y', now());";
 		$result = @mysqli_query($dbc, $sql_insert); // Run the query.
 
-		if ($result) { // If it ran OK.
-
-			// Print a message:
-			// 	echo '<h1>Thank you!</h1>
-			// <p>You are now registered. </p><p><br></p>
-			// <a class="btn btn-primary" href="../../index.php">Ok</a>';
-
+		if ($result) { 
+ 
 			$sql = "SELECT user_id, username from users where username='$r_username';";
 			$result = @mysqli_query($dbc, $sql);
 			$row = mysqli_fetch_array($result);
@@ -138,9 +138,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 			header("Location: ../../index.php"); // go to main page
 			exit();
 
-		} else { // If it did not run OK.
-
-			// Public message:
+		} else { 
 			echo '<h1>System Error</h1>
 			<p class="error">You could not be registered due to a system error. We apologize for any inconvenience.</p>';
 
